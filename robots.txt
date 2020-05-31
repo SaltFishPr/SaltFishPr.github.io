@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://saltfishpr.github.io/sitemap.xml

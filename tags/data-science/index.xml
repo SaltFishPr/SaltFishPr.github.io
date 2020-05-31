@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data science on Salt Fish&#39;s Blog</title>
+    <link>https://saltfishpr.github.io/tags/data-science/</link>
+    <description>Recent content in data science on Salt Fish&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://saltfishpr.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pandas Kaggle</title>
+      <link>https://saltfishpr.github.io/post/2020-05-25-pandas-kaggle/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saltfishpr.github.io/post/2020-05-25-pandas-kaggle/</guid>
+      <description>Kaggle Pandas 入门</description>
+    </item>
+    
+    <item>
+      <title>Data Mining</title>
+      <link>https://saltfishpr.github.io/post/2020-03-09-data-mining/</link>
+      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://saltfishpr.github.io/post/2020-03-09-data-mining/</guid>
+      <description>数据挖掘学习笔记</description>
+    </item>
+    
+  </channel>
+</rss>

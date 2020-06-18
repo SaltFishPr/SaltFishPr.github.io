@@ -1,0 +1,663 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Pandas Kaggle - Salt Fish's Blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Salt Fish"><meta name=description content="Kaggle Pandas 入门"><meta name=keywords content="pandas"><meta name=generator content="Hugo 0.62.2 with theme even"><link rel=canonical href=https://saltfishpr.github.io/post/2020-05-25-pandas-kaggle/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Pandas Kaggle"><meta property="og:description" content="Kaggle Pandas 入门"><meta property="og:type" content="article"><meta property="og:url" content="https://saltfishpr.github.io/post/2020-05-25-pandas-kaggle/"><meta property="article:published_time" content="2020-05-25T00:00:00+00:00"><meta property="article:modified_time" content="2020-05-25T00:00:00+00:00"><meta itemprop=name content="Pandas Kaggle"><meta itemprop=description content="Kaggle Pandas 入门"><meta itemprop=datePublished content="2020-05-25T00:00:00+00:00"><meta itemprop=dateModified content="2020-05-25T00:00:00+00:00"><meta itemprop=wordCount content="2474"><meta itemprop=keywords content="data science,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Pandas Kaggle"><meta name=twitter:description content="Kaggle Pandas 入门"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Salt Fish</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Salt Fish</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Pandas Kaggle</h1><div class=post-meta><span class=post-time>May 25, 2020</span><div class=post-category><a href=/categories/python/>python</a></div><span class=more-meta>约 2474 字</span>
+<span class=more-meta>预计阅读 5 分钟</span></div></header><div class=post-content><h1 id=kaggle-pandas-入门>Kaggle Pandas 入门</h1><p>读取数据集</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>pandas</span> <span class=kn>as</span> <span class=nn>pd</span>
+<span class=n>reviews</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>read_csv</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>~/Programming/datasets/winemag-data-130k-v2.csv</span><span class=s2>&#34;</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><h2 id=分组和排序>分组和排序</h2><p>对分数分组求和</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>groupby</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>points</span><span class=s2>&#34;</span><span class=p>)</span><span class=o>.</span><span class=n>points</span><span class=o>.</span><span class=n>count</span><span class=p>(</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>points
+80       397
+81       692
+82      1836
+...
+98        77
+99        33
+100       19
+Name: points, dtype: int64
+</code></pre></td></tr></table></div></div><p>获得相同评分葡萄酒的最低价格</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>groupby</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>points</span><span class=s2>&#34;</span><span class=p>)</span><span class=o>.</span><span class=n>price</span><span class=o>.</span><span class=n>min</span><span class=p>(</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>points
+80      5.0
+81      5.0
+82      4.0
+...
+98     50.0
+99     44.0
+100    80.0
+Name: price, dtype: float64
+</code></pre></td></tr></table></div></div><p>从每个酒庄中选择第一瓶葡萄酒的名称</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>groupby</span><span class=p>(</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>winery</span><span class=s1>&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>apply</span><span class=p>(</span><span class=k>lambda</span> <span class=n>df</span><span class=p>:</span> <span class=n>df</span><span class=o>.</span><span class=n>title</span><span class=o>.</span><span class=n>iloc</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>winery
+1+1=3                                     1+1=3 NV Rosé Sparkling (Cava)
+10 Knots                            10 Knots 2010 Viognier (Paso Robles)
+100 Percent Wine              100 Percent Wine 2015 Moscato (California)
+1000 Stories           1000 Stories 2013 Bourbon Barrel Aged Zinfande...
+1070 Green                  1070 Green 2011 Sauvignon Blanc (Rutherford)
+...
+Órale                       Órale 2011 Cabronita Red (Santa Ynez Valley)
+Öko                    Öko 2013 Made With Organically Grown Grapes Ma...
+Ökonomierat Rebholz    Ökonomierat Rebholz 2007 Von Rotliegenden Spät...
+àMaurice               àMaurice 2013 Fred Estate Syrah (Walla Walla V...
+Štoka                                    Štoka 2009 Izbrani Teran (Kras)
+Length: 16757, dtype: object
+</code></pre></td></tr></table></div></div><p>根据国家和省份挑选最好的葡萄酒</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>groupby</span><span class=p>(</span><span class=p>[</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>country</span><span class=s2>&#34;</span><span class=p>,</span> <span class=sa></span><span class=s2>&#34;</span><span class=s2>province</span><span class=s2>&#34;</span><span class=p>]</span><span class=p>)</span><span class=o>.</span><span class=n>apply</span><span class=p>(</span><span class=k>lambda</span> <span class=n>df</span><span class=p>:</span><span class=n>df</span><span class=o>.</span><span class=n>loc</span><span class=p>[</span><span class=n>df</span><span class=o>.</span><span class=n>points</span><span class=o>.</span><span class=n>idxmax</span><span class=p>(</span><span class=p>)</span><span class=p>]</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>                            Unnamed: 0  ...                winery
+country   province                      ...
+Argentina Mendoza Province       82754  ...  Bodega Catena Zapata
+          Other                  78303  ...                Colomé
+Armenia   Armenia                66146  ...              Van Ardi
+Australia Australia Other        37882  ...       Marquis Philips
+          New South Wales        85337  ...            De Bortoli
+                                ...  ...                   ...
+Uruguay   Juanico                 9133  ...        Familia Deicas
+          Montevideo             15750  ...                 Bouza
+          Progreso               93103  ...                Pisano
+          San Jose               39898  ...        Castillo Viejo
+          Uruguay                39361  ...               Narbona
+[425 rows x 14 columns]
+</code></pre></td></tr></table></div></div><p><code>agg()</code> 方法可以在一个 dataframe 上运行一些一维的函数</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>groupby</span><span class=p>(</span><span class=p>[</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>country</span><span class=s1>&#39;</span><span class=p>]</span><span class=p>)</span><span class=o>.</span><span class=n>price</span><span class=o>.</span><span class=n>agg</span><span class=p>(</span><span class=p>[</span><span class=nb>len</span><span class=p>,</span> <span class=nb>min</span><span class=p>,</span> <span class=nb>max</span><span class=p>]</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>                            len   min     max
+country
+Argentina                3800.0   4.0   230.0
+Armenia                     2.0  14.0    15.0
+Australia                2329.0   5.0   850.0
+...
+US                      54504.0   4.0  2013.0
+Ukraine                    14.0   6.0    13.0
+Uruguay                   109.0  10.0   130.0
+</code></pre></td></tr></table></div></div><p>多索引：</p><p>使用 <code>groupby()</code> 可能会产生多索引</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>countries_reviewed</span> <span class=o>=</span> <span class=n>reviews</span><span class=o>.</span><span class=n>groupby</span><span class=p>(</span><span class=p>[</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>country</span><span class=s1>&#39;</span><span class=p>,</span> <span class=sa></span><span class=s1>&#39;</span><span class=s1>province</span><span class=s1>&#39;</span><span class=p>]</span><span class=p>)</span><span class=o>.</span><span class=n>description</span><span class=o>.</span><span class=n>agg</span><span class=p>(</span><span class=p>[</span><span class=nb>len</span><span class=p>]</span><span class=p>)</span>
+<span class=n>countries_reviewed</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>                             len
+country   province
+Argentina Mendoza Province  3264
+          Other              536
+Armenia   Armenia              2
+Australia Australia Other    245
+          New South Wales     85
+                          ...
+Uruguay   Juanico             12
+          Montevideo          11
+          Progreso            11
+          San Jose             3
+          Uruguay             24
+[425 rows x 1 columns]
+</code></pre></td></tr></table></div></div><p>多索引转回常规索引</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>countries_reviewed</span><span class=o>.</span><span class=n>reset_index</span><span class=p>(</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>       country          province   len
+0    Argentina  Mendoza Province  3264
+1    Argentina             Other   536
+2      Armenia           Armenia     2
+3    Australia   Australia Other   245
+4    Australia   New South Wales    85
+..         ...               ...   ...
+420    Uruguay           Juanico    12
+421    Uruguay        Montevideo    11
+422    Uruguay          Progreso    11
+423    Uruguay          San Jose     3
+424    Uruguay           Uruguay    24
+[425 rows x 3 columns]
+</code></pre></td></tr></table></div></div><p>使用 <code>sort_values()</code> 对数据排序（默认为升序排序）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>countries_reviewed</span> <span class=o>=</span> <span class=n>countries_reviewed</span><span class=o>.</span><span class=n>reset_index</span><span class=p>(</span><span class=p>)</span>
+<span class=n>countries_reviewed</span><span class=o>.</span><span class=n>sort_values</span><span class=p>(</span><span class=n>by</span><span class=o>=</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>len</span><span class=s1>&#39;</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>          country               province    len
+179        Greece  Muscat of Kefallonian      1
+192        Greece          Sterea Ellada      1
+194        Greece                 Thraki      1
+354  South Africa             Paardeberg      1
+40         Brazil       Serra do Sudeste      1
+..            ...                    ...    ...
+409            US                 Oregon   5373
+227         Italy                Tuscany   5897
+118        France               Bordeaux   5941
+415            US             Washington   8639
+392            US             California  36247
+[425 rows x 3 columns]
+</code></pre></td></tr></table></div></div><p>降序排序</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>countries_reviewed</span><span class=o>.</span><span class=n>sort_values</span><span class=p>(</span><span class=n>by</span><span class=o>=</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>len</span><span class=s1>&#39;</span><span class=p>,</span> <span class=n>ascending</span><span class=o>=</span><span class=bp>False</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>          country         province    len
+392            US       California  36247
+415            US       Washington   8639
+118        France         Bordeaux   5941
+227         Italy          Tuscany   5897
+409            US           Oregon   5373
+..            ...              ...    ...
+101       Croatia              Krk      1
+247   New Zealand        Gladstone      1
+357  South Africa  Piekenierskloof      1
+63          Chile          Coelemu      1
+149        Greece           Beotia      1
+[425 rows x 3 columns]
+</code></pre></td></tr></table></div></div><p>重新按照索引排序</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>countries_reviewed</span><span class=o>.</span><span class=n>sort_index</span><span class=p>(</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>       country          province   len
+0    Argentina  Mendoza Province  3264
+1    Argentina             Other   536
+2      Armenia           Armenia     2
+3    Australia   Australia Other   245
+4    Australia   New South Wales    85
+..         ...               ...   ...
+420    Uruguay           Juanico    12
+421    Uruguay        Montevideo    11
+422    Uruguay          Progreso    11
+423    Uruguay          San Jose     3
+424    Uruguay           Uruguay    24
+[425 rows x 3 columns]
+</code></pre></td></tr></table></div></div><p>同时使用多个列排序</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>countries_reviewed</span><span class=o>.</span><span class=n>sort_values</span><span class=p>(</span><span class=n>by</span><span class=o>=</span><span class=p>[</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>country</span><span class=s1>&#39;</span><span class=p>,</span> <span class=sa></span><span class=s1>&#39;</span><span class=s1>len</span><span class=s1>&#39;</span><span class=p>]</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>       country          province   len
+1    Argentina             Other   536
+0    Argentina  Mendoza Province  3264
+2      Armenia           Armenia     2
+6    Australia          Tasmania    42
+4    Australia   New South Wales    85
+..         ...               ...   ...
+421    Uruguay        Montevideo    11
+422    Uruguay          Progreso    11
+420    Uruguay           Juanico    12
+424    Uruguay           Uruguay    24
+419    Uruguay         Canelones    43
+[425 rows x 3 columns]
+</code></pre></td></tr></table></div></div><h2 id=数据类型和缺失值>数据类型和缺失值</h2><p>获取 price 列的数据类型</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>price</span><span class=o>.</span><span class=n>dtype</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>dtype(&#39;float64&#39;)
+</code></pre></td></tr></table></div></div><p>查看 dataframe 中每一列的数据类型</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>dtypes</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>Unnamed: 0                 int64
+country                   object
+description               object
+designation               object
+points                     int64
+price                    float64
+province                  object
+region_1                  object
+region_2                  object
+taster_name               object
+taster_twitter_handle     object
+title                     object
+variety                   object
+winery                    object
+dtype: object
+</code></pre></td></tr></table></div></div><p>使用 <code>astype()</code> 转换数据类型</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>points</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>float64</span><span class=s1>&#39;</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>0         87.0
+1         87.0
+2         87.0
+3         87.0
+4         87.0
+          ...
+129966    90.0
+129967    90.0
+129968    90.0
+129969    90.0
+129970    90.0
+Name: points, Length: 129971, dtype: float64
+</code></pre></td></tr></table></div></div><p>缺少值的条目被赋予值 NaN，缩写为 &ldquo;Not a Number&rdquo;</p><p>查看 country 为 NaN 的行</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=p>[</span><span class=n>pd</span><span class=o>.</span><span class=n>isnull</span><span class=p>(</span><span class=n>reviews</span><span class=o>.</span><span class=n>country</span><span class=p>)</span><span class=p>]</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>        Unnamed: 0 country  ...             variety                           winery
+913            913     NaN  ...             Chinuri               Gotsa Family Wines
+3131          3131     NaN  ...           Red Blend                Barton &amp; Guestier
+4243          4243     NaN  ...            Ojaleshi  Kakhetia Traditional Winemaking
+9509          9509     NaN  ...         White Blend                         Tsililis
+9750          9750     NaN  ...          Chardonnay                         Ross-idi
+            ...     ...  ...                 ...                              ...
+124176      124176     NaN  ...           Red Blend                Les Frères Dutruy
+129407      129407     NaN  ...  Cabernet Sauvignon                      El Capricho
+129408      129408     NaN  ...         Tempranillo                      El Capricho
+129590      129590     NaN  ...           Red Blend                        Büyülübağ
+129900      129900     NaN  ...              Merlot                           Psagot
+[63 rows x 14 columns]
+</code></pre></td></tr></table></div></div><p>使用 <code>fillna()</code> 填充缺失的行</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>region_2</span><span class=o>.</span><span class=n>fillna</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>Unknown)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>0                   Unknown
+1                   Unknown
+2         Willamette Valley
+3                   Unknown
+4         Willamette Valley
+                ...
+129966              Unknown
+129967         Oregon Other
+129968              Unknown
+129969              Unknown
+129970              Unknown
+Name: region_2, Length: 129971, dtype: object
+</code></pre></td></tr></table></div></div><p>使用 <code>replace(old_val, new_val)</code> 方法替换非空值</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>taster_twitter_handle</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>@kerinokeefe</span><span class=s2>&#34;</span><span class=p>,</span> <span class=sa></span><span class=s2>&#34;</span><span class=s2>@kerino</span><span class=s2>&#34;</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>0             @kerino
+1          @vossroger
+2          @paulgwine 
+3                 NaN
+4          @paulgwine 
+             ...
+129966            NaN
+129967     @paulgwine 
+129968     @vossroger
+129969     @vossroger
+129970     @vossroger
+Name: taster_twitter_handle, Length: 129971, dtype: object
+</code></pre></td></tr></table></div></div><h2 id=重命名和合并>重命名和合并</h2><p>重命名一列</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>rename</span><span class=p>(</span><span class=n>columns</span><span class=o>=</span><span class=p>{</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>points</span><span class=s1>&#39;</span><span class=p>:</span> <span class=sa></span><span class=s1>&#39;</span><span class=s1>score</span><span class=s1>&#39;</span><span class=p>}</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>        Unnamed: 0  ...                                    winery
+0                0  ...                                   Nicosia
+1                1  ...                       Quinta dos Avidagos
+2                2  ...                                 Rainstorm
+3                3  ...                                St. Julian
+4                4  ...                              Sweet Cheeks
+            ...  ...                                       ...
+129966      129966  ...  Dr. H. Thanisch (Erben Müller-Burggraef)
+129967      129967  ...                                  Citation
+129968      129968  ...                           Domaine Gresser
+129969      129969  ...                      Domaine Marcel Deiss
+129970      129970  ...                          Domaine Schoffit
+[129971 rows x 14 columns]
+</code></pre></td></tr></table></div></div><p>重命名可以选择 index 或者 colum 参数</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>rename</span><span class=p>(</span><span class=n>index</span><span class=o>=</span><span class=p>{</span><span class=mi>0</span><span class=p>:</span> <span class=sa></span><span class=s1>&#39;</span><span class=s1>firstEntry</span><span class=s1>&#39;</span><span class=p>,</span> <span class=mi>1</span><span class=p>:</span> <span class=sa></span><span class=s1>&#39;</span><span class=s1>secondEntry</span><span class=s1>&#39;</span><span class=p>}</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>             Unnamed: 0  ...                                    winery
+firstEntry            0  ...                                   Nicosia
+secondEntry           1  ...                       Quinta dos Avidagos
+2                     2  ...                                 Rainstorm
+3                     3  ...                                St. Julian
+4                     4  ...                              Sweet Cheeks
+                 ...  ...                                       ...
+129966           129966  ...  Dr. H. Thanisch (Erben Müller-Burggraef)
+129967           129967  ...                                  Citation
+129968           129968  ...                           Domaine Gresser
+129969           129969  ...                      Domaine Marcel Deiss
+129970           129970  ...                          Domaine Schoffit
+[129971 rows x 14 columns]
+</code></pre></td></tr></table></div></div><p>因为很少重命名索引值，通常情况下 <code>set_index()</code> 更好用</p><p>给行索引和列索引添加名称属性</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>reviews</span><span class=o>.</span><span class=n>rename_axis</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>wines</span><span class=s2>&#34;</span><span class=p>,</span> <span class=n>axis</span><span class=o>=</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>rows</span><span class=s1>&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>rename_axis</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>fields</span><span class=s2>&#34;</span><span class=p>,</span> <span class=n>axis</span><span class=o>=</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>columns</span><span class=s1>&#39;</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>fields  Unnamed: 0  ...                                    winery
+wines               ...
+0                0  ...                                   Nicosia
+1                1  ...                       Quinta dos Avidagos
+2                2  ...                                 Rainstorm
+3                3  ...                                St. Julian
+4                4  ...                              Sweet Cheeks
+            ...  ...                                       ...
+129966      129966  ...  Dr. H. Thanisch (Erben Müller-Burggraef)
+129967      129967  ...                                  Citation
+129968      129968  ...                           Domaine Gresser
+129969      129969  ...                      Domaine Marcel Deiss
+129970      129970  ...                          Domaine Schoffit
+[129971 rows x 14 columns]
+</code></pre></td></tr></table></div></div><p>组合有三个核心方法<code>concat()</code>, <code>join()</code> 和 <code>merge()</code></p><p>concat(): 给定一个元素列表，此函数将沿着一个 axis 将这些元素混合在一起</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>canadian_youtube</span>
+<span class=n>british_youtube</span>
+<span class=n>pd</span><span class=o>.</span><span class=n>concat</span><span class=p>(</span><span class=p>[</span><span class=n>canadian_youtube</span><span class=p>,</span> <span class=n>british_youtube</span><span class=p>]</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>          video_id  ...                                        description
+0      n1WpP7iowLc  ...  Eminem&#39;s new track Walk on Water ft. Beyoncé i...
+1      0dBIkQ4Mz1M  ...  STill got a lot of packages. Probably will las...
+2      5qpjK5DgCt4  ...  WATCH MY PREVIOUS VIDEO ▶ \n\nSUBSCRIBE ► http...
+3      d380meD0W0M  ...  I know it&#39;s been a while since we did this sho...
+4      2Vv-BfVoq4g  ...  🎧: https://ad.gt/yt-perfect\n💰: https://atlant...
+            ...  ...                                                ...
+40876  sGolxsMSGfQ  ...  🚨 NEW MERCH! http://amzn.to/annoyingorange 🚨➤ ...
+40877  8HNuRNi8t70  ...  ► Retrouvez vos programmes préférés : https://...
+40878  GWlKEM3m2EE  ...  Find out more about Kingdom Hearts 3: https://...
+40879  lbMKLzQ4cNQ  ...  Peter Navarro isn’t talking so tough now. Ana ...
+40880  POTgw38-m58  ...  藝人：李妍瑾、玉兔、班傑、LaLa、小優、少少專家：陳筱屏(律師)、Wendy(心理師)、羅...
+[40881 rows x 16 columns]
+
+          video_id  ...                                        description
+0      Jw1Y-zhQURU  ...  Click here to continue the story and make your...
+1      3s1rvMFUweQ  ...  Musical guest Taylor Swift performs …Ready for...
+2      n1WpP7iowLc  ...  Eminem&#39;s new track Walk on Water ft. Beyoncé i...
+3      PUTEiSjKwJU  ...  Salford drew 4-4 against the Class of 92 and F...
+4      rHwDegptbI4  ...  Dashcam captures truck&#39;s near miss with child ...
+            ...  ...                                                ...
+38911  l884wKofd54  ...  NEW SONG - MOVE TO MIAMI feat. Pitbull (Click ...
+38912  IP8k2xkhOdI  ...  THE OFFICIAL UP WITH IT MUSIC VIDEO!Get my new...
+38913  Il-an3K9pjg  ...  Get 2002 by Anne-Marie HERE ▶ http://ad.gt/200...
+38914  -DRsfNObKIQ  ...  Eleni Foureira represented Cyprus at the first...
+38915  4YFo4bdMO8Q  ...  Debut album &#39;Light of Mine&#39; out now: http://ky...
+[38916 rows x 16 columns]
+
+          video_id  ...                                        description
+0      n1WpP7iowLc  ...  Eminem&#39;s new track Walk on Water ft. Beyoncé i...
+1      0dBIkQ4Mz1M  ...  STill got a lot of packages. Probably will las...
+2      5qpjK5DgCt4  ...  WATCH MY PREVIOUS VIDEO ▶ \n\nSUBSCRIBE ► http...
+3      d380meD0W0M  ...  I know it&#39;s been a while since we did this sho...
+4      2Vv-BfVoq4g  ...  🎧: https://ad.gt/yt-perfect\n💰: https://atlant...
+            ...  ...                                                ...
+38911  l884wKofd54  ...  NEW SONG - MOVE TO MIAMI feat. Pitbull (Click ...
+38912  IP8k2xkhOdI  ...  THE OFFICIAL UP WITH IT MUSIC VIDEO!Get my new...
+38913  Il-an3K9pjg  ...  Get 2002 by Anne-Marie HERE ▶ http://ad.gt/200...
+38914  -DRsfNObKIQ  ...  Eleni Foureira represented Cyprus at the first...
+38915  4YFo4bdMO8Q  ...  Debut album &#39;Light of Mine&#39; out now: http://ky...
+[79797 rows x 16 columns]
+</code></pre></td></tr></table></div></div><p>join(): 可以组合具有共同索引的不同 dataframe 对象</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>left</span> <span class=o>=</span> <span class=n>canadian_youtube</span><span class=o>.</span><span class=n>set_index</span><span class=p>(</span><span class=p>[</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>title</span><span class=s1>&#39;</span><span class=p>,</span> <span class=sa></span><span class=s1>&#39;</span><span class=s1>trending_date</span><span class=s1>&#39;</span><span class=p>]</span><span class=p>)</span>
+<span class=n>right</span> <span class=o>=</span> <span class=n>british_youtube</span><span class=o>.</span><span class=n>set_index</span><span class=p>(</span><span class=p>[</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>title</span><span class=s1>&#39;</span><span class=p>,</span> <span class=sa></span><span class=s1>&#39;</span><span class=s1>trending_date</span><span class=s1>&#39;</span><span class=p>]</span><span class=p>)</span>
+
+<span class=n>left</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>right</span><span class=p>,</span> <span class=n>lsuffix</span><span class=o>=</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>_CAN</span><span class=s1>&#39;</span><span class=p>,</span> <span class=n>rsuffix</span><span class=o>=</span><span class=sa></span><span class=s1>&#39;</span><span class=s1>_UK</span><span class=s1>&#39;</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div><p>Output:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>                                                                 video_id_CAN  ... description_UK
+title                                              trending_date               ...
+!! THIS VIDEO IS NOTHING BUT PAIN !! | Getting ... 18.04.01       PNn8sECd7io  ...            NaN
+#1 Fortnite World Rank - 2,323 Solo Wins!          18.09.03       DvPW66IFhMI  ...            NaN
+#1 Fortnite World Rank - 2,330 Solo Wins!          18.10.03       EXEaMjFeiEk  ...            NaN
+#1 MOST ANTICIPATED VIDEO (Timber Frame House R... 17.20.12       bYvQmusLaxw  ...            NaN
+                                                   17.21.12       bYvQmusLaxw  ...            NaN
+                                                                       ...  ...            ...
+😲She Is So Nervous But BLOWS The ROOF After Tak... 18.02.05       WttN1Z0XF4k  ...            NaN
+                                                   18.29.04       WttN1Z0XF4k  ...            NaN
+                                                   18.30.04       WttN1Z0XF4k  ...            NaN
+🚨 BREAKING NEWS 🔴 Raja Live all Slot Channels W... 18.07.05       Wt9Gkpmbt44  ...            NaN
+🚨Active Shooter at YouTube Headquarters - LIVE ... 18.04.04       Az72jrKbANA  ...            NaN
+[40900 rows x 28 columns]
+</code></pre></td></tr></table></div></div><h2 id=其他>其他</h2><p>显示所有列</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=n>pd</span><span class=o>.</span><span class=n>set_option</span><span class=p>(</span><span class=sa></span><span class=s2>&#34;</span><span class=s2>display.max_columns</span><span class=s2>&#34;</span><span class=p>,</span> <span class=bp>None</span><span class=p>)</span>
+</code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>Salt Fish</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>May 25, 2020</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/data-science/>data science</a></div><nav class=post-nav><a class=next href=/post/2020-03-26-pip-and-conda/><span class="next-text nav-default">Pip and Conda</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=saltfishpr@gmail.com class="iconfont icon-email" title=email></a><a href=https://saltfishpr.github.io/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2019 -
+2020
+<span class=heart><i class="iconfont icon-heart"></i></span><span class=author>Salt Fish</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-160062007-1','auto');ga('set','anonymizeIp',true);ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>

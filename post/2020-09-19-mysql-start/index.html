@@ -1,17 +1,119 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Install MySql on Ubuntu WSL - Salt Fish's Blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Salt Fish"><meta name=description content="Ubuntu WSL Mysql安装过程以及遇到的问题"><meta name=keywords content="python,data science"><meta name=generator content="Hugo 0.62.2 with theme even"><link rel=canonical href=https://saltfishpr.github.io/post/2020-09-19-mysql-start/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Install MySql on Ubuntu WSL"><meta property="og:description" content="Ubuntu WSL Mysql安装过程以及遇到的问题"><meta property="og:type" content="article"><meta property="og:url" content="https://saltfishpr.github.io/post/2020-09-19-mysql-start/"><meta property="article:published_time" content="2020-09-19T00:00:00+00:00"><meta property="article:modified_time" content="2020-09-19T00:00:00+00:00"><meta itemprop=name content="Install MySql on Ubuntu WSL"><meta itemprop=description content="Ubuntu WSL Mysql安装过程以及遇到的问题"><meta itemprop=datePublished content="2020-09-19T00:00:00+00:00"><meta itemprop=dateModified content="2020-09-19T00:00:00+00:00"><meta itemprop=wordCount content="167"><meta itemprop=keywords content="writing,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Install MySql on Ubuntu WSL"><meta name=twitter:description content="Ubuntu WSL Mysql安装过程以及遇到的问题"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Salt Fish</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Salt Fish</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Install MySql on Ubuntu WSL</h1><div class=post-meta><span class=post-time>Sep 19, 2020</span><div class=post-category><a href=/categories/mysql/>mysql</a></div><span class=more-meta>约 167 字</span>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Install MySql on Ubuntu WSL - Salt Fish's Blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Salt Fish"><meta name=description content="Ubuntu WSL Mysql安装过程以及遇到的问题"><meta name=keywords content="python,data science"><meta name=generator content="Hugo 0.62.2 with theme even"><link rel=canonical href=https://saltfishpr.github.io/post/2020-09-19-mysql-start/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Install MySql on Ubuntu WSL"><meta property="og:description" content="Ubuntu WSL Mysql安装过程以及遇到的问题"><meta property="og:type" content="article"><meta property="og:url" content="https://saltfishpr.github.io/post/2020-09-19-mysql-start/"><meta property="article:published_time" content="2020-09-19T00:00:00+00:00"><meta property="article:modified_time" content="2020-09-19T00:00:00+00:00"><meta itemprop=name content="Install MySql on Ubuntu WSL"><meta itemprop=description content="Ubuntu WSL Mysql安装过程以及遇到的问题"><meta itemprop=datePublished content="2020-09-19T00:00:00+00:00"><meta itemprop=dateModified content="2020-09-19T00:00:00+00:00"><meta itemprop=wordCount content="498"><meta itemprop=keywords content="writing,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Install MySql on Ubuntu WSL"><meta name=twitter:description content="Ubuntu WSL Mysql安装过程以及遇到的问题"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Salt Fish</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a><a href=/about/><li class=mobile-menu-item>About</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Salt Fish</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li><li class=menu-item><a class=menu-item-link href=/about/>About</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Install MySql on Ubuntu WSL</h1><div class=post-meta><span class=post-time>Sep 19, 2020</span><div class=post-category><a href=/categories/mysql/>mysql</a></div><span class=more-meta>约 498 字</span>
 <span class=more-meta>预计阅读 1 分钟</span></div></header><div class=post-content><h2 id=安装>安装</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo apt-get install mysql-server
+</code></pre></td></tr></table></div></div><p>安全设置 <code>$ sudo mysql_secure_installation</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>Securing the MySQL server deployment.
+
+Connecting to MySQL using a blank password.
+
+VALIDATE PASSWORD COMPONENT can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD component?
+
+Press y|Y for Yes, any other key for No: n
+Please set the password for root here.
+
+New password:
+
+Re-enter new password:
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+
+Normally, root should only be allowed to connect from
+&#39;localhost&#39;. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+By default, MySQL comes with a database named &#39;test&#39; that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+All done!
 </code></pre></td></tr></table></div></div><h2 id=出现的问题>出现的问题</h2><ol><li><p>输入<code>sudo service mysql restart</code>出现<code>su: warning: cannot change directory to /nonexistent: No such file or directory</code>的解决方案</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo service mysql stop
 sudo usermod -d /var/lib/mysql/ mysql
 sudo service mysql start
-</code></pre></td></tr></table></div></div></li><li><p>使用 mysql -u username -p 出现 <code>Access denied for user 'username'@'localhost'</code></p><p>进入 mysql 数据库 <code>mysql> use mysql;</code>
-创建新用户，使用密码验证：<code>mysql> CREATE USER 'guest'@'localhost' IDENTIFIED BY 'guest123';</code>
-给予新用户权限：<code>mysql> GRANT ALL PRIVILEGES ON * . * TO 'guest'@'localhost';</code>
-退出 mysql <code>mysql> exit</code>
-使用新建的用户登录 <code>$ mysql -u guest -p</code></p></li></ol></div><footer class=post-footer><div class=post-tags><a href=/tags/writing/>writing</a></div><nav class=post-nav><a class=next href=/post/2020-05-25-pandas-kaggle/><span class="next-text nav-default">Pandas Kaggle</span>
+</code></pre></td></tr></table></div></div></li><li><p>使用 mysql -u username -p 出现 <code>Access denied for user 'username'@'localhost'</code></p><p>进入 mysql 数据库 <code>mysql> use mysql;</code><br>创建新用户，使用密码验证：<code>mysql> CREATE USER 'guest'@'localhost' IDENTIFIED BY 'guest123';</code><br>给予新用户权限：<code>mysql> GRANT ALL PRIVILEGES ON * . * TO 'guest'@'localhost';</code><br>退出 mysql <code>mysql> exit</code><br>使用新建的用户登录 <code>$ mysql -u guest -p</code></p></li></ol></div><footer class=post-footer><div class=post-tags><a href=/tags/writing/>writing</a></div><nav class=post-nav><a class=next href=/post/2020-05-25-pandas-kaggle/><span class="next-text nav-default">Pandas Kaggle</span>
 <span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=saltfishpr@gmail.com class="iconfont icon-email" title=email></a><a href=https://saltfishpr.github.io/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
 <span class=division>|</span>

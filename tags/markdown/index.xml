@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>markdown on 咸鱼硕的博客</title><link>https://saltfishpr.github.io/tags/markdown/</link><description>Recent content in markdown on 咸鱼硕的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 05 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saltfishpr.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml"/><item><title>Markdown Cheat Sheet</title><link>https://saltfishpr.github.io/p/markdown-cheat-sheet/</link><pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/markdown-cheat-sheet/</guid><description>Markdown 常用写法大全 分割线：
+--- 标题：
+# 一级标题 ## 二级标题 ### 三级标题 ###### 六级标题 一级标题 二级标题 三级标题 六级标题 斜体文字
+_斜体_ 斜体
+加粗文字
+**加粗** 加粗
+段落和换行：
+新一段落需要空一行 新的一段 或者在最后加上两个空格 换行 新一段落需要空一行
+新的一段
+或者在最后加上两个空格
+换行
+列表：
+- 列表 - 列表 - 列表 1. 列表 2. 列表 3. 列表 列表 列表 列表 列表 列表 列表 在列表中分段或者换行要在后面的段和行中加上 4 个空格
+- 项目一，段落一 项目一，段落二 - 项目二，第一行 项目二，第二行 项目一，段落一</description></item></channel></rss>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>golang on 咸鱼硕的博客</title><link>https://saltfishpr.github.io/categories/golang/</link><description>Recent content in golang on 咸鱼硕的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 22 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saltfishpr.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Ultimate Go</title><link>https://saltfishpr.github.io/p/ultimate-go/</link><pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/ultimate-go/</guid><description>Ultimate Go Go 语言基础学习
+变量 结构体的声明与使用 使用 type &amp;lt;struct_name&amp;gt; struct {} 声明结构体
+input:
+type student struct { name string grade int } func main() { var s student = student{name: &amp;#34;SaltFish&amp;#34;, grade: 4} fmt.Printf(&amp;#34;%v\n&amp;#34;, s) } output:
+{SaltFish 4} %T 值类型的 Go 语法表示 main.student %v 值 {SaltFish 4} %+v 值，添加字段名 {name:SaltFish grade:4} %#v 值，Go 语法表示 main.student{name:&amp;quot;SaltFish&amp;quot;, grade:4} go 语言核心编程笔记 &amp;amp;^ 运算符
+a &amp;amp;^ b
+如果右侧是 0，则左侧数保持不变 如果右侧是 1，则左侧数一定清零 const ( a = 1 // iota = 0, unused b = iota // iota = 1 c = 3 // iota = 2, unused d // iota = 3 ) const ( e = iota // iota = 0, 每一个const，iota从0开始 ) func main() { fmt.</description></item></channel></rss>

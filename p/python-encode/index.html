@@ -54,10 +54,10 @@ python编码问题
 <p>str(Unicode) 通过 <code>encode</code> 编码后形成 byte(二进制数据)。
 二进制数据通过<code>decode</code>转换成 Unicode 字符。</p>
 <p>示例 1：</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>s1</span> <span class=o>=</span> <span class=s2>&#34;中文&#34;</span>
-<span class=n>s2</span> <span class=o>=</span> <span class=n>s1</span><span class=o>.</span><span class=n>encode</span><span class=p>(</span><span class=s2>&#34;utf-8&#34;</span><span class=p>)</span>
-<span class=nb>print</span><span class=p>(</span><span class=nb>type</span><span class=p>(</span><span class=n>s1</span><span class=p>),</span> <span class=n>s1</span><span class=p>)</span>
-<span class=nb>print</span><span class=p>(</span><span class=nb>type</span><span class=p>(</span><span class=n>s2</span><span class=p>),</span> <span class=n>s2</span><span class=p>)</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>s1 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;中文&#34;</span>
+s2 <span style=color:#f92672>=</span> s1<span style=color:#f92672>.</span>encode(<span style=color:#e6db74>&#34;utf-8&#34;</span>)
+print(type(s1), s1)
+print(type(s2), s2)
 </code></pre></div><p>output 1:</p>
 <pre tabindex=0><code>&lt;class 'str'&gt; 中文
 &lt;class 'bytes'&gt; b'\xe4\xb8\xad\xe6\x96\x87'
@@ -69,44 +69,44 @@ python编码问题
 <ol>
 <li>
 <p>在写文件时注明编码类型</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=n>file_path</span><span class=p>,</span> <span class=s1>&#39;w&#39;</span><span class=p>,</span><span class=n>encode</span><span class=o>=</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>f</span><span class=p>:</span>
-    <span class=n>f</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>data</span><span class=p>)</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>with</span> open(file_path, <span style=color:#e6db74>&#39;w&#39;</span>,encode<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;utf-8&#39;</span>) <span style=color:#66d9ef>as</span> f:
+    f<span style=color:#f92672>.</span>write(data)
 </code></pre></div></li>
 <li>
 <p>在使用 <code>requests</code> 库获取响应信息时，指明编码类型</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>def</span> <span class=nf>send_req</span><span class=p>(</span><span class=n>url</span><span class=p>):</span>
-    <span class=n>headers</span> <span class=o>=</span> <span class=p>{}</span>
-    <span class=n>req</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url</span><span class=p>,</span> <span class=n>headers</span><span class=p>)</span>
-    <span class=n>req</span><span class=o>.</span><span class=n>encoding</span> <span class=o>=</span> <span class=s2>&#34;utf-8&#34;</span>
-    <span class=k>if</span> <span class=n>req</span><span class=o>.</span><span class=n>ok</span><span class=p>:</span>
-        <span class=nb>print</span><span class=p>(</span><span class=n>req</span><span class=o>.</span><span class=n>text</span><span class=p>)</span>
-        <span class=k>return</span> <span class=n>req</span><span class=o>.</span><span class=n>text</span>
-    <span class=k>else</span><span class=p>:</span>
-        <span class=k>return</span> <span class=ne>Exception</span><span class=p>(</span><span class=s2>&#34;访问失败&#34;</span><span class=p>)</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>send_req</span>(url):
+    headers <span style=color:#f92672>=</span> {}
+    req <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(url, headers)
+    req<span style=color:#f92672>.</span>encoding <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;utf-8&#34;</span>
+    <span style=color:#66d9ef>if</span> req<span style=color:#f92672>.</span>ok:
+        print(req<span style=color:#f92672>.</span>text)
+        <span style=color:#66d9ef>return</span> req<span style=color:#f92672>.</span>text
+    <span style=color:#66d9ef>else</span>:
+        <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>Exception</span>(<span style=color:#e6db74>&#34;访问失败&#34;</span>)
 </code></pre></div></li>
 <li>
 <p>base64 编码</p>
 <p>Base64 是网络上最常见的用于传输 8Bit 字节码的编码方式之一，可用于在 HTTP 环境下传递较长的标识信息。采用 Base64 编码具有不可读性，需要解码后才能阅读。</p>
 <p>将文件转换成 base64 编码形式进行传输。</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>base64</span>
-<span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=n>file_path</span><span class=p>,</span> <span class=s1>&#39;rb&#39;</span><span class=p>)</span> <span class=k>as</span> <span class=n>f</span><span class=p>:</span>
-   <span class=n>res</span> <span class=o>=</span> <span class=n>base64</span><span class=o>.</span><span class=n>b64encode</span><span class=p>(</span><span class=n>f</span><span class=o>.</span><span class=n>read</span><span class=p>())</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> base64
+<span style=color:#66d9ef>with</span> open(file_path, <span style=color:#e6db74>&#39;rb&#39;</span>) <span style=color:#66d9ef>as</span> f:
+   res <span style=color:#f92672>=</span> base64<span style=color:#f92672>.</span>b64encode(f<span style=color:#f92672>.</span>read())
 </code></pre></div></li>
 <li>
 <p>python3 中 str 和 bytes 互换函数</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>def</span> <span class=nf>to_str</span><span class=p>(</span><span class=n>bytes_or_str</span><span class=p>):</span>
-    <span class=k>if</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>bytes_or_str</span><span class=p>,</span> <span class=nb>bytes</span><span class=p>):</span>
-            <span class=n>value</span> <span class=o>=</span> <span class=n>bytes_or_str</span><span class=o>.</span><span class=n>decode</span><span class=p>(</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span>
-        <span class=k>else</span><span class=p>:</span>
-            <span class=n>value</span> <span class=o>=</span> <span class=n>bytes_or_str</span>
-        <span class=k>return</span> <span class=n>value</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>to_str</span>(bytes_or_str):
+    <span style=color:#66d9ef>if</span> isinstance(bytes_or_str, bytes):
+            value <span style=color:#f92672>=</span> bytes_or_str<span style=color:#f92672>.</span>decode(<span style=color:#e6db74>&#39;utf-8&#39;</span>)
+        <span style=color:#66d9ef>else</span>:
+            value <span style=color:#f92672>=</span> bytes_or_str
+        <span style=color:#66d9ef>return</span> value
 
-<span class=k>def</span> <span class=nf>to_bytes</span><span class=p>(</span><span class=n>bytes_or_str</span><span class=p>):</span>
-    <span class=k>if</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>bytes_or_str</span><span class=p>,</span> <span class=nb>str</span><span class=p>):</span>
-            <span class=n>value</span> <span class=o>=</span> <span class=n>bytes_or_str</span><span class=o>.</span><span class=n>encode</span><span class=p>(</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span>
-        <span class=k>else</span><span class=p>:</span>
-            <span class=n>value</span> <span class=o>=</span> <span class=n>bytes_or_str</span>
-        <span class=k>return</span> <span class=n>value</span>
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>to_bytes</span>(bytes_or_str):
+    <span style=color:#66d9ef>if</span> isinstance(bytes_or_str, str):
+            value <span style=color:#f92672>=</span> bytes_or_str<span style=color:#f92672>.</span>encode(<span style=color:#e6db74>&#39;utf-8&#39;</span>)
+        <span style=color:#66d9ef>else</span>:
+            value <span style=color:#f92672>=</span> bytes_or_str
+        <span style=color:#66d9ef>return</span> value
 </code></pre></div></li>
 </ol>
 <p>参考资料：</p>

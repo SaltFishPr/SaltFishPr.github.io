@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>咸鱼硕的博客</title><link>https://saltfishpr.github.io/</link><description>Recent content on 咸鱼硕的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://saltfishpr.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Kaggle Pandas</title><link>https://saltfishpr.github.io/p/kaggle-pandas/</link><pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/kaggle-pandas/</guid><description>&lt;h1 id="kaggle-pandas-入门">Kaggle Pandas 入门&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>咸鱼硕的博客</title><link>https://saltfishpr.github.io/</link><description>Recent content on 咸鱼硕的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 25 May 2020 00:00:00 +0800</lastBuildDate><atom:link href="https://saltfishpr.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Kaggle Pandas</title><link>https://saltfishpr.github.io/p/kaggle-pandas/</link><pubDate>Mon, 25 May 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/kaggle-pandas/</guid><description>&lt;h1 id="kaggle-pandas-入门">Kaggle Pandas 入门&lt;/h1>
 &lt;p>读取数据集&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">&lt;span style="color:#f92672">import&lt;/span> pandas &lt;span style="color:#66d9ef">as&lt;/span> pd
 reviews &lt;span style="color:#f92672">=&lt;/span> pd&lt;span style="color:#f92672">.&lt;/span>read_csv(&lt;span style="color:#e6db74">&amp;#34;~/Programming/datasets/winemag-data-130k-v2.csv&amp;#34;&lt;/span>)
@@ -376,7 +376,7 @@ title trending_date ...
 &lt;p>显示所有列&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">pd&lt;span style="color:#f92672">.&lt;/span>set_option(&lt;span style="color:#e6db74">&amp;#34;display.max_columns&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">None&lt;/span>)
 &lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
-&lt;!-- raw HTML omitted --></description></item><item><title>Python 环境管理</title><link>https://saltfishpr.github.io/p/python-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/</link><pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/python-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/</guid><description>&lt;h1 id="conda-常用">conda 常用&lt;/h1>
+&lt;!-- raw HTML omitted --></description></item><item><title>Python 环境管理</title><link>https://saltfishpr.github.io/p/python-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/</link><pubDate>Thu, 26 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/python-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86/</guid><description>&lt;h1 id="conda-常用">conda 常用&lt;/h1>
 &lt;h3 id="换源">换源&lt;/h3>
 &lt;p>创建 .condarc 配置文件&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">conda config --set show_channel_urls yes
@@ -428,7 +428,7 @@ trusted-host=mirrors.aliyun.com
 &lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="导出环境-1">导出环境&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">pip freeze &amp;gt; requirements.txt
 &lt;/code>&lt;/pre>&lt;/div>&lt;hr>
-&lt;p>总之，用 conda 创造独立的环境，用 pip 安装&lt;del>新鲜&lt;/del>的模块，两个工具结合起来用甚好&lt;/p></description></item><item><title>Effective Python</title><link>https://saltfishpr.github.io/p/effective-python/</link><pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/effective-python/</guid><description>&lt;h1 id="effectivepython读书笔记">《Effective+Python》读书笔记&lt;/h1>
+&lt;p>总之，用 conda 创造独立的环境，用 pip 安装&lt;del>新鲜&lt;/del>的模块，两个工具结合起来用甚好&lt;/p></description></item><item><title>Effective Python</title><link>https://saltfishpr.github.io/p/effective-python/</link><pubDate>Mon, 16 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/effective-python/</guid><description>&lt;h1 id="effectivepython读书笔记">《Effective+Python》读书笔记&lt;/h1>
 &lt;p>个人学习笔记&lt;/p>
 &lt;p>如果有侵权情况，请给我发邮件通知我删除 &lt;a class="link" href="mailto:526191197@qq.com" >526191197@qq.com&lt;/a>&lt;/p>
 &lt;h3 id="用-zip-函数同时遍历多个迭代器">用 zip 函数同时遍历多个迭代器&lt;/h3>
@@ -510,7 +510,7 @@ values&lt;span style="color:#f92672">.&lt;/span>sort(key&lt;span style="color:#f
 &lt;p>如果上面这几个地方都没有定义过名称相符的变量，就抛出 NameError 异常&lt;/p>
 &lt;p>给变量赋值时，如果当前作用域已经定义了这个变量，那么变量就会具备新值，若是当前作用域没有这个变量，python 则会把这次赋值视为对该变量的定义。&lt;/p>
 &lt;p>nonlocal 语句表示 如果在闭包内给该变量赋值，则修改的其实是闭包外那个作用域中的变量&lt;/p>
-&lt;p>global 表示对该变量赋值操作，将会直接修改模块作用域里的那个变量&lt;/p></description></item><item><title>GitHub Pages with Jekyll</title><link>https://saltfishpr.github.io/p/github-pages-with-jekyll/</link><pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/github-pages-with-jekyll/</guid><description>&lt;img src="https://saltfishpr.github.io/p/github-pages-with-jekyll/cover.jpg" alt="Featured image of post GitHub Pages with Jekyll" />&lt;h1 id="github-pages-个人博客搭建">Github Pages 个人博客搭建&lt;/h1>
+&lt;p>global 表示对该变量赋值操作，将会直接修改模块作用域里的那个变量&lt;/p></description></item><item><title>Build a GitHub Pages</title><link>https://saltfishpr.github.io/p/build-a-github-pages/</link><pubDate>Tue, 10 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/build-a-github-pages/</guid><description>&lt;img src="https://saltfishpr.github.io/p/build-a-github-pages/cover.jpg" alt="Featured image of post Build a GitHub Pages" />&lt;h1 id="github-pages-个人博客搭建">Github Pages 个人博客搭建&lt;/h1>
 &lt;p>  应朋友的强烈要求在这里记录下使用 &lt;code>github pages&lt;/code> + &lt;code>jekyll&lt;/code> 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用了（毕竟不是前端人）。&lt;/p>
 &lt;h2 id="准备">准备&lt;/h2>
 &lt;ul>
@@ -622,7 +622,7 @@ target="_blank" rel="noopener"
 >jekyll 目录结构&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://help.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser" target="_blank" rel="noopener"
 >github pages 文档&lt;/a>&lt;/li>
-&lt;/ol></description></item><item><title>Data Mining</title><link>https://saltfishpr.github.io/p/data-mining/</link><pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/data-mining/</guid><description>&lt;img src="https://saltfishpr.github.io/p/data-mining/cover.jpg" alt="Featured image of post Data Mining" />&lt;h1 id="数据挖掘学习笔记">数据挖掘学习笔记&lt;/h1>
+&lt;/ol></description></item><item><title>Data Mining</title><link>https://saltfishpr.github.io/p/data-mining/</link><pubDate>Mon, 09 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/data-mining/</guid><description>&lt;img src="https://saltfishpr.github.io/p/data-mining/cover.jpg" alt="Featured image of post Data Mining" />&lt;h1 id="数据挖掘学习笔记">数据挖掘学习笔记&lt;/h1>
 &lt;p>书上的源码在&lt;a class="link" href="http://www.packtpub.com/support" target="_blank" rel="noopener"
 >官网&lt;/a>上可以注册账号下载，这里只为记录自己的学习过程。&lt;/p>
 &lt;p>如果有侵权情况，请给我发邮件通知我删除 &lt;a class="link" href="mailto:526191197@qq.com" >526191197@qq.com&lt;/a>&lt;/p>
@@ -4174,7 +4174,7 @@ pydev debugger: process 7561 is connecting
 >scikit-learn&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://tensorflow.google.cn/" target="_blank" rel="noopener"
 >tensorflow&lt;/a>&lt;/li>
-&lt;/ol></description></item><item><title>Python Encode</title><link>https://saltfishpr.github.io/p/python-encode/</link><pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/python-encode/</guid><description>&lt;h1 id="编码">编码&lt;/h1>
+&lt;/ol></description></item><item><title>Python Encode</title><link>https://saltfishpr.github.io/p/python-encode/</link><pubDate>Fri, 06 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/python-encode/</guid><description>&lt;h1 id="编码">编码&lt;/h1>
 &lt;p>  编码是数据从一种格式变为另一种格式的过程。通过编码，我们可以把数据以不同的格式保存和转移。&lt;/p>
 &lt;h2 id="python3-字符串类型">Python3 字符串类型&lt;/h2>
 &lt;p>str(Unicode) 通过 &lt;code>encode&lt;/code> 编码后形成 byte(二进制数据)。
@@ -4241,7 +4241,7 @@ value &lt;span style="color:#f92672">=&lt;/span> bytes_or_str
 target="_blank" rel="noopener"
 >base64 编码&lt;/a>&lt;/li>
 &lt;li>Effective+Python&lt;/li>
-&lt;/ol></description></item><item><title>Markdown Cheat Sheet</title><link>https://saltfishpr.github.io/p/markdown-cheat-sheet/</link><pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-常用写法大全">Markdown 常用写法大全&lt;/h1>
+&lt;/ol></description></item><item><title>Markdown Cheat Sheet</title><link>https://saltfishpr.github.io/p/markdown-cheat-sheet/</link><pubDate>Thu, 05 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-常用写法大全">Markdown 常用写法大全&lt;/h1>
 &lt;p>分割线：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-markdown" data-lang="markdown">---
 &lt;/code>&lt;/pre>&lt;/div>&lt;hr>
@@ -4548,7 +4548,7 @@ alt="地铁">
 &lt;p>脚注 2 内容。&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;/section></description></item><item><title>制作雷蛇鼠标宏</title><link>https://saltfishpr.github.io/p/%E5%88%B6%E4%BD%9C%E9%9B%B7%E8%9B%87%E9%BC%A0%E6%A0%87%E5%AE%8F/</link><pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/%E5%88%B6%E4%BD%9C%E9%9B%B7%E8%9B%87%E9%BC%A0%E6%A0%87%E5%AE%8F/</guid><description>&lt;p>推送好友的 b 站视频，顺便测试嵌入式网页（狗头)&lt;/p>
+&lt;/section></description></item><item><title>制作雷蛇鼠标宏</title><link>https://saltfishpr.github.io/p/%E5%88%B6%E4%BD%9C%E9%9B%B7%E8%9B%87%E9%BC%A0%E6%A0%87%E5%AE%8F/</link><pubDate>Wed, 04 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/%E5%88%B6%E4%BD%9C%E9%9B%B7%E8%9B%87%E9%BC%A0%E6%A0%87%E5%AE%8F/</guid><description>&lt;p>推送好友的 b 站视频，顺便测试嵌入式网页（狗头)&lt;/p>
 &lt;div class="video-wrapper">
 &lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;aid=93178052"
 scrolling="no"
@@ -4557,4 +4557,4 @@ framespacing="0"
 allowfullscreen="true"
 >
 &lt;/iframe>
-&lt;/div></description></item><item><title>First Blog</title><link>https://saltfishpr.github.io/p/first-blog/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate><guid>https://saltfishpr.github.io/p/first-blog/</guid><description>&lt;p>This is the beginning of my blog.&lt;/p></description></item></channel></rss>
+&lt;/div></description></item><item><title>First Blog</title><link>https://saltfishpr.github.io/p/first-blog/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/first-blog/</guid><description>&lt;p>This is the beginning of my blog.&lt;/p></description></item></channel></rss>

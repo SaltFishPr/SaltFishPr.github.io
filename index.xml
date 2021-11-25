@@ -12,7 +12,6 @@ git config --global user.email saltfishpr@gmail.com
 git config --global credential.helper cache
 &lt;span style="color:#75715e"># 自己设置时间&lt;/span>
 git config --global credential.helper cache --timeout&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3600&lt;/span>
-这样就设置一个小时之后失效
 &lt;span style="color:#75715e"># 长期存储密码&lt;/span>
 git config --global credential.helper store
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>增加远程地址的时候带上密码&lt;/p>

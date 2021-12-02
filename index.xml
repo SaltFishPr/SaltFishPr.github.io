@@ -1,4 +1,230 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>咸鱼硕的博客</title><link>https://saltfishpr.github.io/</link><description>Recent content on 咸鱼硕的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 25 Nov 2021 00:49:31 +0800</lastBuildDate><atom:link href="https://saltfishpr.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Git Cheat Sheet</title><link>https://saltfishpr.github.io/p/git-cheat-sheet/</link><pubDate>Thu, 25 Nov 2021 00:49:31 +0800</pubDate><guid>https://saltfishpr.github.io/p/git-cheat-sheet/</guid><description>&lt;h1 id="git">Git&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>咸鱼硕的博客</title><link>https://saltfishpr.github.io/</link><description>Recent content on 咸鱼硕的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 03 Dec 2021 01:56:06 +0800</lastBuildDate><atom:link href="https://saltfishpr.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Go Clean Code</title><link>https://saltfishpr.github.io/p/go-clean-code/</link><pubDate>Fri, 03 Dec 2021 01:56:06 +0800</pubDate><guid>https://saltfishpr.github.io/p/go-clean-code/</guid><description>&lt;h1 id="clean-code">Clean Code&lt;/h1>
+&lt;p>Code is clean if it can be understood easily – by everyone on the team. Clean code can be read and enhanced by a developer other than its original author. With understandability comes readability, changeability, extensibility and maintainability.&lt;/p>
+&lt;hr>
+&lt;h2 id="general-rules">General rules&lt;/h2>
+&lt;ol>
+&lt;li>Follow standard conventions.&lt;/li>
+&lt;li>Keep it simple stupid. Simpler is always better. Reduce complexity as much as possible.&lt;/li>
+&lt;li>Boy scout rule. Leave the campground cleaner than you found it.&lt;/li>
+&lt;li>Always find root cause. Always look for the root cause of a problem.&lt;/li>
+&lt;/ol>
+&lt;h2 id="design-rules">Design rules&lt;/h2>
+&lt;ol>
+&lt;li>Keep configurable data at high levels.&lt;/li>
+&lt;li>Prefer polymorphism to if/else or switch/case.&lt;/li>
+&lt;li>Separate multi-threading code.&lt;/li>
+&lt;li>Prevent over-configurability.&lt;/li>
+&lt;li>Use dependency injection.&lt;/li>
+&lt;li>Follow Law of Demeter. A class should know only its direct dependencies.&lt;/li>
+&lt;/ol>
+&lt;h2 id="understandability-tips">Understandability tips&lt;/h2>
+&lt;ol>
+&lt;li>Be consistent. If you do something a certain way, do all similar things in the same way.&lt;/li>
+&lt;li>Use explanatory variables.&lt;/li>
+&lt;li>Encapsulate boundary conditions. Boundary conditions are hard to keep track of. Put the processing for them in one place.&lt;/li>
+&lt;li>Prefer dedicated value objects to primitive type.&lt;/li>
+&lt;li>Avoid logical dependency. Don&amp;rsquo;t write methods which works correctly depending on something else in the same class.&lt;/li>
+&lt;li>Avoid negative conditionals.&lt;/li>
+&lt;/ol>
+&lt;h2 id="names-rules">Names rules&lt;/h2>
+&lt;ol>
+&lt;li>Choose descriptive and unambiguous names.&lt;/li>
+&lt;li>Make meaningful distinction.&lt;/li>
+&lt;li>Use pronounceable names.&lt;/li>
+&lt;li>Use searchable names.&lt;/li>
+&lt;li>Replace magic numbers with named constants.&lt;/li>
+&lt;li>Avoid encodings. Don&amp;rsquo;t append prefixes or type information.&lt;/li>
+&lt;/ol>
+&lt;h2 id="functions-rules">Functions rules&lt;/h2>
+&lt;ol>
+&lt;li>Small.&lt;/li>
+&lt;li>Do one thing.&lt;/li>
+&lt;li>Use descriptive names.&lt;/li>
+&lt;li>Prefer fewer arguments.&lt;/li>
+&lt;li>Have no side effects.&lt;/li>
+&lt;li>Don&amp;rsquo;t use flag arguments. Split method into several independent methods that can be called from the client without the flag.&lt;/li>
+&lt;/ol>
+&lt;h2 id="comments-rules">Comments rules&lt;/h2>
+&lt;ol>
+&lt;li>Always try to explain yourself in code.&lt;/li>
+&lt;li>Don&amp;rsquo;t be redundant.&lt;/li>
+&lt;li>Don&amp;rsquo;t add obvious noise.&lt;/li>
+&lt;li>Don&amp;rsquo;t use closing brace comments.&lt;/li>
+&lt;li>Don&amp;rsquo;t comment out code. Just remove.&lt;/li>
+&lt;li>Use as explanation of intent.&lt;/li>
+&lt;li>Use as clarification of code.&lt;/li>
+&lt;li>Use as warning of consequences.&lt;/li>
+&lt;/ol>
+&lt;h2 id="source-code-structure">Source code structure&lt;/h2>
+&lt;ol>
+&lt;li>Separate concepts vertically.&lt;/li>
+&lt;li>Related code should appear vertically dense.&lt;/li>
+&lt;li>Declare variables close to their usage.&lt;/li>
+&lt;li>Dependent functions should be close.&lt;/li>
+&lt;li>Similar functions should be close.&lt;/li>
+&lt;li>Place functions in the downward direction.&lt;/li>
+&lt;li>Keep lines short.&lt;/li>
+&lt;li>Don&amp;rsquo;t use horizontal alignment.&lt;/li>
+&lt;li>Use white space to associate related things and disassociate weakly related.&lt;/li>
+&lt;li>Don&amp;rsquo;t break indentation.&lt;/li>
+&lt;/ol>
+&lt;h2 id="objects-and-data-structures">Objects and data structures&lt;/h2>
+&lt;ol>
+&lt;li>Hide internal structure.&lt;/li>
+&lt;li>Prefer data structures.&lt;/li>
+&lt;li>Avoid hybrids structures (half object and half data).&lt;/li>
+&lt;li>Should be small.&lt;/li>
+&lt;li>Do one thing.&lt;/li>
+&lt;li>Small number of instance variables.&lt;/li>
+&lt;li>Base class should know nothing about their derivatives.&lt;/li>
+&lt;li>Better to have many functions than to pass some code into a function to select a behavior.&lt;/li>
+&lt;li>Prefer non-static methods to static methods.&lt;/li>
+&lt;/ol>
+&lt;h2 id="tests">Tests&lt;/h2>
+&lt;ol>
+&lt;li>One assert per test.&lt;/li>
+&lt;li>Readable.&lt;/li>
+&lt;li>Fast.&lt;/li>
+&lt;li>Independent.&lt;/li>
+&lt;li>Repeatable.&lt;/li>
+&lt;/ol>
+&lt;h2 id="code-smells">Code smells&lt;/h2>
+&lt;ol>
+&lt;li>Rigidity. The software is difficult to change. A small change causes a cascade of subsequent changes.&lt;/li>
+&lt;li>Fragility. The software breaks in many places due to a single change.&lt;/li>
+&lt;li>Immobility. You cannot reuse parts of the code in other projects because of involved risks and high effort.&lt;/li>
+&lt;li>Needless Complexity.&lt;/li>
+&lt;li>Needless Repetition.&lt;/li>
+&lt;li>Opacity. The code is hard to understand.&lt;/li>
+&lt;/ol>
+&lt;h1 id="todo-translate">TODO: translate&lt;/h1></description></item><item><title>Go 语言资源整合</title><link>https://saltfishpr.github.io/p/go-%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90%E6%95%B4%E5%90%88/</link><pubDate>Thu, 02 Dec 2021 00:46:39 +0800</pubDate><guid>https://saltfishpr.github.io/p/go-%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90%E6%95%B4%E5%90%88/</guid><description>&lt;h1 id="golang-resource">Golang Resource&lt;/h1>
+&lt;p>&lt;a class="link" href="https://github.com/uber-go/guide" target="_blank" rel="noopener"
+>uber-guide&lt;/a>: uber go guide&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/Pungyeon/clean-go-article" target="_blank" rel="noopener"
+>clean-go-article&lt;/a>: go clean code&lt;/p>
+&lt;h3 id="常用包">常用包&lt;/h3>
+&lt;p>&lt;a class="link" href="https://github.com/spf13/viper" target="_blank" rel="noopener"
+>viper&lt;/a>: 配置读取&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/uber-go/zap" target="_blank" rel="noopener"
+>zap&lt;/a>: 日志输出&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/natefinch/lumberjack" target="_blank" rel="noopener"
+>lumberjack&lt;/a>: 日志滚动记录器&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/go-playground/validator" target="_blank" rel="noopener"
+>validator&lt;/a>: 数据校验&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/spf13/cast" target="_blank" rel="noopener"
+>cast&lt;/a>: 类型转换&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/ahl5esoft/golang-underscore" target="_blank" rel="noopener"
+>golang-underscore&lt;/a>: 工具库，函数式编程助手&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/uniplaces/carbon" target="_blank" rel="noopener"
+>carbon&lt;/a>: 时间库的扩展&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/robfig/cron" target="_blank" rel="noopener"
+>cron&lt;/a>: 定时任务&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/panjf2000/ants" target="_blank" rel="noopener"
+>ants&lt;/a>: goroutine 池&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/google/wire" target="_blank" rel="noopener"
+>wire&lt;/a>: 依赖注入&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/spf13/cobra" target="_blank" rel="noopener"
+>cobra&lt;/a>: 命令行程序&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/go-resty/resty" target="_blank" rel="noopener"
+>resty&lt;/a>: HTTP/REST 客户端&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/stretchr/testify" target="_blank" rel="noopener"
+>testify&lt;/a>: 测试库，断言、mock&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/json-iterator/go" target="_blank" rel="noopener"
+>jsoniter&lt;/a>: 标准库 encoding/json 的升级，可直接替换，高性能&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/tidwall/gjson" target="_blank" rel="noopener"
+>gjson&lt;/a>: 快速从 json 中获取值&lt;/p>
+&lt;hr>
+&lt;p>&lt;a class="link" href="https://github.com/valyala/fasthttp" target="_blank" rel="noopener"
+>fasthttp&lt;/a>: 标准库 net/http 的升级，更快&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/philchia/agollo" target="_blank" rel="noopener"
+>agollo&lt;/a>: 连接 apollo 配置中心&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/tinylib/msgp" target="_blank" rel="noopener"
+>msgp&lt;/a>: MessagePack 序列化，比 json 更快，数据量更小&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/go-redsync/redsync" target="_blank" rel="noopener"
+>redsync&lt;/a>: Redis 分布式锁&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/jmoiron/sqlx" target="_blank" rel="noopener"
+>sqlx&lt;/a>: 标准库 database/sql 的扩展&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/segmentio/kafka-go" target="_blank" rel="noopener"
+>kafka-go&lt;/a>: kafka 库&lt;/p>
+&lt;h3 id="框架">框架&lt;/h3>
+&lt;p>&lt;a class="link" href="https://github.com/smallnest/rpcx" target="_blank" rel="noopener"
+>rpcx&lt;/a>: rpc 框架&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener"
+>gin&lt;/a>: web 框架&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/gofiber/fiber" target="_blank" rel="noopener"
+>fiber&lt;/a>: web 框架&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/kataras/iris" target="_blank" rel="noopener"
+>iris&lt;/a>: HTTP/2 web 框架&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/gocolly/colly" target="_blank" rel="noopener"
+>cooly&lt;/a>: 爬虫框架&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/ThreeDotsLabs/watermill" target="_blank" rel="noopener"
+>watermill&lt;/a>: 事件驱动框架&lt;/p>
+&lt;h3 id="其它">其它&lt;/h3>
+&lt;p>&lt;a class="link" href="https://github.com/fyne-io/fyne" target="_blank" rel="noopener"
+>fync&lt;/a>: GUI&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/charmbracelet/bubbletea" target="_blank" rel="noopener"
+>bubbletea&lt;/a>: 终端应用 TUI&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/gonum/plot" target="_blank" rel="noopener"
+>plot&lt;/a>: 绘图&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/Thiht/smocker" target="_blank" rel="noopener"
+>smocker&lt;/a>: HTTP mock server&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/fogleman/primitive" target="_blank" rel="noopener"
+>primitive&lt;/a>: 使用几何形状将图片变为抽象画&lt;/p></description></item><item><title>Linux shortcuts</title><link>https://saltfishpr.github.io/p/linux-shortcuts/</link><pubDate>Wed, 01 Dec 2021 01:52:22 +0800</pubDate><guid>https://saltfishpr.github.io/p/linux-shortcuts/</guid><description>&lt;h1 id="linux-常用快捷键">Linux 常用快捷键&lt;/h1>
+&lt;p>Linux 命令解释器（Shell）是有很多快捷键的，熟练掌握可以极大的提高操作效率。 下面列出最常用的快捷键，这还不是完全版。&lt;/p>
+&lt;ul>
+&lt;li>命令行快捷键：
+&lt;ul>
+&lt;li>常用：
+&lt;ul>
+&lt;li>&lt;strong>Ctrl L&lt;/strong> ：清屏&lt;/li>
+&lt;li>&lt;strong>Ctrl M&lt;/strong> ：等效于回车&lt;/li>
+&lt;li>&lt;strong>Ctrl C&lt;/strong> : 中断正在当前正在执行的程序&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>历史命令：
+&lt;ul>
+&lt;li>&lt;strong>Ctrl P&lt;/strong> : 上一条命令，可以一直按表示一直往前翻&lt;/li>
+&lt;li>&lt;strong>Ctrl N&lt;/strong> : 下一条命令&lt;/li>
+&lt;li>&lt;strong>Ctrl R&lt;/strong>，再按历史命令中出现过的字符串：按字符串寻找历史命令（重度推荐）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>命令行编辑：
+&lt;ul>
+&lt;li>&lt;strong>Tab&lt;/strong> : 自动补齐（重度推荐）&lt;/li>
+&lt;li>&lt;strong>Ctrl A&lt;/strong> ： 移动光标到命令行首&lt;/li>
+&lt;li>&lt;strong>Ctrl E&lt;/strong> : 移动光标到命令行尾&lt;/li>
+&lt;li>&lt;strong>Ctrl B&lt;/strong> : 光标后退&lt;/li>
+&lt;li>&lt;strong>Ctrl F&lt;/strong> : 光标前进&lt;/li>
+&lt;li>&lt;strong>Alt F&lt;/strong> : 光标前进一个单词&lt;/li>
+&lt;li>&lt;strong>Alt B&lt;/strong> : 光标后退一格单词&lt;/li>
+&lt;li>&lt;strong>Ctrl ]&lt;/strong> : 从当前光标往后搜索字符串，用于快速移动到该字符串&lt;/li>
+&lt;li>&lt;strong>Ctrl Alt ]&lt;/strong> : 从当前光标往前搜索字符串，用于快速移动到该字符串&lt;/li>
+&lt;li>&lt;strong>Ctrl H&lt;/strong> : 删除光标的前一个字符&lt;/li>
+&lt;li>&lt;strong>Ctrl D&lt;/strong> : 删除当前光标所在字符&lt;/li>
+&lt;li>&lt;strong>Ctrl K&lt;/strong> ：删除光标之后所有字符&lt;/li>
+&lt;li>&lt;strong>Ctrl U&lt;/strong> : 清空当前键入的命令&lt;/li>
+&lt;li>&lt;strong>Ctrl W&lt;/strong> : 删除光标前的单词(Word, 不包含空格的字符串)&lt;/li>
+&lt;li>&lt;strong>Ctrl \&lt;/strong> : 删除光标前的所有空白字符&lt;/li>
+&lt;li>&lt;strong>Ctrl Y&lt;/strong> : 粘贴&lt;strong>Ctrl W&lt;/strong>或&lt;strong>Ctrl K&lt;/strong>删除的内容&lt;/li>
+&lt;li>&lt;strong>Alt .&lt;/strong> : 粘贴上一条命令的最后一个参数（很有用）&lt;/li>
+&lt;li>&lt;strong>Alt [0-9] Alt .&lt;/strong> 粘贴上一条命令的第[0-9]个参数&lt;/li>
+&lt;li>&lt;strong>Alt [0-9] Alt . Alt.&lt;/strong> 粘贴上上一条命令的第[0-9]个参数&lt;/li>
+&lt;li>&lt;strong>Ctrl X Ctrl E&lt;/strong> : 调出系统默认编辑器编辑当前输入的命令，退出编辑器时，命令执行&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>其他：
+&lt;ul>
+&lt;li>&lt;strong>Ctrl Z&lt;/strong> : 把当前进程放到后台（之后可用'&amp;lsquo;fg'&amp;lsquo;命令回到前台）&lt;/li>
+&lt;li>&lt;strong>Shift Insert&lt;/strong> : 粘贴（相当于 Windows 的&lt;strong>Ctrl V&lt;/strong>）&lt;/li>
+&lt;li>在命令行窗口选中即复制&lt;/li>
+&lt;li>在命令行窗口中键即粘贴，可用&lt;strong>Shift Insert&lt;/strong>代替&lt;/li>
+&lt;li>&lt;strong>Ctrl PageUp&lt;/strong> : 屏幕输出向上翻页&lt;/li>
+&lt;li>&lt;strong>Ctrl PageDown&lt;/strong> : 屏幕输出向下翻页&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Git Cheat Sheet</title><link>https://saltfishpr.github.io/p/git-cheat-sheet/</link><pubDate>Thu, 25 Nov 2021 00:49:31 +0800</pubDate><guid>https://saltfishpr.github.io/p/git-cheat-sheet/</guid><description>&lt;h1 id="git">Git&lt;/h1>
 &lt;h2 id="初次运行-git-前的配置">初次运行 Git 前的配置&lt;/h2>
 &lt;p>设置用户名和邮箱&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git config --global user.name &lt;span style="color:#e6db74">&amp;#34;Salt Fish&amp;#34;&lt;/span>
@@ -37,7 +263,7 @@ nslookup github.com
 github.com 140.82.112.3
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>刷新 DNS 缓存&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">sudo nscd -i hosts
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Kaggle Pandas</title><link>https://saltfishpr.github.io/p/kaggle-pandas/</link><pubDate>Mon, 25 May 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/kaggle-pandas/</guid><description>&lt;h1 id="kaggle-pandas-入门">Kaggle Pandas 入门&lt;/h1>
+&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Pandas 入门</title><link>https://saltfishpr.github.io/p/pandas-%E5%85%A5%E9%97%A8/</link><pubDate>Mon, 25 May 2020 00:00:00 +0800</pubDate><guid>https://saltfishpr.github.io/p/pandas-%E5%85%A5%E9%97%A8/</guid><description>&lt;h1 id="kaggle-pandas-入门">Kaggle Pandas 入门&lt;/h1>
 &lt;p>读取数据集&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">&lt;span style="color:#f92672">import&lt;/span> pandas &lt;span style="color:#66d9ef">as&lt;/span> pd
 reviews &lt;span style="color:#f92672">=&lt;/span> pd&lt;span style="color:#f92672">.&lt;/span>read_csv(&lt;span style="color:#e6db74">&amp;#34;~/Programming/datasets/winemag-data-130k-v2.csv&amp;#34;&lt;/span>)

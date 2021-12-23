@@ -353,7 +353,7 @@ alt="浏览器访问">
 &lt;/a>
 &lt;figcaption>浏览器访问&lt;/figcaption>
 &lt;/figure>&lt;/p>
-&lt;h2 id="性能比较">性能比较：&lt;/h2>
+&lt;h2 id="性能比较">性能比较&lt;/h2>
 &lt;p>&lt;a class="link" href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/go.html" target="_blank" rel="noopener"
 >CPU 密集型工作负载&lt;/a>：正则表达式计算&lt;/p>
 &lt;ul>
@@ -394,7 +394,7 @@ alt="浏览器访问">
 &lt;/table>
 &lt;p>&lt;a class="link" href="https://www.techempower.com/benchmarks/#section=data-r20&amp;amp;hw=ph&amp;amp;test=composite" target="_blank" rel="noopener"
 >web 框架对比&lt;/a>：Java(Spring) vs Go(Fiber)&lt;/p>
-&lt;p>测试内容包括 JSON 序列化(JSON)、单查询(1-query)、数据更新(Updates)和纯文本返回(Plaintext)的峰值性能，单位 &lt;code>response/second&lt;/code> 。&lt;/p>
+&lt;p>测试内容包括 JSON 序列化(JSON)、单查询(1-query)、数据更新(Updates)和纯文本返回(Plaintext)的峰值性能，单位 &lt;code>response/second&lt;/code> 。以及响应时延。&lt;/p>
 &lt;p>物理机器：&lt;/p>
 &lt;ul>
 &lt;li>Intel® Xeon Gold 5120 CPU&lt;/li>
@@ -409,7 +409,9 @@ alt="浏览器访问">
 &lt;th style="text-align:center">返回 json&lt;/th>
 &lt;th style="text-align:center">单查询&lt;/th>
 &lt;th style="text-align:center">数据更新&lt;/th>
-&lt;th>返回纯文本&lt;/th>
+&lt;th style="text-align:center">返回纯文本&lt;/th>
+&lt;th style="text-align:center">平均时延&lt;/th>
+&lt;th style="text-align:center">最大时延&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
@@ -418,14 +420,18 @@ alt="浏览器访问">
 &lt;td style="text-align:center">1,317,695&lt;/td>
 &lt;td style="text-align:center">395,902&lt;/td>
 &lt;td style="text-align:center">11,806&lt;/td>
-&lt;td>6,413,651&lt;/td>
+&lt;td style="text-align:center">6,413,651&lt;/td>
+&lt;td style="text-align:center">0.8ms&lt;/td>
+&lt;td style="text-align:center">20.3ms&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:center">spring&lt;/td>
 &lt;td style="text-align:center">150,259&lt;/td>
 &lt;td style="text-align:center">127,114&lt;/td>
 &lt;td style="text-align:center">10,498&lt;/td>
-&lt;td>183,737&lt;/td>
+&lt;td style="text-align:center">183,737&lt;/td>
+&lt;td style="text-align:center">14.3ms&lt;/td>
+&lt;td style="text-align:center">128.1ms&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -442,6 +448,8 @@ alt="浏览器访问">
 &lt;th style="text-align:center">单查询&lt;/th>
 &lt;th style="text-align:center">数据更新&lt;/th>
 &lt;th>返回纯文本&lt;/th>
+&lt;th style="text-align:center">平均时延&lt;/th>
+&lt;th style="text-align:center">最大时延&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
@@ -451,6 +459,8 @@ alt="浏览器访问">
 &lt;td style="text-align:center">52,125&lt;/td>
 &lt;td style="text-align:center">1,888&lt;/td>
 &lt;td>1,135,808&lt;/td>
+&lt;td style="text-align:center">0.7ms&lt;/td>
+&lt;td style="text-align:center">17.2ms&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:center">spring&lt;/td>
@@ -458,6 +468,8 @@ alt="浏览器访问">
 &lt;td style="text-align:center">18,899&lt;/td>
 &lt;td style="text-align:center">1,420&lt;/td>
 &lt;td>28,780&lt;/td>
+&lt;td style="text-align:center">11.0ms&lt;/td>
+&lt;td style="text-align:center">248.9ms&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -789,7 +801,7 @@ alt="初始化流程">
 &lt;/a>
 &lt;figcaption>初始化流程&lt;/figcaption>
 &lt;/figure>&lt;/p>
-&lt;h3 id="函数方法和接口">函数、方法和接口&lt;/h3>
+&lt;h3 id="函数结构体方法和接口">函数、结构体、方法和接口&lt;/h3>
 &lt;h4 id="函数">函数&lt;/h4>
 &lt;p>在 Go 语言中，函数是第一类对象，我们可以将函数储存在变量中。函数主要有有名和匿名之分，包级函数一般都是有名函数。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#75715e">// 有名函数
@@ -848,7 +860,26 @@ entering: a
 in a
 leaving: a
 leaving: b
-&lt;/code>&lt;/pre>&lt;h4 id="方法">方法&lt;/h4>
+&lt;/code>&lt;/pre>&lt;h4 id="结构体">结构体&lt;/h4>
+&lt;p>使用 &lt;code>type &amp;lt;struct_name&amp;gt; struct {}&lt;/code> 声明结构体&lt;/p>
+&lt;p>input:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#a6e22e">student&lt;/span> &lt;span style="color:#66d9ef">struct&lt;/span> {
+&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#66d9ef">string&lt;/span>
+&lt;span style="color:#a6e22e">grade&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>
+}
+&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">s&lt;/span> &lt;span style="color:#a6e22e">student&lt;/span> = &lt;span style="color:#a6e22e">student&lt;/span>{&lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;SaltFish&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">grade&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>}
+&lt;span style="color:#a6e22e">fmt&lt;/span>.&lt;span style="color:#a6e22e">Printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%v\n&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">s&lt;/span>)
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>output:&lt;/p>
+&lt;pre tabindex="0">&lt;code>{SaltFish 4}
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>&lt;code>%T&lt;/code> 值类型的 Go 语法表示 &lt;code>main.student&lt;/code>&lt;/li>
+&lt;li>&lt;code>%v&lt;/code> 值 &lt;code>{SaltFish 4}&lt;/code>&lt;/li>
+&lt;li>&lt;code>%+v&lt;/code> 值，添加字段名 &lt;code>{name:SaltFish grade:4}&lt;/code>&lt;/li>
+&lt;li>&lt;code>%#v&lt;/code> 值，Go 语法表示 &lt;code>main.student{name:&amp;quot;SaltFish&amp;quot;, grade:4}&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h4 id="方法">方法&lt;/h4>
 &lt;p>Go 语言中每个类型（除了指针类型和接口类型）还可以有自己的方法，方法也是函数的一种。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#75715e">// 文件对象
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#a6e22e">File&lt;/span> &lt;span style="color:#66d9ef">struct&lt;/span> {
@@ -898,28 +929,6 @@ leaving: b
 &lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="错误处理">错误处理&lt;/h3>
 &lt;h3 id="协程与通道">协程与通道&lt;/h3>
 &lt;hr>
-&lt;h1 id="ultimate-go">Ultimate Go&lt;/h1>
-&lt;p>Go 语言基础学习&lt;/p>
-&lt;h2 id="变量">变量&lt;/h2>
-&lt;h4 id="结构体的声明与使用">结构体的声明与使用&lt;/h4>
-&lt;p>使用 &lt;code>type &amp;lt;struct_name&amp;gt; struct {}&lt;/code> 声明结构体&lt;/p>
-&lt;p>input:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#a6e22e">student&lt;/span> &lt;span style="color:#66d9ef">struct&lt;/span> {
-&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#66d9ef">string&lt;/span>
-&lt;span style="color:#a6e22e">grade&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>
-}
-&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
-&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">s&lt;/span> &lt;span style="color:#a6e22e">student&lt;/span> = &lt;span style="color:#a6e22e">student&lt;/span>{&lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;SaltFish&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">grade&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>}
-&lt;span style="color:#a6e22e">fmt&lt;/span>.&lt;span style="color:#a6e22e">Printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%v\n&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">s&lt;/span>)
-}
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>output:&lt;/p>
-&lt;pre tabindex="0">&lt;code>{SaltFish 4}
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>&lt;code>%T&lt;/code> 值类型的 Go 语法表示 &lt;code>main.student&lt;/code>&lt;/li>
-&lt;li>&lt;code>%v&lt;/code> 值 &lt;code>{SaltFish 4}&lt;/code>&lt;/li>
-&lt;li>&lt;code>%+v&lt;/code> 值，添加字段名 &lt;code>{name:SaltFish grade:4}&lt;/code>&lt;/li>
-&lt;li>&lt;code>%#v&lt;/code> 值，Go 语法表示 &lt;code>main.student{name:&amp;quot;SaltFish&amp;quot;, grade:4}&lt;/code>&lt;/li>
-&lt;/ul>
 &lt;h2 id="go-语言核心编程笔记">go 语言核心编程笔记&lt;/h2>
 &lt;hr>
 &lt;p>&lt;code>&amp;amp;^&lt;/code> 运算符&lt;/p>
@@ -943,44 +952,9 @@ leaving: b
 }
 &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;hr>
-&lt;p>int 是大小至少为 32 位的有符号整数类型。但是，它是一个不同的类型，而不是 int32 的别名。
-&lt;code>type int int&lt;/code>&lt;/p>
-&lt;p>byte 是 uint8 的别名，在所有方面都与 uint8 等效。按照惯例，它用于区分字节值和 8 位无符号整数值。
-&lt;code>type byte = uint8&lt;/code>&lt;/p>
-&lt;p>rune 是 int32 的别名，在所有方面都与 int32 等效。按惯例，它用于区分字符值和整数值。
-&lt;code>type rune = int32&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#75715e">// int8 is the set of all signed 8-bit integers.
-&lt;/span>&lt;span style="color:#75715e">// Range: -128 through 127.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">int8&lt;/span> &lt;span style="color:#66d9ef">int8&lt;/span>
-&lt;span style="color:#75715e">// int16 is the set of all signed 16-bit integers.
-&lt;/span>&lt;span style="color:#75715e">// Range: -32768 through 32767.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">int16&lt;/span> &lt;span style="color:#66d9ef">int16&lt;/span>
-&lt;span style="color:#75715e">// int32 is the set of all signed 32-bit integers.
-&lt;/span>&lt;span style="color:#75715e">// Range: -2147483648 through 2147483647.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">int32&lt;/span> &lt;span style="color:#66d9ef">int32&lt;/span>
-&lt;span style="color:#75715e">// int64 is the set of all signed 64-bit integers.
-&lt;/span>&lt;span style="color:#75715e">// Range: -9223372036854775808 through 9223372036854775807.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">int64&lt;/span> &lt;span style="color:#66d9ef">int64&lt;/span>
-&lt;span style="color:#75715e">// float32 is the set of all IEEE-754 32-bit floating-point numbers.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">float32&lt;/span> &lt;span style="color:#66d9ef">float32&lt;/span>
-&lt;span style="color:#75715e">// float64 is the set of all IEEE-754 64-bit floating-point numbers.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">float64&lt;/span> &lt;span style="color:#66d9ef">float64&lt;/span>
-&lt;span style="color:#75715e">// complex64 is the set of all complex numbers with float32 real and
-&lt;/span>&lt;span style="color:#75715e">// imaginary parts.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">complex64&lt;/span> &lt;span style="color:#66d9ef">complex64&lt;/span>
-&lt;span style="color:#75715e">// complex128 is the set of all complex numbers with float64 real and
-&lt;/span>&lt;span style="color:#75715e">// imaginary parts.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">type&lt;/span> &lt;span style="color:#66d9ef">complex128&lt;/span> &lt;span style="color:#66d9ef">complex128&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;p>float 的比较&lt;/p>
 &lt;p>计算机很难进行浮点数的精确表示和存储，因此两个浮点数之间不应该使用==或!=进行比较操作，高精度科学计算应该使用 math 标准库。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
-&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">v&lt;/span> = complex(&lt;span style="color:#ae81ff">2.1&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>) &lt;span style="color:#75715e">// 构造一个复数
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> real(&lt;span style="color:#a6e22e">v&lt;/span>) &lt;span style="color:#75715e">// 2.1, 实部
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> imag(&lt;span style="color:#a6e22e">v&lt;/span>) &lt;span style="color:#75715e">// 3 , 虚部
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fmt&lt;/span>.&lt;span style="color:#a6e22e">Printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;%v + %vi\n&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>)
-}
-&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;hr>
 &lt;p>字符串是常量，不能修改某个字节的值&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">s&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;SaltFish&amp;#34;&lt;/span>
 &lt;span style="color:#a6e22e">s&lt;/span>[&lt;span style="color:#ae81ff">2&lt;/span>] = &lt;span style="color:#e6db74">&amp;#39;I&amp;#39;&lt;/span> &lt;span style="color:#75715e">// cannot assign to s[2] (value of type byte)

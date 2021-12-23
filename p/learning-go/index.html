@@ -672,8 +672,7 @@ leaving: b
 	<span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>Close</span>()
 }
 </code></pre></div><h4 id=接口>接口</h4>
-<p>接口类型是 Go 中的一种很特别的类型。接口类型在 Go 中扮演着重要的角色。 首先，在 Go 中，接口值可
-以用来包裹非接口值；然后，通过值包裹，反射和多态得以实现。</p>
+<p>接口类型是 Go 中的一种很特别的类型。接口类型在 Go 中扮演着重要的角色。 首先，在 Go 中，接口值可以用来包裹非接口值；然后，通过值包裹，反射和多态得以实现。</p>
 <p>一个接口类型定义了一个方法集。接口类型中指定的任何方法原型中的方法名称都不能为空标识符_。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>
 <span style=color:#75715e>// 定义 Aboutable 接口，方法集中只有 About() string 一个方法。
@@ -737,8 +736,8 @@ leaving: b
 <p>字符串是常量，不能修改某个字节的值</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>s</span> = <span style=color:#e6db74>&#34;SaltFish&#34;</span>
 <span style=color:#a6e22e>s</span>[<span style=color:#ae81ff>2</span>] = <span style=color:#e6db74>&#39;I&#39;</span> <span style=color:#75715e>// cannot assign to s[2] (value of type byte)
-</span></code></pre></div><p>string 是 8 位字节的所有字符串的集合，通常但不一定表示 UTF-8 编码的文本。字符串可以为空，但不能为 nil。字符串类型的值是不可变的。
-<code>type string string</code></p>
+</span></code></pre></div><p>string 是 8 位字节的所有字符串的集合，通常但不一定表示 UTF-8 编码的文本。字符串可以为空，但不能为 nil。字符串类型的值是不可变的。</p>
+<p><code>type string string</code></p>
 <p>字符串底层是一个二元的数据结构，一个是指针(指向字节数组的起点)，另一个是长度</p>
 <p>对字符串切片返回 string 而不是 slice，并且字串指向相同的底层字符数组</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>s</span> <span style=color:#66d9ef>string</span> = <span style=color:#e6db74>&#34;SaltFish&#34;</span>

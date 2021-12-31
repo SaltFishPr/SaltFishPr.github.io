@@ -3,13 +3,13 @@
 
 # Markdown 常用写法大全
 
-## 分割线：
+## 分割线
 
 ```markdown
 ---
 ```
 
-## 标题：
+## 标题
 
 ```markdown
 # 一级标题
@@ -45,7 +45,7 @@ _斜体_
 
 ~~删除内容~~
 
-## 段落和换行：
+## 段落和换行
 
 ```markdown
 新一段落需要空一行
@@ -63,7 +63,7 @@ _斜体_
 或者在最后加上两个空格  
 换行
 
-## 列表：
+## 列表
 
 ### 基本用法
 
@@ -399,7 +399,7 @@ Water: H<sub>2</sub>O
 不会在浏览器中显示。
 -->
 
-## 参考资料：
+## 参考资料
 
 1. https://www.jianshu.com/p/d7d6da4b7c60#fnref1
 2. https://guides.github.com/features/mastering-markdown/

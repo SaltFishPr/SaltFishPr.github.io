@@ -115,7 +115,7 @@ go version
 
 输出：
 
-```
+```text
 go version go1.17.2 linux/arm64
 ```
 

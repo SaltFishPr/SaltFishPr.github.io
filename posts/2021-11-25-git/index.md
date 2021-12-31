@@ -60,7 +60,7 @@ nslookup github.com
 
 把查询到的结果添加到 `C:\Windows\System32\drivers\etc\hosts` 中
 
-```plaintext
+```text
 github.global.ssl.fastly.net 69.63.184.14
 github.com 140.82.112.3
 ```
@@ -82,7 +82,7 @@ nslookup github.com
 
 把查询到的结果添加到 `/etc/hosts` 中
 
-```plaintext
+```text
 github.global.ssl.fastly.net 69.63.184.14
 github.com 140.82.112.3
 ```

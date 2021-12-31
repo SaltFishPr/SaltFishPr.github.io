@@ -4,18 +4,18 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title>Python 环境管理 - 咸鱼硕的博客</title><meta name=Description content="pip 和 conda 常用命令"><meta property="og:title" content="Python 环境管理">
-<meta property="og:description" content="pip 和 conda 常用命令">
+<title>Python 环境管理 - 咸鱼硕的博客</title><meta name=Description content="咸鱼硕的博客"><meta property="og:title" content="Python 环境管理">
+<meta property="og:description" content="conda 常用 换源 创建 .condarc 配置文件 1 conda config --set show_channel_urls yes 用文本编辑器打开 ~/.condarc 填入以下内容 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 channels: - defaults show_channel_urls: true channel_alias: https://mirrors.tuna.tsinghua.edu.cn/anaconda default_channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2 custom_channels: conda-forge:">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://saltfishpr.github.io/posts/2020-03-26-python-environment-management/"><meta property="og:image" content="https://saltfishpr.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2020-03-26T00:00:00+08:00">
-<meta property="article:modified_time" content="2021-12-25T05:44:40+08:00">
+<meta property="article:modified_time" content="2022-01-01T01:42:11+08:00">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://saltfishpr.github.io/logo.png">
 <meta name=twitter:title content="Python 环境管理">
-<meta name=twitter:description content="pip 和 conda 常用命令">
+<meta name=twitter:description content="conda 常用 换源 创建 .condarc 配置文件 1 conda config --set show_channel_urls yes 用文本编辑器打开 ~/.condarc 填入以下内容 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 channels: - defaults show_channel_urls: true channel_alias: https://mirrors.tuna.tsinghua.edu.cn/anaconda default_channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2 custom_channels: conda-forge:">
 <meta name=application-name content="咸鱼硕的博客">
-<meta name=apple-mobile-web-app-title content="咸鱼硕的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=go.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://saltfishpr.github.io/posts/2020-03-26-python-environment-management/><link rel=prev href=https://saltfishpr.github.io/posts/2020-03-16-effective-python/><link rel=next href=https://saltfishpr.github.io/posts/2020-05-25-pandas-kaggle/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Python 环境管理","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/saltfishpr.github.io\/posts\/2020-03-26-python-environment-management\/"},"image":["https:\/\/saltfishpr.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","wordcount":380,"url":"https:\/\/saltfishpr.github.io\/posts\/2020-03-26-python-environment-management\/","datePublished":"2020-03-26T00:00:00+08:00","dateModified":"2021-12-25T05:44:40+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/saltfishpr.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"Salt Fish"},"description":"pip 和 conda 常用命令"}</script></head>
+<meta name=apple-mobile-web-app-title content="咸鱼硕的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=go.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://saltfishpr.github.io/posts/2020-03-26-python-environment-management/><link rel=prev href=https://saltfishpr.github.io/posts/2020-03-10-build-a-github-pages/><link rel=next href=https://saltfishpr.github.io/posts/2020-05-25-pandas-kaggle/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Python 环境管理","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/saltfishpr.github.io\/posts\/2020-03-26-python-environment-management\/"},"image":["https:\/\/saltfishpr.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","wordcount":380,"url":"https:\/\/saltfishpr.github.io\/posts\/2020-03-26-python-environment-management\/","datePublished":"2020-03-26T00:00:00+08:00","dateModified":"2022-01-01T01:42:11+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/saltfishpr.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"Salt Fish"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -260,8 +260,8 @@ trusted-host=mirrors.aliyun.com
 <div class=post-info>
 <div class=post-info-line>
 <div class=post-info-mod>
-<span>更新于 2021-12-25&nbsp;<a class=git-hash href=https://github.com/SaltFishPr/saltfishpr.github.io/commit/fd9d2d25fd541654ee2f74330ccf477a6dca5228 target=_blank title="commit by Salt Fish(526191197@qq.com) fd9d2d25fd541654ee2f74330ccf477a6dca5228: change theme to loveit">
-<i class="fas fa-hashtag fa-fw"></i>fd9d2d2</a></span>
+<span>更新于 2022-01-01&nbsp;<a class=git-hash href=https://github.com/SaltFishPr/saltfishpr.github.io/commit/25f1337e2ab8e1639fadccb7aa355ba60626f968 target=_blank title="commit by Salt Fish(526191197@qq.com) 25f1337e2ab8e1639fadccb7aa355ba60626f968: update">
+<i class="fas fa-hashtag fa-fw"></i>25f1337</a></span>
 </div>
 <div class=post-info-license></div>
 </div>
@@ -280,7 +280,7 @@ trusted-host=mirrors.aliyun.com
 <span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
 </section>
 </div>
-<div class=post-nav><a href=/posts/2020-03-16-effective-python/ class=prev rel=prev title="Effective Python"><i class="fas fa-angle-left fa-fw"></i>Effective Python</a>
+<div class=post-nav><a href=/posts/2020-03-10-build-a-github-pages/ class=prev rel=prev title="Github Pages 个人博客搭建"><i class="fas fa-angle-left fa-fw"></i>Github Pages 个人博客搭建</a>
 <a href=/posts/2020-05-25-pandas-kaggle/ class=next rel=next title="Pandas 入门">Pandas 入门<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id=comments><div id=gitalk class=comment></div><noscript>

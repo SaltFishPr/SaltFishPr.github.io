@@ -1,5 +1,5 @@
-# First Blog
+# 第一篇博客
 
 
-This is the beginning of my blog.
+博客，斯达托！
 

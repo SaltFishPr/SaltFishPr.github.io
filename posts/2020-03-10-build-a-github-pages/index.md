@@ -1,9 +1,9 @@
-# Build a GitHub Pages
+# Github Pages 个人博客搭建
 
 
 # Github Pages 个人博客搭建
 
-&emsp;&emsp;应朋友的强烈要求在这里记录下使用 `github pages` + `jekyll` 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用了（毕竟不是前端人）。
+应朋友的强烈要求在这里记录下使用 `github pages` + `jekyll` 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用了（毕竟不是前端人）。
 
 ## 准备
 

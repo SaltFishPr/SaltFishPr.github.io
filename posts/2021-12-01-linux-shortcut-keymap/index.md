@@ -1,4 +1,4 @@
-# Linux shortcuts
+# Linux 常用快捷键
 
 
 # Linux 常用快捷键

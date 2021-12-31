@@ -103,5 +103,3 @@ Code is clean if it can be understood easily – by everyone on the team. Clean 
 5. Needless Repetition.
 6. Opacity. The code is hard to understand.
 
-# TODO: translate
-

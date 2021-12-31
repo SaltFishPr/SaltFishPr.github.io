@@ -1,4 +1,4 @@
-# Learning Go
+# Go 语言入门
 
 
 # [The Go Programming Language](https://github.com/golang/go)

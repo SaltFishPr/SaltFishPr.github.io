@@ -1,7 +1,9 @@
 # Python 环境管理
 
 
-# conda 常用
+# Python 环境管理
+
+## conda
 
 ### 换源
 
@@ -41,7 +43,7 @@ custom_channels:
 
 清除缓存 `conda clean -a`
 
-# pip 常用
+## pip
 
 ### 换源
 
@@ -65,43 +67,39 @@ trusted-host=mirrors.aliyun.com
 pip install <package-name> --no-cache-dir
 ```
 
-# 导入导出 python 环境
+## 导入导出 python 环境
 
 今天在学习数据挖掘的时候，nolearn 和 lasagne 两个库的时候给我的 jypyterlab 环境搞崩了，只好 remove --all 重新配起，真后悔没有先搞个环境备份( ´•︵•` )
 
-## conda
+### conda
 
 conda 是个好东西，可以自己处理环境依赖，缺点就是。。包有点老，有些包还找不到
 
-### 导入环境
+导入环境
 
 ```bash
 conda create --name <your env name> --file <this file> --yes
 ```
 
-### 导出环境
+导出环境
 
 ```bash
 conda list -e > requirements.txt
 ```
 
-## pip
+### pip
 
 pip 也有很多优点，我一般是在 conda 找不到模块的时候使用 pip
 
-### 导入环境
+导入环境
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 导出环境
+导出环境
 
 ```bash
 pip freeze > requirements.txt
 ```
-
----
-
-总之，用 conda 创造独立的环境，用 pip 安装~~新鲜~~的模块，两个工具结合起来用甚好
 

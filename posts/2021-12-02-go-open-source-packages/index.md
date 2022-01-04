@@ -1,7 +1,9 @@
 # Go 语言资源整合
 
 
-# Golang Resource
+# Go 语言资源整合
+
+### 编程规范
 
 [uber-guide](https://github.com/uber-go/guide): uber go guide
 

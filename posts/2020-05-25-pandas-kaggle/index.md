@@ -1,7 +1,7 @@
 # Pandas 入门
 
 
-# Kaggle Pandas 入门
+# Pandas 入门
 
 读取数据集
 
@@ -393,12 +393,12 @@ Output:
 ```
 0             @kerino
 1          @vossroger
-2          @paulgwine 
+2          @paulgwine
 3                 NaN
-4          @paulgwine 
+4          @paulgwine
              ...
 129966            NaN
-129967     @paulgwine 
+129967     @paulgwine
 129968     @vossroger
 129969     @vossroger
 129970     @vossroger

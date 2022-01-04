@@ -1,7 +1,7 @@
 # Go 语言入门
 
 
-# [The Go Programming Language](https://github.com/golang/go)
+# [Go](https://github.com/golang/go) 语言入门
 
 ## 简介
 

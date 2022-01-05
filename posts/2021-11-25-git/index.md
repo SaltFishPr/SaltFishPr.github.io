@@ -93,3 +93,11 @@ github.com 140.82.112.3
 sudo nscd -i hosts
 ```
 
+## 清除远程分支的本地缓存
+
+当修改/删除远程分支后，本地的远程分支缓存未被删除，再 checkout 会出现 `remote ref does not exist` 错误，这时要先清除本地缓存
+
+```shell
+git fetch -p origin
+```
+

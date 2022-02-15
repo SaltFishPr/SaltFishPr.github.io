@@ -37,9 +37,15 @@
 
 [testify](https://github.com/stretchr/testify): 测试库，断言、mock
 
+[go-funk](https://github.com/thoas/go-funk): Go 实用工具库（map、find、contains、filter、chunk、reverse，...）
+
 [jsoniter](https://github.com/json-iterator/go): 标准库 encoding/json 的升级，可直接替换，高性能
 
 [gjson](https://github.com/tidwall/gjson): 快速从 json 中获取值
+
+[carbon](https://github.com/golang-module/carbon): 一个轻量级、语义化、对开发者友好的 golang 时间处理库，支持链式调用
+
+[afero](https://github.com/spf13/afero): Go 的文件系统抽象
 
 ---
 

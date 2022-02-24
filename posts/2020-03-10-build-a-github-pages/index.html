@@ -5,17 +5,17 @@
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
 <title>Github Pages 个人博客搭建 - 咸鱼硕的博客</title><meta name=Description content="咸鱼硕的博客"><meta property="og:title" content="Github Pages 个人博客搭建">
-<meta property="og:description" content="Github Pages 个人博客搭建 应朋友的强烈要求在这里记录下使用 github pages + jekyll 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的">
+<meta property="og:description" content="应朋友的强烈要求在这里记录下使用 github pages + jekyll 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://saltfishpr.github.io/posts/2020-03-10-build-a-github-pages/"><meta property="og:image" content="https://saltfishpr.github.io/posts/2020-03-10-build-a-github-pages/cover.jpg"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2020-03-10T00:00:00+08:00">
-<meta property="article:modified_time" content="2022-01-01T01:42:11+08:00">
+<meta property="article:modified_time" content="2022-02-24T15:40:08+08:00">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://saltfishpr.github.io/posts/2020-03-10-build-a-github-pages/cover.jpg">
 <meta name=twitter:title content="Github Pages 个人博客搭建">
-<meta name=twitter:description content="Github Pages 个人博客搭建 应朋友的强烈要求在这里记录下使用 github pages + jekyll 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的">
+<meta name=twitter:description content="应朋友的强烈要求在这里记录下使用 github pages + jekyll 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用">
 <meta name=application-name content="咸鱼硕的博客">
-<meta name=apple-mobile-web-app-title content="咸鱼硕的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=go.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://saltfishpr.github.io/posts/2020-03-10-build-a-github-pages/><link rel=prev href=https://saltfishpr.github.io/posts/2020-03-09-data-mining/><link rel=next href=https://saltfishpr.github.io/posts/2020-03-26-python-environment-management/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Github Pages 个人博客搭建","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/saltfishpr.github.io\/posts\/2020-03-10-build-a-github-pages\/"},"image":["https:\/\/saltfishpr.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"jekyll","wordcount":1159,"url":"https:\/\/saltfishpr.github.io\/posts\/2020-03-10-build-a-github-pages\/","datePublished":"2020-03-10T00:00:00+08:00","dateModified":"2022-01-01T01:42:11+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/saltfishpr.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"Salt Fish"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="咸鱼硕的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=go.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://saltfishpr.github.io/posts/2020-03-10-build-a-github-pages/><link rel=prev href=https://saltfishpr.github.io/posts/2020-03-09-data-mining/><link rel=next href=https://saltfishpr.github.io/posts/2020-03-26-python-environment-management/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Github Pages 个人博客搭建","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/saltfishpr.github.io\/posts\/2020-03-10-build-a-github-pages\/"},"image":["https:\/\/saltfishpr.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"jekyll","wordcount":1151,"url":"https:\/\/saltfishpr.github.io\/posts\/2020-03-10-build-a-github-pages\/","datePublished":"2020-03-10T00:00:00+08:00","dateModified":"2022-02-24T15:40:08+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/saltfishpr.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"Salt Fish"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -87,7 +87,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Github Pages 个人博客搭建</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=https://github.com/SaltFishPr title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>Salt Fish</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/technique/><i class="far fa-folder fa-fw"></i>technique</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-03-10>2020-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1159 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-03-10>2020-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1151 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
 </div><div class=featured-image><img class=lazyload src=/svg/loading.min.svg data-src=cover.jpg data-srcset="/posts/2020-03-10-build-a-github-pages/cover.jpg, cover.jpg 1.5x, /posts/2020-03-10-build-a-github-pages/cover.jpg 2x" data-sizes=auto alt=/posts/2020-03-10-build-a-github-pages/cover.jpg title=/posts/2020-03-10-build-a-github-pages/cover.jpg></div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -108,8 +108,7 @@
 <li><a href=#issues>issues</a></li>
 </ul>
 </nav></div>
-</div><div class=content id=content><h1 id=github-pages-个人博客搭建>Github Pages 个人博客搭建</h1>
-<p>应朋友的强烈要求在这里记录下使用 <code>github pages</code> + <code>jekyll</code> 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用了（毕竟不是前端人）。</p>
+</div><div class=content id=content><p>应朋友的强烈要求在这里记录下使用 <code>github pages</code> + <code>jekyll</code> 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用了（毕竟不是前端人）。</p>
 <h2 id=准备>准备</h2>
 <ul>
 <li>注册 github 账号</li>
@@ -209,8 +208,8 @@
 <div class=post-info>
 <div class=post-info-line>
 <div class=post-info-mod>
-<span>更新于 2022-01-01&nbsp;<a class=git-hash href=https://github.com/SaltFishPr/saltfishpr.github.io/commit/25f1337e2ab8e1639fadccb7aa355ba60626f968 target=_blank title="commit by Salt Fish(526191197@qq.com) 25f1337e2ab8e1639fadccb7aa355ba60626f968: update">
-<i class="fas fa-hashtag fa-fw"></i>25f1337</a></span>
+<span>更新于 2022-02-24&nbsp;<a class=git-hash href=https://github.com/SaltFishPr/saltfishpr.github.io/commit/f99e3f987c5ec5fd5e1ea5cbf120238a89cb6814 target=_blank title="commit by Salt Fish(526191197@qq.com) f99e3f987c5ec5fd5e1ea5cbf120238a89cb6814: update">
+<i class="fas fa-hashtag fa-fw"></i>f99e3f9</a></span>
 </div>
 <div class=post-info-license></div>
 </div>

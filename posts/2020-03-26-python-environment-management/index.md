@@ -1,8 +1,6 @@
 # Python 环境管理
 
 
-# Python 环境管理
-
 ## conda
 
 ### 换源

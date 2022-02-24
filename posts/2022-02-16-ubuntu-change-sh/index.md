@@ -1,8 +1,6 @@
 # Ubuntu 切换默认 sh
 
 
-# Ubuntu 切换默认 sh
-
 ## 查看
 
 查看 sh 路径

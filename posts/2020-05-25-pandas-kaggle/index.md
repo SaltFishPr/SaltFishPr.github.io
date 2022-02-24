@@ -1,9 +1,7 @@
 # Pandas 入门
 
 
-# Pandas 入门
-
-读取数据集
+## 读取数据集
 
 ```python
 import pandas as pd

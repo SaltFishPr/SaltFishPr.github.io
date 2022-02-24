@@ -9,13 +9,13 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://saltfishpr.github.io/posts/2021-12-02-go-intro/"><meta property="og:image" content="https://saltfishpr.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-12-02T00:00:00+08:00">
-<meta property="article:modified_time" content="2022-02-17T00:05:47+08:00">
+<meta property="article:modified_time" content="2022-02-24T15:40:08+08:00">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://saltfishpr.github.io/logo.png">
 <meta name=twitter:title content="Go 语言入门">
 <meta name=twitter:description content="Go 语言介绍与入门">
 <meta name=application-name content="咸鱼硕的博客">
-<meta name=apple-mobile-web-app-title content="咸鱼硕的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=go.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://saltfishpr.github.io/posts/2021-12-02-go-intro/><link rel=prev href=https://saltfishpr.github.io/posts/2021-12-01-linux-shortcut-keymap/><link rel=next href=https://saltfishpr.github.io/posts/2021-12-02-go-open-source-packages/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Go 语言入门","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/saltfishpr.github.io\/posts\/2021-12-02-go-intro\/"},"image":["https:\/\/saltfishpr.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","wordcount":5926,"url":"https:\/\/saltfishpr.github.io\/posts\/2021-12-02-go-intro\/","datePublished":"2021-12-02T00:00:00+08:00","dateModified":"2022-02-17T00:05:47+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/saltfishpr.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"Salt Fish"},"description":"Go 语言介绍与入门"}</script></head>
+<meta name=apple-mobile-web-app-title content="咸鱼硕的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=go.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://saltfishpr.github.io/posts/2021-12-02-go-intro/><link rel=prev href=https://saltfishpr.github.io/posts/2021-12-01-linux-shortcut-keymap/><link rel=next href=https://saltfishpr.github.io/posts/2021-12-02-go-open-source-packages/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.89b621a9bf174f6453c265bdcf5f2ffe8feb8bf3555ce4432c220058d367643a9e0aae3b0c211fc83b05a5bdc47d2ce47d74361d8a2becb6f76a7df35e3c3def.css integrity="sha512-ibYhqb8XT2RTwmW9z18v/o/ri/NVXORDLCIAWNNnZDqeCq47DCEfyDsFpb3EfSzkfXQ2HYor7Lb3an3zXjw97w=="><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Go 语言入门","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/saltfishpr.github.io\/posts\/2021-12-02-go-intro\/"},"image":["https:\/\/saltfishpr.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","wordcount":5921,"url":"https:\/\/saltfishpr.github.io\/posts\/2021-12-02-go-intro\/","datePublished":"2021-12-02T00:00:00+08:00","dateModified":"2022-02-24T15:40:08+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/saltfishpr.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"Salt Fish"},"description":"Go 语言介绍与入门"}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -87,7 +87,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Go 语言入门</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=https://github.com/SaltFishPr title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>Salt Fish</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/golang/><i class="far fa-folder fa-fw"></i>golang</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-12-02>2021-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5926 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-12-02>2021-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5921 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -135,9 +135,8 @@
 </li>
 </ul>
 </nav></div>
-</div><div class=content id=content><h1 id=gohttpsgithubcomgolanggo-语言入门><a href=https://github.com/golang/go target=_blank rel="noopener noreffer">Go</a> 语言入门</h1>
-<h2 id=简介>简介</h2>
-<p>Go 是 Google 开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。于 2009 年 11 月正式宣布推出， 1.0 版本在 2012 年 3 月发布。之后，Go 广泛应用于 Google 的产品以及许多其他组织和开源项目。Go 程序员常常被称为地鼠（gopher），因此地鼠也是 Go 的吉祥物。</p>
+</div><div class=content id=content><h2 id=简介>简介</h2>
+<p><a href=https://github.com/golang/go target=_blank rel="noopener noreffer">Go</a> 是 Google 开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。于 2009 年 11 月正式宣布推出， 1.0 版本在 2012 年 3 月发布。之后，Go 广泛应用于 Google 的产品以及许多其他组织和开源项目。Go 程序员常常被称为地鼠（gopher），因此地鼠也是 Go 的吉祥物。</p>
 <p><img class=lazyload src=/svg/loading.min.svg data-src=five_years.jpg data-srcset="/posts/2021-12-02-go-intro/five_years.jpg, five_years.jpg 1.5x, /posts/2021-12-02-go-intro/five_years.jpg 2x" data-sizes=auto alt=/posts/2021-12-02-go-intro/five_years.jpg title="Gopher image"></p>
 <p>在 Go 语言出现之前，开发者们总是面临非常艰难的抉择，究竟是使用执行速度快但是编译速度并不理想的语言（如：C++），还是使用编译速度较快但执行效率不佳的语言（如：.NET、Java），或者说开发难度较低但执行速度一般的动态语言呢？显然，Go 语言在这 3 个条件之间做到了最佳的平衡：快速编译，高效执行，易于开发。</p>
 <p>特性：</p>
@@ -1152,8 +1151,8 @@ leaving: b
 <div class=post-info>
 <div class=post-info-line>
 <div class=post-info-mod>
-<span>更新于 2022-02-17&nbsp;<a class=git-hash href=https://github.com/SaltFishPr/saltfishpr.github.io/commit/fc55f8bfeaa36be7366c8f7d7b2b98d6a3880c31 target=_blank title="commit by Salt Fish(526191197@qq.com) fc55f8bfeaa36be7366c8f7d7b2b98d6a3880c31: update">
-<i class="fas fa-hashtag fa-fw"></i>fc55f8b</a></span>
+<span>更新于 2022-02-24&nbsp;<a class=git-hash href=https://github.com/SaltFishPr/saltfishpr.github.io/commit/f99e3f987c5ec5fd5e1ea5cbf120238a89cb6814 target=_blank title="commit by Salt Fish(526191197@qq.com) f99e3f987c5ec5fd5e1ea5cbf120238a89cb6814: update">
+<i class="fas fa-hashtag fa-fw"></i>f99e3f9</a></span>
 </div>
 <div class=post-info-license></div>
 </div>

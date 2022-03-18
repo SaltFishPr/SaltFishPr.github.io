@@ -135,6 +135,50 @@ kubectl --namespace consul port-forward service/consul-ui 18500:80 --address 0.0
 
 ![ui](./ui.png)
 
+## 更新 consul 配置
+
+1. 修改 `config.yaml` 文件
+
+```yaml
+global:
+  name: consul
+  datacenter: dc1
+  metrics:
+    enabled: true
+    enableAgentMetrics: true
+  acls:
+    manageSystemACLs: true
+  gossipEncryption:
+    autoGenerate: true
+  tls:
+    enabled: true
+    enableAutoEncrypt: true
+    verify: true
+
+server:
+  replicas: 1
+
+ui:
+  enabled: true
+  service:
+    type: "NodePort"
+
+connectInject:
+  enabled: true
+
+controller:
+  enabled: true
+
+prometheus:
+  enabled: true
+```
+
+2. 使用 helm 升级
+
+```shell
+helm upgrade consul hashicorp/consul --namespace consul --version "0.39.0" --values ./config.yaml --wait
+```
+
 ## 部署微服务
 
 1. 部署示例服务

@@ -19,7 +19,7 @@
 
 [cast](https://github.com/spf13/cast): 类型转换
 
-[golang-underscore](https://github.com/ahl5esoft/golang-underscore): 工具库，函数式编程助手
+[lo](https://github.com/samber/lo): 工具库，切片，映射，元组，集合...
 
 [carbon](https://github.com/uniplaces/carbon): 时间库的扩展
 

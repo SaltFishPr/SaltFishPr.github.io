@@ -85,3 +85,10 @@
 
 [primitive](https://github.com/fogleman/primitive): 使用几何形状将图片变为抽象画
 
+### 工具
+
+[golines](https://github.com/segmentio/golines): 代码格式化，处理行过长的行
+
+- 安装：`go install github.com/segmentio/golines@latest`
+- 使用：`golines -w .`
+

@@ -45,6 +45,8 @@
 
 [afero](https://github.com/spf13/afero): Go 的文件系统抽象
 
+[fsm](https://github.com/looplab/fsm): 有限状态机库
+
 ---
 
 [fasthttp](https://github.com/valyala/fasthttp): 标准库 net/http 的升级，更快

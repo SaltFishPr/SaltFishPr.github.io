@@ -220,20 +220,20 @@ _斜体_
 ### 基本用法
 
 ```markdown
-![地铁](/img/post-bg-2015.jpg "图片下方描述")
+![mountain](./mountain.jpeg "图片下方描述")
 ```
 
-![地铁](/img/post-bg-2015.jpg "图片下方描述")
+![mountain](./mountain.jpeg "图片下方描述")
 
 ### base64 图片数据
 
 ```markdown
-![地铁][base64str]
+![mountain][base64str]
 
 [base64str]: data:image/jpg;base64,xxxxxxxxxxxxxxx... "图片下方描述"
 ```
 
-![地铁][base64str]
+![mountain][base64str]
 
 [base64str]: data:image/jpg;base64,xxxxxxxxxxxxxxx... "图片下方描述"
 

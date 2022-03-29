@@ -20,7 +20,7 @@ go version go1.18 darwin/arm64
 Context 定义了 4 个方法，它们都是幂等的。
 
 - 取消某个 Context 时，从该 Context 派生的所有 Context 也将被取消。
-- WithCancel、WithDeadline 和 WithTimeout 函数传入父 [Context](#context-接口) 并返回派生出的子 [Context](#context-接口) 和 CancelFunc。
+- WithCancel、WithDeadline 和 WithTimeout 函数传入父 Context 并返回派生出的子 Context 和 CancelFunc。
 - 调用 CancelFunc 会取消子节点和子节点的子节点，删除父节点对子节点的引用，并停止任何关联的计时器。
 - 调用 CancelFunc 失败会泄漏子节点和子节点的子节点，直到父节点被取消或计时器触发。
 - go vet 会工具检查是否在所有控制流路径上使用了 CancelFuncs。
@@ -84,7 +84,7 @@ func (e *emptyCtx) String() string {
 }
 ```
 
-context 包将 [emptyCtx](#emptyctx) 包装成两个常用空 Context，并通过函数导出
+context 包将 emptyCtx 包装成两个常用空 Context，并通过函数导出
 
 ```go
 var (

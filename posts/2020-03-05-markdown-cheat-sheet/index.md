@@ -1,6 +1,8 @@
 # Markdown 常用写法大全
 
 
+<!--more-->
+
 ## 分割线
 
 ```markdown

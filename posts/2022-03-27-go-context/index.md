@@ -1,6 +1,8 @@
 # Go context 介绍与使用
 
 
+<!--more-->
+
 花了两个晚上学习了一下 Go context 包，顺便记录下来。
 
 context 包主要用来在 goroutine 之间传递上下文信息，包括：取消信号、超时时间、截止时间、k-v 等。提供对 goroutine 的并发控制和超时控制。

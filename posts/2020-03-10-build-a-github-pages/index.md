@@ -1,6 +1,8 @@
 # Github Pages 个人博客搭建
 
 
+<!--more-->
+
 应朋友的强烈要求在这里记录下使用 `github pages` + `jekyll` 搭建个人网站的步骤。我自己花了两天梳理了一下 jekyll 模板的目录结构和使用方法，只会些简单的修改但是基本够用了（毕竟不是前端人）。
 
 ## 准备
@@ -52,10 +54,10 @@ debian 系统自带大部分基础包
 
 如果有能力可以自己生成一个新的 jekyll 项目：新建一个空文件夹，在此文件夹中命令行输入`jekyll new site-name`，将这个文件夹的所有文件复制到 clone 下来的仓库中。
 
-也可以在[模板网站](http://jekyllthemes.org/)下载一个修改配置。我的[github page](https://github.com/SaltFishPr/saltfishpr.github.io)使用的是 [Hux](http://huangxuan.me/) 大佬的模板。
+也可以在[模板网站](http://jekyllthemes.org/)下载一个修改配置。我的[github page](https://github.com/saltfishpr/saltfishpr.github.io)使用的是 [Hux](http://huangxuan.me/) 大佬的模板。
 
 这里可以克隆我的模板  
-`git clone https://github.com/SaltFishPr/saltfishpr.github.io.git`  
+`git clone https://github.com/saltfishpr/saltfishpr.github.io.git`  
 在项目文件夹中打开 git bash 输入`bundle install`，等待安装完成。如果安装出现依赖问题，可以在百度中搜索缺少的包看如何安装，都可以找到解决答案。
 
 项目文件的编辑推荐使用 vscode。用 vscode 打开文件夹后，可以看到文件夹的目录结构:

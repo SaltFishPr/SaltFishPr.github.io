@@ -1,6 +1,8 @@
 # Consul
 
 
+<!--more-->
+
 {{< music netease song 1472480890 >}}
 
 ## 服务网格

@@ -101,9 +101,9 @@ func TODO() Context {
 }
 ```
 
-background 通常用在 main 函数中，作为所有 context 的根节点。
+background 通常用在 main 函数中，作为所有 Context 的根节点。
 
-todo 通常使用在不知道传什么 context 的场景，如代码重构，用于占个位置。
+todo 通常使用在不知道传什么 Context 的场景，如代码重构，用于占个位置。
 
 ### cancelCtx
 
@@ -343,7 +343,7 @@ func main() {
 
 WithCancel 和 WithDeadline 返回的 cancel() 会将自身从父节点的子节点中移除
 
-### 带取消的 context
+### 带取消的 Context
 
 ```go
 package main
@@ -394,7 +394,7 @@ type timerCtx struct {
 }
 ```
 
-### 带 deadline 的 context
+### 带 deadline 的 Context
 
 创建时调用 `time.AfterFunc()` 方法在计时器结束时调用 `cancel()` 方法将自己从父 Context 节点中移除并通知子节点结束任务。
 
@@ -423,7 +423,7 @@ func main() {
 }
 ```
 
-### 带 timeout 的 context
+### 带 timeout 的 Context
 
 ```go
 package main
@@ -459,7 +459,7 @@ type valueCtx struct {
 }
 ```
 
-### 带键值对的 context
+### 带键值对的 Context
 
 `context.WithValue()` 创建一个带键值对的 Context，内部 Context 指向父节点。形成一个链表。
 

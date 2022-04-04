@@ -162,8 +162,6 @@ server:
 
 ui:
   enabled: true
-  service:
-    type: "NodePort"
 
 connectInject:
   enabled: true
@@ -179,6 +177,12 @@ prometheus:
 
 ```shell
 helm upgrade consul hashicorp/consul --namespace consul --version "0.39.0" --values ./config.yaml --wait
+```
+
+3. 获取 ACL 令牌
+
+```shell
+kubectl get secrets/consul-bootstrap-acl-token -n consul --template='{{.data.token | base64decode }}'
 ```
 
 ## 部署微服务

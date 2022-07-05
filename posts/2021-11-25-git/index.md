@@ -101,3 +101,32 @@ sudo nscd -i hosts
 git fetch -p origin
 ```
 
+## rebase
+
+将当前分支变基到目标分支
+
+```shell
+git rebase [target] [current]
+```
+
+常在 push 代码前使用，如下将个人分支变基到远端开发分支，本地处理冲突后提交
+
+```shell
+git rebase origin/dev dev_xxx
+```
+
+## cherry pick
+
+- 将某一(几)次提交复制到当前分支
+
+  ```shell
+  git cherry-pick <commit id A> <commit id B>
+  ```
+
+- 将某一段提交复制到当前分支
+
+  ```shell
+  git cherry-pick A..B # 不包含 A
+  git cherry-pick A^..B # 包含 A
+  ```
+

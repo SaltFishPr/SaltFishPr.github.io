@@ -11,19 +11,19 @@
 
 ### 常用包
 
+[testify](https://github.com/stretchr/testify): 测试库，断言、mock
+
 [viper](https://github.com/spf13/viper): 配置读取
 
 [zap](https://github.com/uber-go/zap): 日志输出
-
-[lumberjack](https://github.com/natefinch/lumberjack): 日志滚动记录器
 
 [validator](https://github.com/go-playground/validator): 数据校验
 
 [cast](https://github.com/spf13/cast): 类型转换
 
-[lo](https://github.com/samber/lo): 工具库，切片，映射，元组，集合...
+[resty](https://github.com/go-resty/resty): HTTP/REST 客户端
 
-[carbon](https://github.com/uniplaces/carbon): 时间库的扩展
+[lo](https://github.com/samber/lo): 工具库，切片，映射，元组，集合... 支持范型
 
 [cron](https://github.com/robfig/cron): 定时任务
 
@@ -31,17 +31,11 @@
 
 [wire](https://github.com/google/wire): 依赖注入
 
-[cobra](https://github.com/spf13/cobra): 命令行程序
-
-[resty](https://github.com/go-resty/resty): HTTP/REST 客户端
-
-[testify](https://github.com/stretchr/testify): 测试库，断言、mock
-
-[go-funk](https://github.com/thoas/go-funk): Go 实用工具库（map、find、contains、filter、chunk、reverse，...）
-
-[jsoniter](https://github.com/json-iterator/go): 标准库 encoding/json 的升级，可直接替换，高性能
+[sonic](https://github.com/bytedance/sonic): 字节跳动的 json 序列化/反序列化库
 
 [gjson](https://github.com/tidwall/gjson): 快速从 json 中获取值
+
+[jsoniter](https://github.com/json-iterator/go): 标准库 encoding/json 的升级，可直接替换，高性能
 
 [carbon](https://github.com/golang-module/carbon): 一个轻量级、语义化、对开发者友好的 golang 时间处理库，支持链式调用
 
@@ -71,13 +65,15 @@
 
 [fiber](https://github.com/gofiber/fiber): web 框架
 
-[iris](https://github.com/kataras/iris): HTTP/2 web 框架
+[echo](https://github.com/labstack/echo): web 框架
 
 [cooly](https://github.com/gocolly/colly): 爬虫框架
 
 [watermill](https://github.com/ThreeDotsLabs/watermill): 事件驱动框架
 
 ### 其它
+
+[cobra](https://github.com/spf13/cobra): 命令行程序
 
 [fync](https://github.com/fyne-io/fyne): GUI
 
@@ -92,7 +88,4 @@
 ### 工具
 
 [golines](https://github.com/segmentio/golines): 代码格式化，处理行过长的行
-
-- 安装：`go install github.com/segmentio/golines@latest`
-- 使用：`golines -w .`
 

@@ -7,13 +7,15 @@
 
 编码是数据从一种格式变为另一种格式的过程。通过编码，我们可以把数据以不同的格式保存和转移。
 
-Unicode 把所有语言都统一到一套编码里，这样就不会再有乱码问题了。
+`unicode` 是一个字符集，为每一个字符分配一个十六进制数字 `0x0000` ~ `0xFFFF`。
+
+`utf-8` 是一种编码规则，它将一个 `unicode` 字符以 8 位为一个单位编码。
 
 ## Python3 字符串类型
 
-Unicode --encode("utf-8")-> UTF-8 编码的二进制数据
+unicode --encode("utf-8")-> UTF-8 编码的二进制数据
 
-UTF-8 编码的二进制数据 --decode("utf-8")-> Unicode
+UTF-8 编码的二进制数据 --decode("utf-8")-> unicode
 
 示例 1：
 
@@ -30,6 +32,8 @@ output 1:
 <class 'str'> 中文
 <class 'bytes'> b'\xe4\xb8\xad\xe6\x96\x87'
 ```
+
+即：`中`的 `utf-8` 编码为 `0xe4 0xb8 0xad`
 
 文件中存储的都是 byte 这样一个一个二进制数，所以在将 str 存入文件或从文件读取内容时需要指明编码类型。
 

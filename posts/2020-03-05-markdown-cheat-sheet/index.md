@@ -399,6 +399,16 @@ Water: H<sub>2</sub>O
 不会在浏览器中显示。
 -->
 
+## short code
+
+### person
+
+```markdown
+{{</* person url="https://saltfishpr.github.io/about/" name="硕" nick="saltfishpr" picture="https://github.com/saltfishpr.png" */>}}
+```
+
+{{< person url="https://saltfishpr.github.io/about/" name="硕" nick="saltfishpr" picture="https://github.com/saltfishpr.png" >}}
+
 ## 参考资料
 
 1. https://www.jianshu.com/p/d7d6da4b7c60#fnref1

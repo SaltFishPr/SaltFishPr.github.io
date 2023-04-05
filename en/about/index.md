@@ -1,9 +1,9 @@
 # About
 
 
-👋 Hi, my name's Shuo, hope to become a geek.
+👋 Hi, my name's {{< person url="https://saltfishpr.github.io/about/" name="硕" nick="saltfishpr" picture="https://github.com/saltfishpr.png" >}}, hope to become a geek.
 
-😎 Skill: Go, Flutter, Python
+😎 Skill: Go, Java, Python
 
 🌱 Focus on Go. And I'm interested in game making, data mining, AI, IOT and more new things.
 

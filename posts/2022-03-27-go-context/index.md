@@ -492,6 +492,12 @@ func find(ctx context.Context, k string) {
 
 ## Cheat Sheet
 
+### 请求上下文
+
+在 Request Context 中保存整个请求都要用到的数据如 RequestID, UserID 等
+
+TODO
+
 ## 总结
 
 context 包加上注释不过 600 行，短小精悍，却让人眼前一亮。简单的解决了 goroutine 的控制问题，提供了主动取消的手段。

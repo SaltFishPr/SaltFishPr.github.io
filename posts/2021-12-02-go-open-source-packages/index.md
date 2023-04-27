@@ -15,15 +15,17 @@
 
 [viper](https://github.com/spf13/viper): 配置读取
 
-[zap](https://github.com/uber-go/zap): 日志输出
+[zap](https://github.com/uber-go/zap): 日志组件
 
-[validator](https://github.com/go-playground/validator): 数据校验
+[validator](https://github.com/go-playground/validator): 定义式字段校验
 
 [cast](https://github.com/spf13/cast): 类型转换
 
-[resty](https://github.com/go-resty/resty): HTTP/REST 客户端
+[resty](https://github.com/go-resty/resty): REST 客户端
 
 [lo](https://github.com/samber/lo): 工具库，切片，映射，元组，集合... 支持范型
+
+[uniseg](https://github.com/rivo/uniseg): Go 中的 Unicode 文本分割、换行和字符串宽度计算
 
 [cron](https://github.com/robfig/cron): 定时任务
 
@@ -34,8 +36,6 @@
 [sonic](https://github.com/bytedance/sonic): 字节跳动的 json 序列化/反序列化库
 
 [gjson](https://github.com/tidwall/gjson): 快速从 json 中获取值
-
-[jsoniter](https://github.com/json-iterator/go): 标准库 encoding/json 的升级，可直接替换，高性能
 
 [carbon](https://github.com/golang-module/carbon): 一个轻量级、语义化、对开发者友好的 golang 时间处理库，支持链式调用
 
@@ -59,8 +59,6 @@
 
 ### 框架
 
-[rpcx](https://github.com/smallnest/rpcx): rpc 框架
-
 [gin](https://github.com/gin-gonic/gin): web 框架
 
 [fiber](https://github.com/gofiber/fiber): web 框架
@@ -73,11 +71,13 @@
 
 ### 其它
 
-[cobra](https://github.com/spf13/cobra): 命令行程序
+[cobra](https://github.com/spf13/cobra): 构建命令行程序
 
 [fync](https://github.com/fyne-io/fyne): GUI
 
 [bubbletea](https://github.com/charmbracelet/bubbletea): 终端应用 TUI
+
+[progressbar](https://github.com/schollz/progressbar): 终端进度条
 
 [plot](https://github.com/gonum/plot): 绘图
 

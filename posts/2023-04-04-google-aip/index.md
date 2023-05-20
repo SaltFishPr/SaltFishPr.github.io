@@ -636,6 +636,10 @@ API 有时会遇到资源上的某些字段昂贵或无法可靠返回的情况�
 
 ## **AIP-135** 标准方法：删除（Standard methods: Delete） {#AIP-135}
 
+{{< admonition info >}}
+翻译时间：2023-04-06
+{{< /admonition >}}
+
 在 REST API 中，通常对资源的 URI（例如 `/v1/publisher/{publisher}/books/{book}`）发出 `DELETE` 请求以删除该资源。
 
 面向资源的设计（[AIP-121](#AIP-121)）通过 `Delete` 方法来尊重这种模式。这些 RPC 接受表示该资源的 URI，并且通常返回一个空响应。

@@ -149,7 +149,7 @@ func value(c Context, key any) any {
 			c = ctx.Context // 向上寻找
 		case *cancelCtx:
 			if key == &cancelCtxKey {
-				return c // 如果key 为 &cancelCtxKey 就返回该 cancelCtx 自身
+				return c // 如果 key 为 &cancelCtxKey 就返回该 cancelCtx 自身
 			}
 			c = ctx.Context
 		case *timerCtx:
@@ -297,7 +297,7 @@ func parentCancelCtx(parent Context) (*cancelCtx, bool) {
 	if done == closedchan || done == nil {
 		return nil, false
 	}
-	// 向上递归寻找最近的 cancelCtx 。由上面的 cancelCtx.Value() 可知，当传入参数为 &cancelCtxKey 时，返回 c 自身。否则向上寻找。
+	// 向上递归寻找最近的 cancelCtx。由上面的 cancelCtx.Value() 可知，当传入参数为 &cancelCtxKey 时，返回 c 自身。否则向上寻找。
 	p, ok := parent.Value(&cancelCtxKey).(*cancelCtx)
 	if !ok {
 		return nil, false
@@ -357,7 +357,7 @@ import (
 
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel() // main函数完成后主动关闭创建的goroutine
+	defer cancel() // main 函数完成后主动关闭创建的 goroutine
 
 	for n := range gen(ctx) {
 		fmt.Println(n)
@@ -374,7 +374,7 @@ func gen(ctx context.Context) <-chan int {
 		for {
 			select {
 			case <-ctx.Done():
-				return // 返回防止goroutine泄露
+				return // 返回防止 goroutine 泄露
 			case dst <- n:
 				n++
 			}

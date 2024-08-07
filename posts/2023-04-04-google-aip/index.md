@@ -160,7 +160,7 @@ message ListBooksRequest {
   - <font color="#f57c00">应</font>根据需要对字段进行[注释](#AIP-203)。
   - 字段<font color="#c5221f">必须</font>标识所列资源的[资源类型](#AIP-123)。
 - <font color="#c5221f">必须</font>在所有列表请求消息上指定支持分页的 `page_size` 和 `page_token` 字段。有关更多信息，请参阅 [AIP-158](#AIP-158)。
-  - `page_size` 字段上方的注释<font color="#f57c00">应</font>记录允许的最大值，以及省略（或设置为 `0`）字段时的默认值。如果首选(_If preferred_)，API <font color="#188038">可以</font>声明服务器将使用合理的默认值。此默认值<font color="#188038">可</font>会随着时间的推移而更改。
+  - `page_size` 字段上方的注释<font color="#f57c00">应</font>记录允许的最大值，以及省略（或设置为 `0`）字段时的默认值。如果首选 (_If preferred_)，API <font color="#188038">可以</font>声明服务器将使用合理的默认值。此默认值<font color="#188038">可</font>会随着时间的推移而更改。
   - 如果用户提供的值大于允许的最大值，则 API <font color="#f57c00">应</font>将该值强制为允许的最大。
   - 如果用户提供了负值或其他无效值，则 API <font color="#c5221f">必须</font>返回 `INVALID_ARGUMENT` 错误。
 - `page_token` 字段<font color="#c5221f">必须</font>包含在所有列表请求消息中。

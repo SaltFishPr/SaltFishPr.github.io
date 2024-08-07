@@ -60,7 +60,7 @@ debian 系统自带大部分基础包
 `git clone https://github.com/saltfishpr/saltfishpr.github.io.git`  
 在项目文件夹中打开 git bash 输入`bundle install`，等待安装完成。如果安装出现依赖问题，可以在百度中搜索缺少的包看如何安装，都可以找到解决答案。
 
-项目文件的编辑推荐使用 vscode。用 vscode 打开文件夹后，可以看到文件夹的目录结构:
+项目文件的编辑推荐使用 vscode。用 vscode 打开文件夹后，可以看到文件夹的目录结构：
 
     ├── 404.html
     ├── about.html

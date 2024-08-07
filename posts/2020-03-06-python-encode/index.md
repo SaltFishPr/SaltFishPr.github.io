@@ -39,7 +39,7 @@ output 1:
 
 ## 经验总结
 
-> 写 python 程序的时候，把编码和解码操作放在界面的最外围来做，程序的核心部分使用 Unicode 字符类型(Python3 中的 str)。
+> 写 python 程序的时候，把编码和解码操作放在界面的最外围来做，程序的核心部分使用 Unicode 字符类型 (Python3 中的 str)。
 >
 > <p align="right">——Effective+Python</p>
 

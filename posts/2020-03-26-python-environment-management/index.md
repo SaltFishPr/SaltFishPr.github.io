@@ -69,7 +69,7 @@ pip install <package-name> --no-cache-dir
 
 ## 导入导出 python 环境
 
-今天在学习数据挖掘的时候，nolearn 和 lasagne 两个库的时候给我的 jypyterlab 环境搞崩了，只好 remove --all 重新配起，真后悔没有先搞个环境备份( ´•︵•` )
+今天在学习数据挖掘的时候，nolearn 和 lasagne 两个库的时候给我的 jypyterlab 环境搞崩了，只好 remove --all 重新配起，真后悔没有先搞个环境备份 ( ´•︵•` )
 
 ### conda
 

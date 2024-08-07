@@ -27,7 +27,7 @@ git config --list
 ## 设置保存密码
 
 ```shell
-# 记住密码（默认15分钟）
+# 记住密码（默认 15 分钟）
 git config --global credential.helper cache
 
 # 自己设置时间
@@ -117,7 +117,7 @@ git rebase origin/dev dev_xxx
 
 ## cherry pick
 
-- 将某一(几)次提交复制到当前分支
+- 将某一 (几) 次提交复制到当前分支
 
   ```shell
   git cherry-pick <commit id A> <commit id B>

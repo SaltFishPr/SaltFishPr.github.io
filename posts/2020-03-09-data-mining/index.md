@@ -38,8 +38,8 @@ if __name__ == '__main__':
     n_samples, n_features = X.shape  # 样本数，特征数
     features = ["bread", "milk", "cheese", "apples", "bananas"]  # 商品名列表
 
-    # 如果xxx，那么xxx 就是一条规则。规则由前提条件和结论两部分组成
-    # 这里注意'如果买A则他们会买B'和'如果买B则他们会买A'不是一个规则，在下面的循环中体现出来
+    # 如果 xxx，那么 xxx 就是一条规则。规则由前提条件和结论两部分组成
+    # 这里注意'如果买 A 则他们会买 B'和'如果买 B 则他们会买 A'不是一个规则，在下面的循环中体现出来
     valid_rules = defaultdict(int)  # 规则应验
     invalid_rules = defaultdict(int)  # 规则无效
     num_occurences = defaultdict(int)  # 商品购买数量字典
@@ -75,7 +75,7 @@ if __name__ == '__main__':
         print(" - Support: {0}".format(support[(premise, conclusion)]))
         print("")
 
-    # 得到支持度最高的规则，items()返回字典所有元素的列表，itemgetter(1)表示用支持度的值作为键，进行降序排列
+    # 得到支持度最高的规则，items() 返回字典所有元素的列表，itemgetter(1) 表示用支持度的值作为键，进行降序排列
     sorted_support = sorted(support.items(), key=itemgetter(1), reverse=True)
     for i in range(5):
         print("Rule #{0}".format(i + 1))
@@ -119,14 +119,14 @@ Output：
 
 ### One Rule 算法
 
-`OneR`(One Rule)算法根据已有的数据中，具有相同特征值的个体最可能属于哪个类别进行分类。One Rule 就是从四个特征中选择分类效果最好的哪个作为分类依据。
+`OneR`(One Rule) 算法根据已有的数据中，具有相同特征值的个体最可能属于哪个类别进行分类。One Rule 就是从四个特征中选择分类效果最好的哪个作为分类依据。
 
-> 假如数据集的某一个特征可以取 0 或 1 两个值。数据集共有三个类别。特征值为 0 的情况下，A 类有 20 个这样的个体，B 类有 60 个，C 类也有 20 个。那么特征值为 0 的个体最可能属于 B 类,当然还有 40 个个体确实是特征值为 0，但是它们不属于 B 类。将特征值为 0 的个体分到 B 类的错误率就是 40%，因为有 40 个这样的个体分别属于 A 类和 C 类。特征值为 1 时，计算方法类似，不再赘述；其他各特征值最可能属于的类别及错误率的计算方法也一样。
+> 假如数据集的某一个特征可以取 0 或 1 两个值。数据集共有三个类别。特征值为 0 的情况下，A 类有 20 个这样的个体，B 类有 60 个，C 类也有 20 个。那么特征值为 0 的个体最可能属于 B 类，当然还有 40 个个体确实是特征值为 0，但是它们不属于 B 类。将特征值为 0 的个体分到 B 类的错误率就是 40%，因为有 40 个这样的个体分别属于 A 类和 C 类。特征值为 1 时，计算方法类似，不再赘述；其他各特征值最可能属于的类别及错误率的计算方法也一样。
 
 ```python
 # -*- coding: utf-8 -*-
 import numpy as np
-from sklearn.datasets import load_iris  # Iris植物分类数据集
+from sklearn.datasets import load_iris  # Iris 植物分类数据集
 from collections import defaultdict  # 初始化数据字典
 from operator import itemgetter  # 得到一个列表的制定元素
 from sklearn.model_selection import train_test_split  # 将一个数据集且分为训练集和测试集
@@ -161,32 +161,32 @@ def train(X, y_true, feature):
     # 检查是否为有效数字
     n_samples, n_features = X.shape
     assert 0 <= feature < n_features
-    # X[:, feature]为numpy矩阵的索引用法，第一维：所有数组，第二维：feature，set去重得到value有几个取值
-    # 这个feature特征值在每个数据中有多少个取值
+    # X[:, feature] 为 numpy 矩阵的索引用法，第一维：所有数组，第二维：feature，set 去重得到 value 有几个取值
+    # 这个 feature 特征值在每个数据中有多少个取值
     values = set(X[:, feature])
     # Stores the predictors array that is returned
     predictors = dict()
     errors = []
-    # 对每个特征值的每个取值调用train_feature_value函数获得该取值出现最多的类和错误率
+    # 对每个特征值的每个取值调用 train_feature_value 函数获得该取值出现最多的类和错误率
     for current_value in values:
         most_frequent_class, error = train_feature_value(
             X, y_true, feature, current_value)
         predictors[current_value] = most_frequent_class  # 该取值出现最多的类
         errors.append(error)  # 存储错误率
     total_error = sum(errors)
-    # 返回预测方案（即feature的取值分别对应哪个类别）和总错误率
+    # 返回预测方案（即 feature 的取值分别对应哪个类别）和总错误率
     return predictors, total_error
 
 
 def train_feature_value(X, y_true, feature, value):
     class_counts = defaultdict(int)
     # Iterate through each sample and count the frequency of each class/value pair
-    # 第feature个特征的值为value的时候，在每个种类中出现的次数，这里的植物有三个种类
-    # 因此最终class_counts有三个键值对
+    # 第 feature 个特征的值为 value 的时候，在每个种类中出现的次数，这里的植物有三个种类
+    # 因此最终 class_counts 有三个键值对
     for sample, y in zip(X, y_true):
         if sample[feature] == value:
             class_counts[y] += 1
-    # 对class_count以value由大到小排列
+    # 对 class_count 以 value 由大到小排列
     sorted_class_counts = sorted(
         class_counts.items(),
         key=itemgetter(1),
@@ -194,13 +194,13 @@ def train_feature_value(X, y_true, feature, value):
     most_frequent_class = sorted_class_counts[0][0]  # 出现最多次的类
     n_samples = X.shape[1]
     error = sum([class_count for class_value, class_count in class_counts.items(
-    ) if class_value != most_frequent_class])  # error就是除去上面那个类的其它value的和
+    ) if class_value != most_frequent_class])  # error 就是除去上面那个类的其它 value 的和
     return most_frequent_class, error  # 返回出现次数最多的类和错误率
 
 
 def predict(X_test, model):
-    variable = model['variable']  # 使用哪个feature作为OneRule进行预测
-    predictor = model['predictor']  # 一个字典，保存着feature取值对应哪一类
+    variable = model['variable']  # 使用哪个 feature 作为 OneRule 进行预测
+    predictor = model['predictor']  # 一个字典，保存着 feature 取值对应哪一类
     y_predicted = np.array([predictor[int(sample[variable])]
                             for sample in X_test])
     return y_predicted  # 返回预测结果
@@ -224,7 +224,7 @@ if __name__ == '__main__':
     print("There are {} training samples".format(y_train.shape))  # 训练集数量
     print("There are {} testing samples".format(y_test.shape))  # 测试集数量
 
-    # 对每个特征返回预测器和错误率[0：{0: x, 1: x}, sum_error， ...]
+    # 对每个特征返回预测器和错误率 [0：{0: x, 1: x}, sum_error， ...]
     all_predictors = {
         variable: train(
             X_train,
@@ -234,7 +234,7 @@ if __name__ == '__main__':
 
     errors = {variable: error for variable,
               (mapping, error) in all_predictors.items()}  # 把每个预测器的值提取出来
-    # 找出最好（错误最少）的那个feature构成的预测器
+    # 找出最好（错误最少）的那个 feature 构成的预测器
     best_variable, best_error = sorted(errors.items(), key=itemgetter(1))[0]
     print(
         "The best model is based on variable {0} and has error {1:.2f}%".format(
@@ -267,9 +267,9 @@ Output：
 
 主要学习数据挖掘通用框架的搭建方法
 
-- 估计器(Estimator)：用于分类、聚类和回归分析
-- 转换器(Transformer)：用于数据预处理和数据转换
-- 流水线(Pipline)：组合数据挖掘流程，便于再次使用
+- 估计器 (Estimator)：用于分类、聚类和回归分析
+- 转换器 (Transformer)：用于数据预处理和数据转换
+- 流水线 (Pipline)：组合数据挖掘流程，便于再次使用
 
 ### scikit-learn 估计器
 
@@ -286,10 +286,10 @@ Output：
 **距离度量**
 
 - 欧氏距离：即真实距离
-- 曼哈顿距离：两个特征在标准坐标系中绝对轴距之和(x1,y1),(x2,y2)即 abs(x1-x2)+abs(y1-y2)
+- 曼哈顿距离：两个特征在标准坐标系中绝对轴距之和 (x1,y1),(x2,y2) 即 abs(x1-x2)+abs(y1-y2)
 - 余弦距离：指的是特征向量夹角的余弦值，更适合解决异常值和数据稀疏问题。
 
-电离层(Ionosphere)数据集分析
+电离层 (Ionosphere) 数据集分析
 
 Input:
 
@@ -298,26 +298,26 @@ Input:
 import numpy as np
 import csv
 from matplotlib import pyplot as plt
-from sklearn.neighbors import KNeighborsClassifier  # 导入K近邻分类器
+from sklearn.neighbors import KNeighborsClassifier  # 导入 K 近邻分类器
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score  # 导入交叉检验的
-# 把每个特征值的值域规范化到0，1之间，最小值用0代替，最大值用1代替
+# 把每个特征值的值域规范化到 0，1 之间，最小值用 0 代替，最大值用 1 代替
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.pipeline import Pipeline  # 流水线
 
 
 if __name__ == '__main__':
-    # 数据集大小已知有351行，每行35个值前34个为天线采集的数据，最后一个 g/b 表示数据的好坏
+    # 数据集大小已知有 351 行，每行 35 个值前 34 个为天线采集的数据，最后一个 g/b 表示数据的好坏
     X = np.zeros((351, 34), dtype='float')
     y = np.zeros((351,), dtype='bool')
 
     # 打开根目录的数据集文件
     with open("ionosphere.data", 'r', encoding='utf-8') as input_file:
-        # 创建csv阅读器对象
+        # 创建 csv 阅读器对象
         reader = csv.reader(input_file)
         # 使用枚举函数为每行数据创建索引
         for i, row in enumerate(reader):
-            # 获取行数据的前34个值，并将其转化为浮点型，保存在X中
+            # 获取行数据的前 34 个值，并将其转化为浮点型，保存在 X 中
             data = [float(datum) for datum in row[:-1]]
             # Set the appropriate row in our dataset
             X[i] = data  # 数据集
@@ -346,7 +346,7 @@ Output:
 Input:
 
 ```python
-    # 初始化一个K近邻分类器实例，该算法默认选择5个近邻作为分类依据
+    # 初始化一个 K 近邻分类器实例，该算法默认选择 5 个近邻作为分类依据
     estimator = KNeighborsClassifier()
     # 用训练数据进行训练
     estimator.fit(X_train, y_train)
@@ -383,7 +383,7 @@ Input:
         avg_scores.append(np.mean(scores))
         all_scores.append(scores)
 
-    # 作出n_neighbors不同取值和分类正确率之间的关系的折线图
+    # 作出 n_neighbors 不同取值和分类正确率之间的关系的折线图
     plt.figure(figsize=(32, 20))
     plt.plot(parameter_values, avg_scores, '-o', linewidth=5, markersize=24)
     plt.show()
@@ -465,7 +465,7 @@ Input:
 
 ```python
     # 创建流水线
-    # 流水线的每一步都用('名称',步骤)的元组表示
+    # 流水线的每一步都用 ('名称',步骤) 的元组表示
     scaling_pipeline = Pipeline([('scale', MinMaxScaler()),  # 规范特征取值
                                  ('predict', KNeighborsClassifier())])  # 预测
 
@@ -495,7 +495,7 @@ pandas(Python Data Analysis 的简写)
 
 这里使用 `pandas` 导入.csv 文件，生成一个 `dataframe` （数据框）的类。导入使用 `read_csv()` 函数，常用参数如下：
 
-- `sep=','` 以,为数据分隔符
+- `sep=','` 以，为数据分隔符
 - `parse_dates='col_name'` 将某个特征值读取为日期格式
 - `error_bad_lines=False` 当某行数据有问题时，跳过而不报错
 - `skiprows=[<param>]` 跳过列表中所包括的行，参数可以是 0,1,...的数字序列，也可以用切片表达式`[0:]`
@@ -533,7 +533,7 @@ if __name__ == '__main__':
         "Score Type",
         "OT?",
         "Notes"]
-    # results.ix[]已被弃用
+    # results.ix[] 已被弃用
     print(results.loc[:5])  # 查看数据集前五行
 ```
 
@@ -564,7 +564,7 @@ Output:
 
 - `min_samples_split`: 指定了创建一个新节点至少需要多少个个体
 - `min_samples_leaf`: 指定为了保留节点，每个节点至少应该包含的个体数量
-- 创建决策的标准: 基尼不纯度/信息增益
+- 创建决策的标准：基尼不纯度/信息增益
 
 Input:
 
@@ -572,7 +572,7 @@ Input:
     # 提取新特征，值为这场中主场队伍是否胜利
     results["HomeWin"] = results["VisitorPts"] < results["HomePts"]
     y_true = results["HomeWin"].values  # 胜负情况
-    # 创建两个新feature，初始值都设为0，保存这场比赛的两个队伍上场比赛的情况
+    # 创建两个新 feature，初始值都设为 0，保存这场比赛的两个队伍上场比赛的情况
     results["HomeLastWin"] = False
     results["VisitorLastWin"] = False
     won_last = defaultdict(int)
@@ -580,11 +580,11 @@ Input:
     for index, row in results.iterrows():
         home_team = row["Home Team"]
         visitor_team = row["Visitor Team"]
-        # 这场比赛之前两个球队上次是否获胜保存在result中
+        # 这场比赛之前两个球队上次是否获胜保存在 result 中
         row["HomeLastWin"] = won_last[home_team]
         row["VisitorLastWin"] = won_last[visitor_team]
         results.iloc[index] = row
-        # 这场比赛的结果更新won_last中的情况
+        # 这场比赛的结果更新 won_last 中的情况
         won_last[home_team] = row["HomeWin"]
         won_last[visitor_team] = not row["HomeWin"]
 
@@ -653,8 +653,8 @@ Input:
         visitor_team = row["Visitor Team"]
         # 按照英文字母表排序，不去考虑哪个是主场球队
         teams = tuple(sorted([home_team, visitor_team]))
-        # 找到两支球队上次比赛的赢家，更新框中的数据，初始为0
-        # 这里的HomeTeamWonLast跟主场客场没有什么关系，也可以叫WhichTeamWonLast，这里为了和源码尽量保持一致使用了源码
+        # 找到两支球队上次比赛的赢家，更新框中的数据，初始为 0
+        # 这里的 HomeTeamWonLast 跟主场客场没有什么关系，也可以叫 WhichTeamWonLast，这里为了和源码尽量保持一致使用了源码
         row["HomeTeamWonLast"] = 1 if last_match_winner[teams] == row["Home Team"] else 0
         results.iloc[index] = row
         winner = row["Home Team"] if row["HomeWin"] else row["Visitor Team"]
@@ -679,7 +679,7 @@ Output:
 
 `OneHotEncoder()` 将整数转化成消除差异的二进制数字，即将 1,2,3 转换成 001,010,100
 
-stacking （向量组合），这里 `np.vstack()` 将两个队伍名向量纵向组合成一个矩阵`.T`表示将矩阵转置
+stacking（向量组合），这里 `np.vstack()` 将两个队伍名向量纵向组合成一个矩阵`.T`表示将矩阵转置
 
 决策树存在的问题：
 
@@ -688,7 +688,7 @@ stacking （向量组合），这里 `np.vstack()` 将两个队伍名向量纵�
 
 `RandomForestClassifier()` 用来调用随机森林算法，因为它调用了 DecisionTreeClassifier 的大量实例，所以他们的参数有很多是一致的。其引入的一部分新参数如下：
 
-- `n_estimators` 用来指定创建决策树的数量，值越高，耗时越长，准确率(可能)越高
+- `n_estimators` 用来指定创建决策树的数量，值越高，耗时越长，准确率 (可能) 越高
 - `oob_score` 如果设置为真，测试时将不适用训练模型时用过的数据
 - `n_jobs` 采用并行算法训练时所用到的内核数量，设置为 -1 则启用全部内核
 
@@ -784,7 +784,7 @@ Output:
 
 拿到了数据，如何创建新的特征，如何在数据中发现其关键点，如何找出数据内部的联系，也是一个需要斟酌的方面
 
-创建下述特征并看一下效果:
+创建下述特征并看一下效果：
 
 - 球队上次打比赛距今有多长时间？
 - 两支球队过去五场比赛结果如何？
@@ -841,10 +841,10 @@ if __name__ == '__main__':
     # 手动为每个球队初始化
     for team in set(dataset["Home Team"]):
         last_played_date[team] = datetime.date(year=2013, month=10, day=25)
-    # 两支球队过去的比赛结果，每个球队的数据是[True,False,,,]的序列
+    # 两支球队过去的比赛结果，每个球队的数据是 [True,False,,,] 的序列
     last_five_games = defaultdict(list)
 
-    # 存放Home和Visitor前五次比赛的获胜次数
+    # 存放 Home 和 Visitor 前五次比赛的获胜次数
     dataset["HWinTimes"] = 0
     dataset["VWinTimes"] = 0
     # 存放距离上次比赛的时间间隔，用天计数
@@ -943,9 +943,9 @@ Output:
 
 Apriori 算法是经典的亲和性分析算法，它只从数据集中频繁出现的商品中选取出共同出现的商品组成频繁项集，避免了复杂度呈指数级增长的问题。一旦找到频繁项集，生成关联规则就变得容易了。
 
-原理：确保了规则在数据集中有足够的支持度。Apriori 算法一个重要参数就是最小支持度，如果想要生成(A,B,C)的频繁项集，则其子集必须都要满足最小支持度标准。
+原理：确保了规则在数据集中有足够的支持度。Apriori 算法一个重要参数就是最小支持度，如果想要生成 (A,B,C) 的频繁项集，则其子集必须都要满足最小支持度标准。
 
-其它亲和性算法还有 Eclat 和频繁项集挖掘算法(FP-growth)。这些算法比起基础的 Apriori 算法有很多改进，性能也有进一步提升。
+其它亲和性算法还有 Eclat 和频繁项集挖掘算法 (FP-growth)。这些算法比起基础的 Apriori 算法有很多改进，性能也有进一步提升。
 
 第一阶段，为 Apriori 算法指定一个项集要成为频繁项集所需的最小支持度。第二阶段，根据置信度取关联规则，设定最小置信度，返回大于此值的规则。
 
@@ -973,14 +973,14 @@ if __name__ == '__main__':
             "MovieID",
             "Rating",
             "Datetime"])
-    # 转化时间戳为datetime
+    # 转化时间戳为 datetime
     all_ratings["Datetime"] = pd.to_datetime(all_ratings["Datetime"], unit='s')
-    # 输出用户-电影-评分稀疏矩阵
+    # 输出用户 - 电影 - 评分稀疏矩阵
     print(all_ratings[:5])
     print()
-    # 创建Favorite特征，将评分属性二值化为是否喜欢
+    # 创建 Favorite 特征，将评分属性二值化为是否喜欢
     all_ratings["Favorable"] = all_ratings["Rating"] > 3
-    # 取用户ID为前200的用户的打分数据
+    # 取用户 ID 为前 200 的用户的打分数据
     ratings = all_ratings[all_ratings["UserID"].isin(range(200))]
     favorable_ratings = ratings[ratings["Favorable"]]
     # 创建用户喜欢哪些电影的字典
@@ -1035,8 +1035,8 @@ Input:
          row["Favorable"]) for movie_id,
         row in num_favorable_by_movie.iterrows() if row["Favorable"] > min_support)
 
-    # 会有重复，导致喜欢电影1,50的人分别为50,100但是 {1,50} 的集合有100个
-    # 两个原因，第一在current_superset时项集有时候会突然调换位置
+    # 会有重复，导致喜欢电影 1,50 的人分别为 50,100 但是 {1,50} 的集合有 100 个
+    # 两个原因，第一在 current_superset 时项集有时候会突然调换位置
     def find_frequent_itemsets(
             favorable_reviews_by_users,
             k_1_itemsets,
@@ -1046,14 +1046,14 @@ Input:
         for user, reviews in favorable_reviews_by_users.items():
             # 遍历每个项集
             for itemset in k_1_itemsets:
-                if itemset.issubset(reviews):  # 判断itemset是否是用户喜欢的电影的子集
+                if itemset.issubset(reviews):  # 判断 itemset 是否是用户喜欢的电影的子集
                     # 对用户喜欢的电影中除了这个子集的电影进行遍历
                     for other_reviewed_movie in reviews - itemset:
                         # 将该电影并入项集中
                         current_superset = itemset | frozenset(
                             {other_reviewed_movie})
-                        counts[current_superset] += 1  # 这个项集的支持度+1
-        # 返回元素数目+1的项集和数量
+                        counts[current_superset] += 1  # 这个项集的支持度 +1
+        # 返回元素数目 +1 的项集和数量
         res = dict([(itemset, frequency) for itemset,
                                              frequency in counts.items() if frequency >= min_support])
         return res
@@ -1352,7 +1352,7 @@ if __name__ == '__main__':
     print(adult["Education-Num"].median())
     # 输出工作的种类
     print(adult["Work-Class"].unique())
-    # 将工作时长二值化为是否超过40h
+    # 将工作时长二值化为是否超过 40h
     adult["LongHours"] = adult["Hours-per-week"] > 40
 ```
 
@@ -1393,7 +1393,7 @@ Input:
     print("----------------")
     vt = VarianceThreshold()
     Xt = vt.fit_transform(X)
-    # 第二列消失了，因为第二列都是1，方差为0，不包括具有区别意义的信息
+    # 第二列消失了，因为第二列都是 1，方差为 0，不包括具有区别意义的信息
     print(Xt)
     print("----------------")
     print(vt.variances_)
@@ -1438,7 +1438,7 @@ scikit-learn 提供了几个用于选择单变量特征的转换器。
 
 这两个转换器都提供计算特征表现的一系列方法。
 
-单个特征和某一类别之间的相关性计算方法有卡方检验(x²)、互信息和信息熵等。
+单个特征和某一类别之间的相关性计算方法有卡方检验 (x²)、互信息和信息熵等。
 
 Input:
 
@@ -1450,15 +1450,15 @@ Input:
                "Capital-loss",
                "Hours-per-week"]]
     y = (adult["Earnings-Raw"] == ' >50K').values
-    # 使用SelectKBest转换器，用卡方打分
+    # 使用 SelectKBest 转换器，用卡方打分
     transformer = SelectKBest(score_func=chi2, k=3)
-    # 调用fit_transform方法对相同的数据集进行预处理和转换
+    # 调用 fit_transform 方法对相同的数据集进行预处理和转换
     Xt_chi2 = transformer.fit_transform(X, y)
     # 输出每个特征的得分
     print(transformer.scores_)
     print("----------------")
 
-    # 用皮尔逊相关系数计算相关性,创建包装函数
+    # 用皮尔逊相关系数计算相关性，创建包装函数
     def mutivariate_pearsonr(X, y):
         scores, pvalues = [], []
         for column in range(X.shape[1]):
@@ -1475,7 +1475,7 @@ Input:
     clf = DecisionTreeClassifier(random_state=14)
     scores_chi2 = cross_val_score(clf, Xt_chi2, y, scoring='accuracy')
     scores_pearson = cross_val_score(clf, Xt_pearson, y, scoring='accuracy')
-    print('卡方: {}'.format(np.mean(scores_chi2)))
+    print('卡方：{}'.format(np.mean(scores_chi2)))
     print("----------------")
     print("pearson:  {}".format(np.mean(scores_pearson)))
 ```
@@ -1526,7 +1526,7 @@ if __name__ == '__main__':
     converters[1558] = lambda x: 1 if x.strip() == "ad." else 0
     # 使用转换器读取数据集
     temp = pd.read_csv("ad.data", header=None, converters=converters)
-    # 删除所有含有nan的行,axis=0是数据索引(index)，axis=1是列标签(column)
+    # 删除所有含有 nan 的行，axis=0 是数据索引 (index)，axis=1 是列标签 (column)
     ads = temp.dropna(axis=0, how='any')
     print(ads[10:15])
 ```
@@ -1543,7 +1543,7 @@ Output:
 
 ---
 
-主成分分析(PCA)
+主成分分析 (PCA)
 
 目的是找到能用较少信息描述数据集的特征组合。主成分的方差跟整体方差没有多大差距。经过分析主成分，第一个特征的方差对数据集方差的贡献率为 85.4%，第二个为 14.5%，后面越来越少。
 
@@ -1617,18 +1617,18 @@ from numpy.testing import assert_array_equal
 
 class MeanDiscrete(TransformerMixin):
     def fit(self, X):
-        # 尝试对X进行转换，数据转换成float类型
+        # 尝试对 X 进行转换，数据转换成 float 类型
         X = as_float_array(X)
         # 计算数据集的均值
         self.mean = X.mean(axis=0)
-        # 返回它本身，进行链式调用transformer.fit(X).transform(X)
+        # 返回它本身，进行链式调用 transformer.fit(X).transform(X)
         return self
 
     def transform(self, X):
         X = as_float_array(X)
         # 检查输入是否合法
         assert X.shape[1] == self.mean.shape[0]
-        # 返回X中大于均值的数据
+        # 返回 X 中大于均值的数据
         return X > self.mean
 
 
@@ -1638,7 +1638,7 @@ def test_meandiscrete():
     mean_discrete.fit(X_test)
     # 与正确的计算结果进行比较，检查内部参数是否正确设置
     assert_array_equal(mean_discrete.mean, np.array([13.5, 15.5]))
-    # 转换后的X
+    # 转换后的 X
     X_transfromed = mean_discrete.transform(X_test)
     # 验证数据
     X_expected = np.array([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]])
@@ -1671,7 +1671,7 @@ Output:
 - 使用归一化后的词频，每篇文章中所有词语的词频之和为 1
 - 直接使用二值特征来表示，单词在文档中出现值为 1，不出现值为 0
 
-还有一种更通用的规范化方法叫做*词频-逆文档频率法*，该加权方法用词频来代替词的出现次数，然后再用词频除以包含该词的文档的数量。
+还有一种更通用的规范化方法叫做*词频 - 逆文档频率法*，该加权方法用词频来代替词的出现次数，然后再用词频除以包含该词的文档的数量。
 
 Input:
 
@@ -1690,7 +1690,7 @@ One Ring to bring them all and in the darkness bind them.
 In the Land of Mordor where the Shadows lie""".lower()
     words = s.split()
     c = Counter(words)
-    # 输出出现次数最多的前5个词
+    # 输出出现次数最多的前 5 个词
     print(c.most_common(5))
 ```
 
@@ -1708,7 +1708,7 @@ N 元语法是指由几个连续的词组成的子序列。
 
 `P(C)` 为某一类别的概率，可以从训练集中计算得到（方法跟上文检测垃圾邮件例子所用到的一致）。统计训练集所有文档从属于给定类别的百分比。
 
-`P(D)` 为某一文档的概率，它牵扯到各种特征，计算起来很困难，但是在计算文档属于哪个类别时，对于所有类别来说，P(D)相同，因此根本就不用计算它。稍后我们来看下怎么处理。
+`P(D)` 为某一文档的概率，它牵扯到各种特征，计算起来很困难，但是在计算文档属于哪个类别时，对于所有类别来说，P(D) 相同，因此根本就不用计算它。稍后我们来看下怎么处理。
 
 `P(D|C)` 为文档 D 属于 C 类的概率。由于 D 包含多个特征，计算起来可能很困难，这时朴素贝叶斯算法就派上用场了。我们朴素地假定各个特征之间是相互独立的，分别计算每个特征（D1、D2、D3 等）在给定类别出现的概率，再求它们的积。
 
@@ -1716,12 +1716,12 @@ N 元语法是指由几个连续的词组成的子序列。
 
 举例说明下计算过程，假如数据集中有以下一条用二值特征表示的数据：[1, 0, 0, 1]
 
-训练集中有 75% 的数据属于类别 0， 25% 属于类别 1，且每个特征属于每个类别的似然度如下。
+训练集中有 75% 的数据属于类别 0，25% 属于类别 1，且每个特征属于每个类别的似然度如下。
 
 - 类别 0：[0.3, 0.4, 0.4, 0.7]
 - 类别 1：[0.7, 0.3, 0.4, 0.9]
 
-拿类别 0 中特征 1 的似然度举例子，上面这两行数据可以这样理解：类别 0 中有 30%的数据，特征 1 的值为 1。
+拿类别 0 中特征 1 的似然度举例子，上面这两行数据可以这样理解：类别 0 中有 30% 的数据，特征 1 的值为 1。
 
 我们来计算一下这条数据属于类别 0 的概率。类别为 0 时，P(C=0) = 0.75。
 
@@ -1798,7 +1798,7 @@ if __name__ == '__main__':
 
     # 组装流水线
     pipline = Pipeline([('bag-of-words', NLTKBOW()), ('vectorizer', DictVectorizer()), ('naive-bayes', BernoulliNB())])
-    # 用F1值来评估
+    # 用 F1 值来评估
     scores = cross_val_score(pipline, tweets, labels, scoring='f1')
     print("Score: {:.3f}".format(np.mean(scores)))
 
@@ -1935,7 +1935,7 @@ networkx 的 `connected_component_subgraphs()` 函数在 2.1 版本中被移除�
 Input:
 
 ```python
-    # 生成新图，指定最低阈值为0.1
+    # 生成新图，指定最低阈值为 0.1
     G = create_graph(friends, 0.1)
     sub_graphs = nx.connected_components(G)
     for i, sub_graphs in enumerate(sub_graphs):
@@ -1952,7 +1952,7 @@ Input:
     n_subgraphs = nx.number_connected_components(G)
     fig = plt.figure(figsize=(20, (n_subgraphs*3)))
     for i, sub_graph in enumerate(sub_graphs):
-        # sub_graph是一个连通分支顶点的集合
+        # sub_graph 是一个连通分支顶点的集合
         ax = fig.add_subplot(int(n_subgraphs / 3) + 1, 3, i + 1)
         # 将坐标轴标签关掉
         ax.get_xaxis().set_visible(False)
@@ -1979,7 +1979,7 @@ Input:
         G = create_graph(friends, threshold=threshold)\
         # 图是否至少有两个顶点
         if len(G.nodes()) < 2:
-            # 返回-99表示问题无效
+            # 返回 -99 表示问题无效
             return -99
         # 抽取连通分支
         sub_graphs = nx.connected_components(G)
@@ -1995,7 +1995,7 @@ Input:
         X = nx.to_scipy_sparse_matrix(G).todense()
         # 这里要将相似度转换为距离，所以用最大相似度减去现有相似度，把相似度转化为距离
         X = 1 - X
-        # 这里将距离矩阵的对角线处理为0，因为自己到自己的距离为0
+        # 这里将距离矩阵的对角线处理为 0，因为自己到自己的距离为 0
         np.fill_diagonal(X, 0)
         return silhouette_score(X, labels, metric='precomputed')
 
@@ -2004,8 +2004,8 @@ Input:
         # 对轮廓系数取反，将打分函数转化成损失函数
         res = compute_silhouette(threshold, friends=friends)
         return - res
-    # minimize函数是一个损失函数，值越小越好
-    # 参数：inverted_silhouette要寻找的函数；0.1开始时猜测的阈值；options={'maxiter': 10} 只进行10轮迭代，增加迭代次数，效果可能更好，但运行时间会增加，method='nelder-mead'使用"下山单纯形法"优化方法
+    # minimize 函数是一个损失函数，值越小越好
+    # 参数：inverted_silhouette 要寻找的函数；0.1 开始时猜测的阈值；options={'maxiter': 10} 只进行 10 轮迭代，增加迭代次数，效果可能更好，但运行时间会增加，method='nelder-mead'使用"下山单纯形法"优化方法
     result = minimize(inverted_silhouette, 0.1, args=(friends,), options={'maxiter': 10})
     print(result.x)
 ```
@@ -2073,19 +2073,19 @@ from nltk.metrics import edit_distance  # 编辑距离
 from operator import itemgetter
 
 
-# 用于生成验证码，接收一个单词和错切值，返回用numpy数组格式表示的图像
+# 用于生成验证码，接收一个单词和错切值，返回用 numpy 数组格式表示的图像
 def create_captcha(text, shear=0.0, size=(100, 26)):
     im = Image.new("L", size, "black")
     draw = ImageDraw.Draw(im)
-    # 验证码文字所用字体，该开源字体可在github下载
+    # 验证码文字所用字体，该开源字体可在 github 下载
     font = ImageFont.truetype("FiraCode-Medium.otf", 22)
     draw.text((0, 0), text, fill=1, font=font)
-    # 将PIL图像转换为numpy数组，以便用scikit-image库为图像添加错切变化效果
+    # 将 PIL 图像转换为 numpy 数组，以便用 scikit-image 库为图像添加错切变化效果
     image = np.array(im)
     # 应用错切变化效果
     affine_tf = tf.AffineTransform(shear=shear)
     image = tf.warp(image, affine_tf)
-    # 对图像进行归一化处理，确保特征值落在0到1之间
+    # 对图像进行归一化处理，确保特征值落在 0 到 1 之间
     return image / image.max()
 
 
@@ -2160,12 +2160,12 @@ Input:
     print("The target for this image is {}".format(target))
     plt.show()
 
-    # 调用3000次此函数，生成训练数据传到numpy的数组里
+    # 调用 3000 次此函数，生成训练数据传到 numpy 的数组里
     dataset, targets = zip(*(generate_sample(random_state) for i in range(3000)))
     dataset = np.array(dataset, dtype=float)
     targets = np.array(targets)
 
-    # 对26个字母类别进行编码
+    # 对 26 个字母类别进行编码
     onehot = OneHotEncoder()
     y = onehot.fit_transform(targets.reshape(targets.shape[0], 1))
     # 将稀疏矩阵转换为密集矩阵
@@ -2173,7 +2173,7 @@ Input:
 
     # 调整图像大小
     dataset = np.array([resize(segment_image(sample)[0], (20, 20)) for sample in dataset])
-    # 将最后三维的dataset的后二维扁平化
+    # 将最后三维的 dataset 的后二维扁平化
     X = dataset.reshape((dataset.shape[0], dataset.shape[1] * dataset.shape[2]))
     X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.9)
 ```
@@ -2204,7 +2204,7 @@ Output:
 Input:
 
 ```python
-    # 为pybrain库创建格式适配的数据集
+    # 为 pybrain 库创建格式适配的数据集
     training = SupervisedDataSet(X.shape[1], y.shape[1])
     for i in range(X_train.shape[0]):
         training.addSample(X_train[i], y_train[i])
@@ -2212,7 +2212,7 @@ Input:
     for i in range(X_test.shape[0]):
         testing.addSample(X_test[i], y_test[i])
     # 指定维度，创建神经网络，第一个参数为输入层神经元数量，第二个参数隐含层神经元数量，第三个参数为输出层神经元数量
-    # bias在每一层使用一个一直处于激活状态的偏置神经元
+    # bias 在每一层使用一个一直处于激活状态的偏置神经元
     net = buildNetwork(X.shape[1], 100, y.shape[1], bias=True)
 
     # 使用反向传播算法调整权重
@@ -2221,7 +2221,7 @@ Input:
     trainer.trainEpochs(epochs=20)
     # 预测值
     predictions = trainer.testOnClassData(dataset=testing)
-    # f1_score的average默认值为'binary'，如果不指定average则会发生ValueError
+    # f1_score 的 average 默认值为'binary'，如果不指定 average 则会发生 ValueError
     print("F-score:{0:.2f}".format(f1_score(y_test.argmax(axis=1), predictions, average='weighted')))
     print("F-score:{0:.2f}".format(f1_score(y_test.argmax(axis=1), predictions, average='micro')))
     print("F-score:{0:.2f}".format(f1_score(y_test.argmax(axis=1), predictions, average='macro')))
@@ -2246,11 +2246,11 @@ Input:
         predicted_word = ""
         # 遍历四张小图像
         for subimage in subimages:
-            # 调整每张小图像的大小为20*20像素
+            # 调整每张小图像的大小为 20*20 像素
             subimage = resize(subimage, (20,20))
             # 把小图像数据传入神经网络的输入层，激活神经网络。这些数据将在神经网络中进行传播，返回输出结果
             outputs = net.activate(subimage.flatten())
-            # 神经网络输出26个值，每个值都有索引号，分别对应letters列表中有着相同索引的字母，每个值的大小表示与对应字母的相似度。为了获得实际的预测值，我们取到最大值的索引，再通过letters列表找到对应的字母
+            # 神经网络输出 26 个值，每个值都有索引号，分别对应 letters 列表中有着相同索引的字母，每个值的大小表示与对应字母的相似度。为了获得实际的预测值，我们取到最大值的索引，再通过 letters 列表找到对应的字母
             prediction = np.argmax(outputs)
             # 把上面得到的字母添加到正在预测的单词中
             predicted_word += letters[prediction]
@@ -2279,7 +2279,7 @@ Input:
         # 返回预测结果是否正确，验证码中的单词和预测结果的前四个字符
         return word == prediction, word, prediction
 
-    # 语料库中字长为4的单词列表
+    # 语料库中字长为 4 的单词列表
     valid_words = [word.upper() for word in words.words() if len(word) == 4]
     num_correct = 0
     num_incorrect = 0
@@ -2292,7 +2292,7 @@ Input:
     print("Number correct is {}".format(num_correct))
     print("Number incorrect is {}".format(num_incorrect))
 
-    # 二维混淆矩阵， 每行每列均为一个类别
+    # 二维混淆矩阵，每行每列均为一个类别
     cm = confusion_matrix(np.argmax(y_test,axis=1), predictions)
     # 混淆矩阵作图
     plt.figure(figsize=(20, 20))
@@ -2329,7 +2329,7 @@ Input:
     steps = edit_distance("STEP", "STOP")
     print("The num of steps needed is: {}".format(steps))
 
-    # 用词长4减去同等位置上相同的字母数量，得到的值越小表示两个词相似度越高
+    # 用词长 4 减去同等位置上相同的字母数量，得到的值越小表示两个词相似度越高
     def compute_distance(prediction, word):
         return len(prediction) - sum(prediction[i] == word[i] for i in range(len(prediction)))
 
@@ -2424,7 +2424,7 @@ assert len(titles['gaboriau']) == 10
 url_base = 'http://www.gutenberg.org/files/'
 url_format = '{url_base}{id}/{id}-0.txt'
 
-# 修复URL
+# 修复 URL
 url_fix_format = 'http://www.gutenberg.org/cache/epub/{id}/pg{id}.txt'
 
 fiexes = defaultdict(list)
@@ -2433,7 +2433,7 @@ fiexes = defaultdict(list)
 
 # make parent folder if not exists
 # data_folder = os.path.join(os.path.expanduser('~'),'Data','books') #
-# 这是在用户user目录中存储
+# 这是在用户 user 目录中存储
 data_folder = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -2548,7 +2548,7 @@ def load_books_data(folder=getdata.data_folder):
     for author_number, subfolder in enumerate(subfolders):
         full_subfolder_path = os.path.join(folder, subfolder)
         for document_name in os.listdir(full_subfolder_path):
-            # 跳过目录下的getdata.py文件
+            # 跳过目录下的 getdata.py 文件
             if document_name == 'getdata.cpython-38.pyc':
                 continue
             with open(os.path.join(full_subfolder_path, document_name), 'r') as inf:
@@ -2635,8 +2635,8 @@ N 元语法由一系列的 N 个为一组的对象组成，N 为每组对象的�
 Input:
 
 ```python
-    # 用N元语法分类
-    pipeline = Pipeline([('feature_extraction', CountVectorizer(analyzer='char', ngram_range=(3, 3))),  # 长度为3的N元语法
+    # 用 N 元语法分类
+    pipeline = Pipeline([('feature_extraction', CountVectorizer(analyzer='char', ngram_range=(3, 3))),  # 长度为 3 的 N 元语法
                          ('classifier', grid)
                          ])
     scores = cross_val_score(pipeline, documents, classes, scoring='f1_macro')
@@ -2678,7 +2678,7 @@ if __name__ == '__main__':
                          random_state=None):
         random_state = check_random_state(random_state)
         # 随机对得到的邮箱列表进行排序
-        # os.listdir函数每次返回结果不一定相同，在使用该函数前先排序，从而保持返回结果的一致性
+        # os.listdir 函数每次返回结果不一定相同，在使用该函数前先排序，从而保持返回结果的一致性
         email_addresses = sorted(os.listdir(data_folder))
         random_state.shuffle(email_addresses)
 
@@ -2702,7 +2702,7 @@ if __name__ == '__main__':
             # 获得至少十封邮件
             if len(authored_emails) < min_docs_author:
                 continue
-            # 最多获取前100封邮件
+            # 最多获取前 100 封邮件
             if len(authored_emails) > max_docs_author:
                 authored_emails = authored_emails[:max_docs_author]
             # 解析邮件，获取邮件内容
@@ -2710,7 +2710,7 @@ if __name__ == '__main__':
             documents.extend(contents)
             # 将发件人添加到类列表中，每封邮件添加一次
             classes.extend([author_num] * len(authored_emails))
-            # 记录收件人编号，再把编号+1
+            # 记录收件人编号，再把编号 +1
             authors[user] = author_num
             author_num += 1
             # 收件人数量达到设置的值跳出循环
@@ -2727,7 +2727,7 @@ if __name__ == '__main__':
         if r is None:
             return email_contents
         if 'text_top' in r:
-            return r['text_top']  # 字典r中存在text_top，返回它的值
+            return r['text_top']  # 字典 r 中存在 text_top，返回它的值
         elif 'text' in r:
             return r['text']
         return email_contents
@@ -2802,7 +2802,7 @@ Output:
 
 ### 获取新闻文章
 
-这一章的数据集是从 reddit 获得的网页链接，reddit 的 app 审核机制不是很严格(?)因此我终于拿到了墙外的 api，使用 requests 下载又费了一番功夫，使用书上源码的 url 下载总是 403 错误，研究了好半天 reddit 的 api，发现 reddit 的 url 改成了(new, top, ...)，修改之后总算完成了链接的索引
+这一章的数据集是从 reddit 获得的网页链接，reddit 的 app 审核机制不是很严格 (?) 因此我终于拿到了墙外的 api，使用 requests 下载又费了一番功夫，使用书上源码的 url 下载总是 403 错误，研究了好半天 reddit 的 api，发现 reddit 的 url 改成了 (new, top, ...)，修改之后总算完成了链接的索引
 
 Input:
 
@@ -2822,7 +2822,7 @@ USER_AGENT = "python:xxxxxxxxx (by /u/xxxxxxxxx)"
 USERNAME = "xxxxxxxx"
 PASSWORD = "xxxxxxxxxxxxxx"
 
-# requests使用代理
+# requests 使用代理
 proxies = {"http": "socks5://xxxxxx", "https": "socks5://xxxxxx"}
 
 
@@ -2846,7 +2846,7 @@ def login(username, password):
 
 
 if __name__ == "__main__":
-    # 调用login获取token
+    # 调用 login 获取 token
     # token = login(USERNAME, PASSWORD)
     # print(token)
 
@@ -2862,15 +2862,15 @@ if __name__ == "__main__":
         stories = []
         after = None
         for page_number in range(n_pages):
-            # 进行调用之前等待，以避免超过API限制
-            print("等待2s...")
+            # 进行调用之前等待，以避免超过 API 限制
+            print("等待 2s...")
             time.sleep(2)
             # 设置标头进行调用
             headers = {
                 "Authorization": "bearer {}".format(token["access_token"]),
                 "User-Agent": USER_AGENT,
             }
-            # top为最热链接，这里也可以换成new
+            # top 为最热链接，这里也可以换成 new
             url = "https://oauth.reddit.com/r/{}/top?limit=100".format(subreddit)
             if after:
                 url += "&after={}".format(after)
@@ -2880,14 +2880,14 @@ if __name__ == "__main__":
                         url, proxies=proxies, headers=headers, timeout=10
                     )
                     result = response.json()
-                    # 获取下一个循环的cursor
+                    # 获取下一个循环的 cursor
                     after = result["data"]["after"]
                 except:
-                    print("requests出错等待...")
+                    print("requests 出错等待...")
                     time.sleep(2)
                 else:
                     break
-            # 将所有新闻项添加到story列表中
+            # 将所有新闻项添加到 story 列表中
             for story in result["data"]["children"]:
                 stories.append(
                     (
@@ -2973,7 +2973,7 @@ if __name__ == "__main__":
     ]
     # 存放不可能包含新闻内容的节点
     skip_node_types = ["script", "head", "style", etree.Comment]
-    # 把html文件解析成lxml对象
+    # 把 html 文件解析成 lxml 对象
     def get_text_from_file(filename):
         with open(filename, "r") as inf:
             html_tree = html.parse(inf)
@@ -3023,14 +3023,14 @@ k-means 聚类算法迭代寻找最能够代表数据的聚类质心点。算法
 # -*- coding: utf-8 -*-
 import os
 from sklearn.cluster import KMeans
-# TfidfVectorizer向量化工具，根据词语出现在多少篇文章中，对词语计数进行加权
+# TfidfVectorizer 向量化工具，根据词语出现在多少篇文章中，对词语计数进行加权
 # 出现在较多文档中的词语权重较低（用文档集数量除以词语出现在的文档的数量，然后取对数）
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import Pipeline
 from collections import Counter
 from scipy.sparse import csr_matrix  # 稀疏矩阵
 import numpy as np
-from scipy.sparse.csgraph import minimum_spanning_tree  # 计算最小生成树MST
+from scipy.sparse.csgraph import minimum_spanning_tree  # 计算最小生成树 MST
 from scipy.sparse.csgraph import connected_components  # 连通分支
 from sklearn.base import BaseEstimator, ClusterMixin
 from sklearn.cluster import MiniBatchKMeans
@@ -3046,21 +3046,21 @@ if __name__ == "__main__":
     n_clusters = 10
     pipeline = Pipeline(
         [
-            ("feature_extraction", TfidfVectorizer(max_df=0.4)),  # 特征抽取，忽略出现在40%文档中的词语（删除功能词）
-            ("clusterer", KMeans(n_clusters=n_clusters)),  # 调用k-means算法
+            ("feature_extraction", TfidfVectorizer(max_df=0.4)),  # 特征抽取，忽略出现在 40% 文档中的词语（删除功能词）
+            ("clusterer", KMeans(n_clusters=n_clusters)),  # 调用 k-means 算法
         ]
     )
     documents = [
         open(os.path.join(text_output_folder, filename)).read()
         for filename in os.listdir(text_output_folder)
     ]
-    # 不为fit函数指定目标类别，进行训练
+    # 不为 fit 函数指定目标类别，进行训练
     pipeline.fit(documents)
     # 使用训练过的算法预测
-    # labels包含每个数据点的簇标签，标签相同的数据点属于同一个簇，标签本身没有含义
+    # labels 包含每个数据点的簇标签，标签相同的数据点属于同一个簇，标签本身没有含义
     labels = pipeline.predict(documents)
 
-    # 使用Counter类查看每个簇的数据点数量
+    # 使用 Counter 类查看每个簇的数据点数量
     c = Counter(labels)
     for cluster_number in range(n_clusters):
         print(
@@ -3092,7 +3092,7 @@ Output:
 Input:
 
 ```python
-    # 惯性权重，这个值没有意义，但是可以用来确定n_clusters
+    # 惯性权重，这个值没有意义，但是可以用来确定 n_clusters
     print(pipeline.named_steps["clusterer"].inertia_)
     print()
     inertia_scores = []
@@ -3177,7 +3177,7 @@ Output:
 Input:
 
 ```python
-    # 设置n_clusters值为6， 重新运行算法
+    # 设置 n_clusters 值为 6，重新运行算法
     n_clusters = 6
     pipeline = Pipeline(
         [
@@ -3189,7 +3189,7 @@ Input:
     labels = pipeline.predict(documents)
     # 获取特征的所对应的词
     terms = pipeline.named_steps["feature_extraction"].get_feature_names()
-    # 统计6个簇中每个簇的元素个数
+    # 统计 6 个簇中每个簇的元素个数
     c = Counter(labels)
     for cluster_number in range(n_clusters):
         print(
@@ -3261,13 +3261,13 @@ Output:
 Input:
 
 ```python
-    # 用K-means算法转化特征
+    # 用 K-means 算法转化特征
     X = pipeline.transform(documents)
 ```
 
 ### 聚类融合
 
-聚类算法也可以进行融合，这样做的主要原因是，融合后得到的算法能够平滑算法多次运行所得到的不同结果。多次运行 k-means 算法得到的结果因最初选择的质心点不同而不同。多次运行算法，综合考虑所得到的多个结果，可以减少波动。聚类融合方法还可以降低参数选择对最终结果的影响。大多数聚类算法对参数选择很敏感,参数稍有不同将带来不同的聚类结果
+聚类算法也可以进行融合，这样做的主要原因是，融合后得到的算法能够平滑算法多次运行所得到的不同结果。多次运行 k-means 算法得到的结果因最初选择的质心点不同而不同。多次运行算法，综合考虑所得到的多个结果，可以减少波动。聚类融合方法还可以降低参数选择对最终结果的影响。大多数聚类算法对参数选择很敏感，参数稍有不同将带来不同的聚类结果
 
 最基本的融合方法是对数据进行多次聚类，每次都记录各个数据点的簇标签。然后计算每两个数据点被分到同一个簇的次数。这就是*证据累积*算法（Evidence Accumulation Clustering，EAC）的精髓
 
@@ -3281,25 +3281,25 @@ Input:
     def create_coassociation_matrix(labels):
         rows = []
         cols = []
-        # labels种类
+        # labels 种类
         unique_labels = set(labels)
         for label in unique_labels:
-            # 找出label值相同的数据点
+            # 找出 label 值相同的数据点
             indices = np.where(labels == label)[0]
-            # 记录他们的位置：如1、3点的数据均为1，即1和1相同，1和3相同，3和1相同，3和3相同
-            # 行和列均增加了4个indices*indices个数字
+            # 记录他们的位置：如 1、3 点的数据均为 1，即 1 和 1 相同，1 和 3 相同，3 和 1 相同，3 和 3 相同
+            # 行和列均增加了 4 个 indices*indices 个数字
             for index1 in indices:
                 for index2 in indices:
                     rows.append(index1)
                     cols.append(index2)
-        # 返回给定shape和type的值全为1的矩阵
+        # 返回给定 shape 和 type 的值全为 1 的矩阵
         data = np.ones((len(rows),))
         # 创建稀疏矩阵满足：a[rows[k], cols[k]] = data[k]
         return csr_matrix((data, (rows, cols)), dtype="float")
 
     # 使用标签生成共协矩阵
     C = create_coassociation_matrix(labels)
-    # 这里书上说多输入几次C看看结果，我没有用notebook，但是使用print输出是一样的，因此没有搞懂书上的含义
+    # 这里书上说多输入几次 C 看看结果，我没有用 notebook，但是使用 print 输出是一样的，因此没有搞懂书上的含义
     print(C)
     print((365 ** 2 - create_coassociation_matrix(labels).nnz) / 365 ** 2)
 
@@ -3360,14 +3360,14 @@ Input:
 
 ```python
     mst = minimum_spanning_tree(C)
-    # 对C取反再计算最小生成树
+    # 对 C 取反再计算最小生成树
     mst = minimum_spanning_tree(-C)
     # 创建额外的标签
     pipeline.fit(documents)
     labels2 = pipeline.predict(documents)
     C2 = create_coassociation_matrix(labels2)
     C_sum = (C + C2) / 2
-    # 生成阈值不全为1和0的最小生成树
+    # 生成阈值不全为 1 和 0 的最小生成树
     mst = minimum_spanning_tree(-C_sum)
     # 删除低于阈值的边
     mst.data[mst.data > -1] = 0
@@ -3397,9 +3397,9 @@ Input:
         def __init__(
             self, n_clusterings=10, cut_threshold=0.5, n_clusters_range=(3, 10)
         ):
-            self.n_clusterings = n_clusterings  # k-means算法运行次数
+            self.n_clusterings = n_clusterings  # k-means 算法运行次数
             self.cut_threshold = cut_threshold  # 用来删除边的阈值
-            self.n_clusters_range = n_clusters_range  # 每次运行k-means算法要找到的簇的数量
+            self.n_clusters_range = n_clusters_range  # 每次运行 k-means 算法要找到的簇的数量
 
         def fit(self, X, y=None):
             # 进行指定次数的共协矩阵累加
@@ -3419,7 +3419,7 @@ Input:
             # 在给定范围中随机选择一个集群数
             n_clusters = np.random.randint(*self.n_clusters_range)
             km = KMeans(n_clusters=n_clusters)
-            # 返回由k-means计算得到的簇标签
+            # 返回由 k-means 计算得到的簇标签
             return km.fit_predict(X)
 
     pipeline = Pipeline(
@@ -3462,13 +3462,13 @@ scikit-learn 提供了 MiniBatchKMeans 算法，可以用它来实现线上学�
 Input:
 
 ```python
-    # 使用TfIDFVectorizer从数据集中抽取特征，创建矩阵X
+    # 使用 TfIDFVectorizer 从数据集中抽取特征，创建矩阵 X
     n_clusters = 6
     vec = TfidfVectorizer(max_df=0.4)
     X = vec.fit_transform(documents)
     mbkm = MiniBatchKMeans(random_state=14, n_clusters=3)
     batch_size = 10
-    # 随机从X矩阵中选择数据，模拟来自外部的新数据
+    # 随机从 X 矩阵中选择数据，模拟来自外部的新数据
     for iteration in range(int(X.shape[0] / batch_size)):
         start = batch_size * iteration
         end = batch_size * (iteration + 1)
@@ -3506,7 +3506,7 @@ Input:
             # 经过最后一步之前的所有步转换
             for name, transform in self.steps[:-1]:
                 Xt = transform.transform(Xt)
-            #　调用MiniBatchKMeans的partial_fit函数
+            # 调用 MiniBatchKMeans 的 partial_fit 函数
             return self.steps[-1][1].partial_fit(Xt, y=y)
 
     pipeline = PartialFitPipeline(
@@ -3537,7 +3537,7 @@ Output:
     Cluster 4 contains 0 samples
     Cluster 5 contains 0 samples
 
-这一章的内容比较多，也学了挺久，虽然中间结果跟书上的差的有点多。。可能是因为最近新冠肺炎吧(￣\_,￣ )
+这一章的内容比较多，也学了挺久，虽然中间结果跟书上的差的有点多。。可能是因为最近新冠肺炎吧 (￣\_,￣ )
 
 ## 第十一章
 
@@ -3581,15 +3581,15 @@ output_layer = Dense(output_layer_size, activation='sigmoid')
 # 创建顺序模型
 model = Sequential(layers=[hidden_layer, output_layer])
 # 为训练神经网络配置模型
-# 损失函数设置为均方误差，优化器设置为adam(亚当)即遵循原始文件中的默认参数，指定精度衡量标准
+# 损失函数设置为均方误差，优化器设置为 adam(亚当) 即遵循原始文件中的默认参数，指定精度衡量标准
 model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
-# 当一个完整的数据集通过了神经网络一次并且返回了一次，这个过程称为一次epoch
-# 为模型训练固定的epoch（数据集上的迭代）
-# 输出模式。0不输出，1每个epoch一个进度条，2一行每个epoch。
+# 当一个完整的数据集通过了神经网络一次并且返回了一次，这个过程称为一次 epoch
+# 为模型训练固定的 epoch（数据集上的迭代）
+# 输出模式。0 不输出，1 每个 epoch 一个进度条，2 一行每个 epoch。
 history = model.fit(X_train, y_train, nb_epoch=100, verbose=2)
-# 记录了连续几个epoch的训练损失值和度量值，以及验证损失值和验证度量值(如果适用的话)
+# 记录了连续几个 epoch 的训练损失值和度量值，以及验证损失值和验证度量值 (如果适用的话)
 history.history
-# 作图，绘制出epoch和loss关系图
+# 作图，绘制出 epoch 和 loss 关系图
 plt.figure(figsize=(10, 10))
 plt.plot(history.epoch, history.history['loss'])
 plt.xlabel("Epoch")
@@ -3597,7 +3597,7 @@ plt.ylabel("Loss")
 plt.show()
 
 # 为输入样本生成输出预测，计算是分批进行的
-# 返回的是数值[0.9356668, 0.20588416, 0.00021186471],代表样本属于每个类别的概率
+# 返回的是数值 [0.9356668, 0.20588416, 0.00021186471],代表样本属于每个类别的概率
 y_pred = model.predict(X_test)
 # 返回一串预测结果，样本属于哪一个类别
 y_pred = model.predict_classes(X_test)
@@ -3936,12 +3936,12 @@ Input:
 ```python
     # --------建立模型--------
     # 建立神经网络所需要模型的各层
-    # tf.keras.layers.Flatten将图像的格式从二维数组(28 * 28)转换为一维数组(28 * 28 = 784)
+    # tf.keras.layers.Flatten 将图像的格式从二维数组 (28 * 28) 转换为一维数组 (28 * 28 = 784)
     # 可以将这个图层看作是图像中取消堆叠的像素行，并将它们排列起来
     # 这个层没有参数需要学习; 它只是重新格式化数据。
     #
-    # 然后是两个稠密层（完全连接的层），中间一层有128个节点，
-    # 最后一层返回长度为10的对数数组。每个神经元包含一个得分，指示当前图像对这一类的评分
+    # 然后是两个稠密层（完全连接的层），中间一层有 128 个节点，
+    # 最后一层返回长度为 10 的对数数组。每个神经元包含一个得分，指示当前图像对这一类的评分
     model = keras.Sequential(
         [
             keras.layers.Flatten(input_shape=(28, 28)),
@@ -3965,7 +3965,7 @@ Input:
     print("\nTest accuracy:", test_acc)
 
     probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
-    # prediction是由10个数字组成的数组。它们表示模型对图像对应于10种不同衣服各自的置信度
+    # prediction 是由 10 个数字组成的数组。它们表示模型对图像对应于 10 种不同衣服各自的置信度
     predictions = probability_model.predict(test_images)
     print(predictions[0])
 ```
@@ -4003,7 +4003,7 @@ Output:
 
 从输出可以看出 loss 函数正在逐渐减小，训练的准确率在不断的增加，这正是我们所要的
 
-在训练集中的准确率为 91.1%， 而在测试集中只有 88%，这是出现了过拟合(overfitting)，关于过拟合的证明和避免过拟合的方法，等过几天单独写一个 post 学习一下
+在训练集中的准确率为 91.1%，而在测试集中只有 88%，这是出现了过拟合 (overfitting)，关于过拟合的证明和避免过拟合的方法，等过几天单独写一个 post 学习一下
 
 ---
 
@@ -4102,7 +4102,7 @@ Input:
     # --------使用模型--------
     img = test_images[1]
     print(img.shape)
-    # 转换成keras支持的格式
+    # 转换成 keras 支持的格式
     img = np.expand_dims(img, 0)
     print(img.shape)
     # 为该图像预测
@@ -4205,7 +4205,7 @@ from joblib import Parallel, delayed
 import timeit
 
 
-# 计算documents中的单词出现词素
+# 计算 documents 中的单词出现词素
 def map_word_count(document_id, document):
     counts = defaultdict(int)
     for word in document.split():
@@ -4214,8 +4214,8 @@ def map_word_count(document_id, document):
         yield word, counts[word]
 
 
-# 将map得到的结果，即每篇文章中单词出现的次数整合起来
-# 如文章1中单词"apple"出现了2次，文章2中单词"apple"出现了5次，则返回结果为["apple":[2,5],...]
+# 将 map 得到的结果，即每篇文章中单词出现的次数整合起来
+# 如文章 1 中单词"apple"出现了 2 次，文章 2 中单词"apple"出现了 5 次，则返回结果为 ["apple":[2,5],...]
 def shuffle_words(results_generators):
     records = defaultdict(list)
     # 遍历每一篇文章
@@ -4237,7 +4237,7 @@ if __name__ == "__main__":
     dataset = fetch_20newsgroups(subset="train")
     documents = dataset.data
     start = timeit.default_timer()
-    # 生成器，输出(单词，出现次数的键值对)
+    # 生成器，输出 (单词，出现次数的键值对)
     map_results = map(map_word_count, range(len(documents)), documents)
     shuffle_results = shuffle_words(map_results)
     reduce_results = [

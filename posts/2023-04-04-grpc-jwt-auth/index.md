@@ -10,19 +10,19 @@ GRPC 实现自定义认证，这里用 jwt token 作为示例。
 ```go
 const MetadataKeyAuth = "authorization"
 
-// Auth 自定义认证.
+// Auth 自定义认证。
 type Auth struct {
 	Token string
 }
 
-// GetRequestMetadata 获取认证信息.
+// GetRequestMetadata 获取认证信息。
 func (c Auth) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) {
 	return map[string]string{
 		MetadataKeyAuth: c.Token,
 	}, nil
 }
 
-// RequireTransportSecurity 是否需要安全传输.
+// RequireTransportSecurity 是否需要安全传输。
 func (c Auth) RequireTransportSecurity() bool {
 	return false
 }

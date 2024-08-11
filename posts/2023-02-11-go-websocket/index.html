@@ -1,0 +1,220 @@
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Go WebSocket - 咸鱼硕的博客</title><meta name=Description content="咸鱼硕的博客"><meta property="og:url" content="https://saltfishpr.github.io/posts/2023-02-11-go-websocket/">
+<meta property="og:site_name" content="咸鱼硕的博客"><meta property="og:title" content="Go WebSocket"><meta property="og:description" content="咸鱼硕的博客"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-02-11T23:08:37+08:00"><meta property="article:modified_time" content="2024-08-11T23:14:25+08:00"><meta property="og:image" content="https://saltfishpr.github.io/logo.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://saltfishpr.github.io/logo.png"><meta name=twitter:title content="Go WebSocket"><meta name=twitter:description content="咸鱼硕的博客"><meta name=twitter:site content="@saltfishpr"><meta name=application-name content="咸鱼硕的博客"><meta name=apple-mobile-web-app-title content="咸鱼硕的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=go.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://saltfishpr.github.io/posts/2023-02-11-go-websocket/><link rel=prev href=https://saltfishpr.github.io/posts/2022-03-27-go-context/><link rel=next href=https://saltfishpr.github.io/posts/2023-04-04-timezone/><link rel=stylesheet href=/css/style.min.61c0835a1733ac3f92b41b61b403dca9b8d4a3a7e4021c89af2c45a731f6343a82bc7fb214f4926e2c4669c8d258218b7da5d0e86d081ec97f3c1d823d48df2e.css integrity="sha512-YcCDWhczrD+StBthtAPcqbjUo6fkAhyJryxFpzH2NDqCvH+yFPSSbixGacjSWCGLfaXQ6G0IHsl/PB2CPUjfLg=="><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Go WebSocket","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/saltfishpr.github.io\/posts\/2023-02-11-go-websocket\/"},"image":["https:\/\/saltfishpr.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","wordcount":792,"url":"https:\/\/saltfishpr.github.io\/posts\/2023-02-11-go-websocket\/","datePublished":"2023-02-11T23:08:37+08:00","dateModified":"2024-08-11T23:14:25+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/saltfishpr.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":"Salt Fish"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=咸鱼硕的博客><span class=header-title-pre><i class="fas fa-code"></i></span>咸鱼硕的博客</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/about/>关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="menu-item language" title=选择语言><i class="fa fa-globe" aria-hidden=true></i>
+<select class=language-select id=language-select-desktop onchange="location=this.value"><option value=/posts/2023-02-11-go-websocket/ selected>简体中文</option></select></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=咸鱼硕的博客><span class=header-title-pre><i class="fas fa-code"></i></span>咸鱼硕的博客</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/about/ title>关于</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class=menu-item title=选择语言><i class="fa fa-globe fa-fw" aria-hidden=true></i>
+<select class=language-select onchange="location=this.value"><option value=/posts/2023-02-11-go-websocket/ selected>简体中文</option></select></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class="toc-content always-active" id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Go WebSocket</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/saltfishpr title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Salt Fish</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/programming/><i class="far fa-folder fa-fw" aria-hidden=true></i>Programming</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2023-02-11>2023-02-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 792 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 2 分钟&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#server>Server</a></li><li><a href=#k6-压测>K6 压测</a></li><li><a href=#内存分析>内存分析</a></li></ul></nav></div></div><div class=content id=content><h2 id=server>Server</h2><p>源码<a href=https://github.com/saltfishpr/go-learning/blob/examples/websocket/cmd/server/main.go target=_blank rel="noopener noreffer">在这</a></p><p>使用 <a href=https://gofiber.io/ target=_blank rel="noopener noreffer">fiber</a> 框架搭建 web 服务器，处理 websocket 连接</p><p><code>Hub</code> 用来保存和管理所有连接，这里使用 map 存储</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>type</span> <span class=nx>Hub</span> <span class=kd>struct</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=nx>registerCh</span>   <span class=kd>chan</span> <span class=o>*</span><span class=nx>websocket</span><span class=p>.</span><span class=nx>Conn</span>
+</span></span><span class=line><span class=cl>	<span class=nx>unregisterCh</span> <span class=kd>chan</span> <span class=o>*</span><span class=nx>websocket</span><span class=p>.</span><span class=nx>Conn</span>
+</span></span><span class=line><span class=cl>	<span class=nx>broadcastCh</span>  <span class=kd>chan</span> <span class=p>[]</span><span class=kt>byte</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=nx>conns</span> <span class=kd>map</span><span class=p>[</span><span class=o>*</span><span class=nx>websocket</span><span class=p>.</span><span class=nx>Conn</span><span class=p>]</span><span class=kt>bool</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>每隔 3s 向当前所有客户端发送广播消息</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl>	<span class=k>go</span> <span class=kd>func</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=nx>ticker</span> <span class=o>:=</span> <span class=nx>time</span><span class=p>.</span><span class=nf>NewTicker</span><span class=p>(</span><span class=mi>3</span> <span class=o>*</span> <span class=nx>time</span><span class=p>.</span><span class=nx>Second</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>		<span class=k>for</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=k>select</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>			<span class=k>case</span> <span class=o>&lt;-</span><span class=nx>ctx</span><span class=p>.</span><span class=nf>Done</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>				<span class=k>return</span>
+</span></span><span class=line><span class=cl>			<span class=k>case</span> <span class=o>&lt;-</span><span class=nx>ticker</span><span class=p>.</span><span class=nx>C</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>				<span class=nx>payload</span><span class=p>,</span> <span class=nx>_</span> <span class=o>:=</span> <span class=nx>json</span><span class=p>.</span><span class=nf>Marshal</span><span class=p>(</span><span class=kd>map</span><span class=p>[</span><span class=kt>string</span><span class=p>]</span><span class=kt>string</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>					<span class=s>&#34;event&#34;</span><span class=p>:</span>   <span class=s>&#34;CHAT_MSG&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>					<span class=s>&#34;user&#34;</span><span class=p>:</span>    <span class=s>&#34;server&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>					<span class=s>&#34;message&#34;</span><span class=p>:</span> <span class=s>&#34;hello, this is server&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>				<span class=p>})</span>
+</span></span><span class=line><span class=cl>				<span class=nx>h</span><span class=p>.</span><span class=nx>broadcastCh</span> <span class=o>&lt;-</span> <span class=nx>payload</span>
+</span></span><span class=line><span class=cl>			<span class=p>}</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=p>}()</span>
+</span></span></code></pre></td></tr></table></div></div><p>每建立一个连接，就会开启一个 goroutine，将连接注册到 Hub 中，循环监听发来的消息，退出时注销并关闭连接</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=p>(</span><span class=nx>h</span> <span class=o>*</span><span class=nx>Hub</span><span class=p>)</span> <span class=nf>Handle</span><span class=p>(</span><span class=nx>c</span> <span class=o>*</span><span class=nx>websocket</span><span class=p>.</span><span class=nx>Conn</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=c1>// When the function returns, unregister the client and close the connection
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=k>defer</span> <span class=kd>func</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=nx>h</span><span class=p>.</span><span class=nx>unregisterCh</span> <span class=o>&lt;-</span> <span class=nx>c</span>
+</span></span><span class=line><span class=cl>		<span class=nx>c</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>	<span class=p>}()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1>// Register the client
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=nx>h</span><span class=p>.</span><span class=nx>registerCh</span> <span class=o>&lt;-</span> <span class=nx>c</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=nx>messageType</span><span class=p>,</span> <span class=nx>payload</span><span class=p>,</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>c</span><span class=p>.</span><span class=nf>ReadMessage</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>		<span class=c1>// ...
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=k6-压测>K6 压测</h2><p>参考文档 <a href=https://k6.io/docs/examples/websockets/ target=_blank rel="noopener noreffer">https://k6.io/docs/examples/websockets/</a></p><ul><li>客户端每 1-3s 就会向服务端发送消息</li><li>客户端 13s 后关闭连接</li><li>接收服务端传来的消息并打印</li></ul><p>注：</p><ul><li><code>export default function ()</code> 每次执行为一个 <code>iteration</code>，即一个迭代时长为 13s</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>sessionDuration</span> <span class=o>=</span> <span class=mi>10000</span><span class=p>;</span> <span class=c1>// 会话时长设置为 10000ms
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=kr>const</span> <span class=nx>options</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>stages</span><span class=o>:</span> <span class=p>[{</span> <span class=nx>duration</span><span class=o>:</span> <span class=s2>&#34;30s&#34;</span><span class=p>,</span> <span class=nx>target</span><span class=o>:</span> <span class=mi>10000</span> <span class=p>}],</span>
+</span></span><span class=line><span class=cl>  <span class=nx>minIterationDuration</span><span class=o>:</span> <span class=s2>&#34;15s&#34;</span><span class=p>,</span> <span class=c1>// 一个 VU 执行一次迭代的最短时间，设置此值大于测试函数执行时间，保证函数能被正确执行完
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>url</span> <span class=o>=</span> <span class=s2>&#34;ws://localhost:3000/ws&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>params</span> <span class=o>=</span> <span class=p>{</span> <span class=nx>tags</span><span class=o>:</span> <span class=p>{</span> <span class=nx>my_tag</span><span class=o>:</span> <span class=s2>&#34;hello&#34;</span> <span class=p>}</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>res</span> <span class=o>=</span> <span class=nx>ws</span><span class=p>.</span><span class=nx>connect</span><span class=p>(</span><span class=nx>url</span><span class=p>,</span> <span class=nx>params</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>socket</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>socket</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s2>&#34;open&#34;</span><span class=p>,</span> <span class=kd>function</span> <span class=nx>open</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`VU </span><span class=si>${</span><span class=nx>__VU</span><span class=si>}</span><span class=sb>: connected`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=nx>socket</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span> <span class=nx>event</span><span class=o>:</span> <span class=s2>&#34;SET_NAME&#34;</span><span class=p>,</span> <span class=nx>new_name</span><span class=o>:</span> <span class=sb>`Croc </span><span class=si>${</span><span class=nx>__VU</span><span class=si>}</span><span class=sb>`</span> <span class=p>})</span>
+</span></span><span class=line><span class=cl>      <span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=nx>socket</span><span class=p>.</span><span class=nx>setInterval</span><span class=p>(</span><span class=kd>function</span> <span class=nx>timeout</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>socket</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>          <span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>            <span class=nx>event</span><span class=o>:</span> <span class=s2>&#34;SAY&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>message</span><span class=o>:</span> <span class=sb>`I&#39;m saying </span><span class=si>${</span><span class=nx>randomString</span><span class=p>(</span><span class=mi>5</span><span class=p>)</span><span class=si>}</span><span class=sb>`</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=p>})</span>
+</span></span><span class=line><span class=cl>        <span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span> <span class=nx>randomIntBetween</span><span class=p>(</span><span class=mi>1000</span><span class=p>,</span> <span class=mi>3000</span><span class=p>));</span> <span class=c1>// 每隔 1-3s 发送随机字符串
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1>// ...
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=nx>socket</span><span class=p>.</span><span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`VU </span><span class=si>${</span><span class=nx>__VU</span><span class=si>}</span><span class=sb>: </span><span class=si>${</span><span class=nx>sessionDuration</span><span class=si>}</span><span class=sb>ms passed, leaving the chat`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=nx>socket</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span><span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span> <span class=nx>event</span><span class=o>:</span> <span class=s2>&#34;LEAVE&#34;</span> <span class=p>}));</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=nx>sessionDuration</span><span class=p>);</span> <span class=c1>// 会话结束，发送离开消息，让服务端做出相应
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=nx>socket</span><span class=p>.</span><span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`Closing the socket forcefully 3s after graceful LEAVE`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=nx>socket</span><span class=p>.</span><span class=nx>close</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=nx>sessionDuration</span> <span class=o>+</span> <span class=mi>3000</span><span class=p>);</span> <span class=c1>// 达到连接时长最大值，关闭连接
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=nx>check</span><span class=p>(</span><span class=nx>res</span><span class=p>,</span> <span class=p>{</span> <span class=s2>&#34;Connected successfully&#34;</span><span class=o>:</span> <span class=p>(</span><span class=nx>r</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>r</span> <span class=o>&amp;&amp;</span> <span class=nx>r</span><span class=p>.</span><span class=nx>status</span> <span class=o>===</span> <span class=mi>101</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>压测结果</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-plaintext data-lang=plaintext><span class=line><span class=cl>running (0m45.1s), 00000/10000 VUs, 15008 complete and 0 interrupted iterations
+</span></span><span class=line><span class=cl>default ✓ [======================================] 00000/10000 VUs  30s
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     ✓ Connected successfully
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     checks................: 100.00% ✓ 15008       ✗ 0
+</span></span><span class=line><span class=cl>     data_received.........: 7.2 MB  159 kB/s
+</span></span><span class=line><span class=cl>     data_sent.............: 9.1 MB  201 kB/s
+</span></span><span class=line><span class=cl>     iteration_duration....: avg=13.06s min=13s     med=13s      max=13.88s   p(90)=13.26s   p(95)=13.46s
+</span></span><span class=line><span class=cl>     iterations............: 15008   332.710255/s
+</span></span><span class=line><span class=cl>     vus...................: 416     min=130       max=9795
+</span></span><span class=line><span class=cl>     vus_max...............: 10000   min=10000     max=10000
+</span></span><span class=line><span class=cl>     ws_connecting.........: avg=2.51ms min=96.29µs med=283.37µs max=238.25ms p(90)=843.39µs p(95)=3.95ms
+</span></span><span class=line><span class=cl>     ws_msgs_received......: 64824   1437.0742/s
+</span></span><span class=line><span class=cl>     ws_msgs_sent..........: 129217  2864.593621/s
+</span></span><span class=line><span class=cl>     ws_session_duration...: avg=13.06s min=13s     med=13s      max=13.88s   p(90)=13.26s   p(95)=13.46s
+</span></span><span class=line><span class=cl>     ws_sessions...........: 15008   332.710255/s
+</span></span></code></pre></td></tr></table></div></div><p>从 Client 角度看</p><ul><li>ws_connecting: 建链耗时</li><li>ws_msgs_received: 每秒接收消息</li><li>ws_msgs_sent: 每秒发送消息</li></ul><h2 id=内存分析>内存分析</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>go tool pprof -http<span class=o>=</span>:8080 <span class=s1>&#39;localhost:3000/debug/pprof/heap?seconds=60&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>alloc_space</strong></p><p><img class=lazyload src=/svg/loading.min.svg data-src=/posts/2023-02-11-go-websocket/attachments/alloc_space.png data-srcset="/posts/2023-02-11-go-websocket/attachments/alloc_space.png, /posts/2023-02-11-go-websocket/attachments/alloc_space.png 1.5x, /posts/2023-02-11-go-websocket/attachments/alloc_space.png 2x" data-sizes=auto alt=/posts/2023-02-11-go-websocket/attachments/alloc_space.png title=/posts/2023-02-11-go-websocket/attachments/alloc_space.png width=3446 height=968></p><p><strong>inuse_space</strong></p><p><img class=lazyload src=/svg/loading.min.svg data-src=/posts/2023-02-11-go-websocket/attachments/inuse_space.png data-srcset="/posts/2023-02-11-go-websocket/attachments/inuse_space.png, /posts/2023-02-11-go-websocket/attachments/inuse_space.png 1.5x, /posts/2023-02-11-go-websocket/attachments/inuse_space.png 2x" data-sizes=auto alt=/posts/2023-02-11-go-websocket/attachments/inuse_space.png title=/posts/2023-02-11-go-websocket/attachments/inuse_space.png width=3446 height=968></p><ul><li>10000 个连接总共分配了 33MB 的内存，每个连接约为 3.3KB</li><li>连接断开后仅占用 0.55MB 内存</li></ul></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2024-08-11&nbsp;<a class=git-hash href=https://github.com/saltfishpr/saltfishpr.github.io/commit/bd874064e348cb4af1c377d444d8550b48a902d5 target=_blank title="commit by saltfishpr(526191197@qq.com) bd874064e348cb4af1c377d444d8550b48a902d5: update">
+<i class="fas fa-hashtag fa-fw" aria-hidden=true></i>bd87406</a></span></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/posts/2023-02-11-go-websocket/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://saltfishpr.github.io/posts/2023-02-11-go-websocket/ data-title="Go WebSocket" data-via=saltfishpr><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://saltfishpr.github.io/posts/2023-02-11-go-websocket/><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://saltfishpr.github.io/posts/2023-02-11-go-websocket/ data-title="Go WebSocket"><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://saltfishpr.github.io/posts/2023-02-11-go-websocket/ data-title="Go WebSocket"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://saltfishpr.github.io/posts/2023-02-11-go-websocket/ data-title="Go WebSocket"><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/2022-03-27-go-context/ class=prev rel=prev title="Go context"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Go context</a>
+<a href=/posts/2023-04-04-timezone/ class=next rel=next title="Time Zone && Offset">Time Zone && Offset<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=gitalk class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://github.com/gitalk/gitalk></a>Gitalk</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.131.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2019 - 2024</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/saltfishpr target=_blank>SaltFish</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.7b0408f98c705b0bc4a799d0202fa56eb3205ac5921eabd9361c0b6788f342f09cb993017c67db1e9a9cc94773fbd5719a10c007bda24312630eb81919b8b8a1.js integrity="sha512-ewQI+YxwWwvEp5nQIC+lbrMgWsWSHqvZNhwLZ4jzQvCcuZMBfGfbHpqcyUdz+9VxmhDAB72iQxJjDrgZGbi4oQ=="></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.44cc20d57e608bab50bef59d85dcad5ee408c14d4cee68ffd95db180d6641311aa91c0ed72c255a75aa668c31358417f08957b7c106045ec6a1c9bc554151587.js integrity="sha512-RMwg1X5gi6tQvvWdhdytXuQIwU1M7mj/2V2xgNZkExGqkcDtcsJVp1qmaMMTWEF/CJV7fBBgRexqHJvFVBUVhw=="></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{gitalk:{admin:["saltfishpr"],clientID:"60fcbf378ba98da93c38",clientSecret:"97006a937aa9fd569bd7f7c6f1dfa69e39c45a2a",id:"2023-02-11T23:08:37+08:00",owner:"saltfishpr",repo:"saltfishpr.github.io",title:"Go WebSocket"}},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.f1b10c54ef8e7ea0c938baba89a68e47962cb91f87edfcf0ae7abf0ec7bbb510e5d980a2b5a69686d7a44eae747183e3ed5cd960ed6fe66552c947e6fca4ff67.js integrity="sha512-8bEMVO+OfqDJOLq6iaaOR5YsuR+H7fzwrnq/Dse7tRDl2YCitaaWhtekTq50cYPj7VzZYO1v5mVSyUfm/KT/Zw=="></script><script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9Y9L3W36VM",{anonymize_ip:!0})</script><script type=text/javascript src="https://www.googletagmanager.com/gtag/js?id=G-9Y9L3W36VM" async></script></body></html>
